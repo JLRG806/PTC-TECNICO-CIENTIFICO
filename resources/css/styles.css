@@ -4,7 +4,7 @@
   }
  
 body{
-    height: 625px;
+    height: auto;
     background: url(/resources/img/wave1.svg);
     background-size: cover;
     position: relative;
