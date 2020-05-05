@@ -6,7 +6,7 @@
 body{
     height: auto;
     width: auto;
-    background: url(../img/wave1.svg);
+    background: url(../img/wavebg.svg);
     background-size: cover;
     position: relative;
     background-repeat: no-repeat;
@@ -27,7 +27,11 @@ body{
   }
   
 
-/*Icons tamaño y color*/
+/*Icons,fotos, tamaño y color*/
+
+.lric{
+    width: 310px;
+}
 .user{
     color: #A7A7A7A7;
 }
@@ -67,7 +71,7 @@ body{
   letter-spacing: .1rem;
   font-weight: bold;
   padding: 1rem;
-  transition: all 0.2s;
+  transition: all 1s;
 }
 
 .form-label-group {
@@ -97,7 +101,7 @@ body{
   color: #495057;
   border: 1px solid transparent;
   border-radius: .25rem;
-  transition: all .1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .form-label-group input::-webkit-input-placeholder {
@@ -141,3 +145,46 @@ body{
   color: white;
   background-color: #3b5998;
 }
+
+/* Responsive */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (width: 600px) {
+    
+}
+@media only screen and (min-width: 600px) {
+
+}
+@media only screen and (max-width: 600px) {
+    
+}  
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (width: 768px) {
+
+}
+@media only screen and (min-width: 768px) {
+
+}
+@media only screen and (max-width: 768px) {
+
+}  
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (width: 992px) {
+  
+}
+@media only screen and (min-width: 992px) {
+
+}
+@media only screen and (max-width: 992px) {
+ 
+}  
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (  width: 1200px) {
+
+}
+@media only screen and (min-width: 1200px) {
+
+}
+@media only screen and (max-width: 1200px) {
+
+}
+
