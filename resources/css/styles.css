@@ -5,7 +5,8 @@
  
 body{
     height: auto;
-    background: url(/resources/img/wave1.svg);
+    width: auto;
+    background: url(../img/wave1.svg);
     background-size: cover;
     position: relative;
     background-repeat: no-repeat;
@@ -16,13 +17,13 @@ body{
     width: 90%;
     background-color: #ffffff;
     padding: 0px;
-    border-radius: 15px;
+    border-radius: 30px;
     transform: translate(-50%, -50%);
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
     color: rgb(0, 0, 0);
-    box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.5);
   }
   
 
