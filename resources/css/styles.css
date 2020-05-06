@@ -104,6 +104,12 @@ body{
   transition: all 0.1s ease-in-out;
 }
 
+.correo{
+  border-radius: 0rem 5rem 5rem 0rem;
+  height: 3rem;
+  
+}
+
 .form-label-group input::-webkit-input-placeholder {
   color: transparent;
 }
