@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -201,14 +204,23 @@
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
 
+                                    <!-- Date dd/mm/yyyy -->
                                     <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha ingreso: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Ingreso">
+                                        <label>Date masks:</label>
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                                        </div>
+                                        <!-- /.input group -->
                                     </div>
+                                    <!-- /.form group -->
 
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha salida: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Salida">
                                     </div>
 
                                     <div class="form-group">
@@ -373,10 +385,33 @@
     <script src="../resources/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="../../plugins/moment/moment.min.js"></script>
+    <script src="../../plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../resources/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../resources/dist/js/demo.js"></script>
+
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', {
+                'placeholder': 'dd/mm/yyyy'
+            })
+
+        })
+    </script>
 </body>
 
 </html>
