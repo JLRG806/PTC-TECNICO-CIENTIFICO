@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Administrar Secciones</title>
+    <title>Administrar Estudiantes/title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -155,7 +155,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Administrar Secciones académicas</h1>
+                            <h1 class="m-0 text-dark">Administrar Estudiantes</h1>
                         </div>
                     </div>
                 </div>
@@ -173,8 +173,18 @@
                                 <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombres">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Apellidos: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Apeliidos">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Email">
                                 </div>
 
                                 </div>
@@ -182,8 +192,18 @@
                                 <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Código carnet: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Código del estudiante">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
                                 </div>
                                 </div>
                                 <!-- /.col (RIGHT) -->
@@ -199,131 +219,44 @@
                         <thead>
                             <tr>
                                 <th style="width: 1%">
-                                    Sección
+                                    Nombres
+                                </th>
+                                <th style="width: 20%">
+                                    Apellidos
+                                </th>
+                                <th style="width: 30%">
+                                    Correo electrónico
+                                </th>
+                                <th>
+                                    Código de carnet
+                                </th>
+                                <th>
+                                    Nivel académico
+                                </th>
+                                <th>
+                                    Sección académico
+                                </th>
+                                <th style="width: 20%">
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    A 
+                                    Mario Ernesto 
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    B
+                                    Zarate López
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    C
+                                    20180240@ricaldone.edu.sv
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    D
+                                    20180240
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    E
+                                    1.° Desarrollo de Software
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    A-1
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    A-2 
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
                                     A-3
                                 </td>
@@ -342,7 +275,54 @@
                             </tr>
                             <tr>
                                 <td>
-                                    A-4
+                                    Fernando Alejandro
+                                </td>
+                                <td>
+                                    Pineda Hernández
+                                </td>
+                                <td>
+                                    20190321@ricaldone.edu.sv
+                                </td>
+                                <td>
+                                    20190321
+                                </td>
+                                <td>
+                                    8°
+                                </td>
+                                <td>
+                                    B
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Sergio Alberto
+                                </td>
+                                <td>
+                                    Gavidia Bermudez
+                                </td>
+                                <td>
+                                    20200329@ricaldone.edu.sv
+                                </td>
+                                <td>
+                                    20200329
+                                </td>
+                                <td>
+                                    7°
+                                </td>
+                                <td>
+                                    C
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Administrar Secciones</title>
+    <title>Administrar Usuarios</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -155,7 +155,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Administrar Secciones académicas</h1>
+                            <h1 class="m-0 text-dark">Administrar Usuarios</h1>
                         </div>
                     </div>
                 </div>
@@ -173,8 +173,13 @@
                                 <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Email">
                                 </div>
 
                                 </div>
@@ -182,8 +187,13 @@
                                 <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Contraseña: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Contraseña">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Seleccione estado">
                                 </div>
                                 </div>
                                 <!-- /.col (RIGHT) -->
@@ -199,14 +209,31 @@
                         <thead>
                             <tr>
                                 <th style="width: 1%">
-                                    Sección
+                                    Nombres
+                                </th>
+                                <th style="width: 20%">
+                                    Apellidos
+                                </th>
+                                <th style="width: 30%">
+                                    Correo electrónico
+                                </th>
+                                <th>
+                                    Estado
+                                </th>
+                                <th style="width: 20%">
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    A 
+                                    José Rodriguez 
+                                </td>
+                                <td>
+                                    puma@gmail.com
+                                </td>
+                                <td>
+                                    Activo
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">
@@ -223,7 +250,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    B
+                                    Fernando Funes
+                                </td>
+                                <td>
+                                    rodrigopineda@gmail.com
+                                </td>
+                                <td>
+                                    Inactivo
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">
@@ -240,109 +273,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    C
+                                    Sergio Mayén
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    D
+                                    sergiomayen2105@gmail.com
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    E
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    A-1
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    A-2 
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    A-3
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    A-4
+                                    Activo
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">

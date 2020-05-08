@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Administrar Secciones</title>
+    <title>Administrar Material</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -118,7 +118,7 @@
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="proyectos.php" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Administrar Proyectos
@@ -126,7 +126,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="material.php" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Administrar Material
@@ -134,7 +134,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="jurados.php" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Administrar Evaluadores
@@ -155,7 +155,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Administrar Secciones académicas</h1>
+                            <h1 class="m-0 text-dark">Administrar Materiales</h1>
                         </div>
                     </div>
                 </div>
@@ -173,8 +173,28 @@
                                 <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre equipo: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Descripción proyecto">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Cantidad: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado equipo: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estado">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Condición equipo: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Condición">
                                 </div>
 
                                 </div>
@@ -182,8 +202,23 @@
                                 <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha ingreso: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Ingreso">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha salida: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Tipo material: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Tipo material">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estudiante: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estudiante">
                                 </div>
                                 </div>
                                 <!-- /.col (RIGHT) -->
@@ -199,14 +234,64 @@
                         <thead>
                             <tr>
                                 <th style="width: 1%">
-                                    Sección
+                                    Nombre material
+                                </th>
+                                <th style="width: 20%">
+                                    Descripción
+                                </th>
+                                <th style="width: 30%">
+                                    Cantidad
+                                </th>
+                                <th>
+                                    Estado material
+                                </th>
+                                <th>
+                                    Condición material
+                                </th>
+                                <th>
+                                    Fecha entrada
+                                </th>
+                                <th>
+                                    Fecha salida
+                                </th>
+                                <th>
+                                    Tipo material
+                                </th>
+                                <th>
+                                    Estudiante
+                                </th>
+                                <th style="width: 20%">
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    A 
+                                    Mantilla de mesa
+                                </td>
+                                <td>
+                                    Roja
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    Pendiente de confirmar salida
+                                </td>
+                                <td>
+                                    Nuevo
+                                </td>
+                                <td>
+                                    07/05/2020
+                                </td>
+                                <td>
+                                    10/05/2020
+                                </td>
+                                <td>
+                                    Material
+                                </td>
+                                <td>
+                                    José Luis
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">
@@ -223,126 +308,31 @@
                             </tr>
                             <tr>
                                 <td>
-                                    B
+                                    Pantalla de monitor
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    C
+                                    Marca Samsung, color negra
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    D
+                                    1
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    E
+                                    Salida Confirmada
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    A-1
+                                    Usado
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    A-2 
+                                    07/05/2020
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    A-3
+                                    10/05/2020
                                 </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    A-4
+                                    Equipo
+                                </td>
+                                <td>
+                                    Maria Gabriela
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">

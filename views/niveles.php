@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="usuarios.php" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Administrar Usuarios
@@ -87,7 +87,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="estudiantes.php" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
                                     Administrar Estudiantes
@@ -173,12 +173,8 @@
                                 <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning">
+                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
+                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
                                 </div>
 
                                 </div>
@@ -203,34 +199,14 @@
                         <thead>
                             <tr>
                                 <th style="width: 1%">
-                                    Nombres
-                                </th>
-                                <th style="width: 20%">
-                                    Apellidos
-                                </th>
-                                <th style="width: 30%">
-                                    Correo electrónico
-                                </th>
-                                <th>
-                                    Estado
-                                </th>
-                                <th style="width: 20%">
+                                    Nivel
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                        José Luis
-                                </td>
-                                <td>
-                                    Rodriguez Gonzales
-                                </td>
-                                <td>
-                                    puma@gmail.com
-                                </td>
-                                <td>
-                                    Activo
+                                    7° 
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">
@@ -247,16 +223,126 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Fernando Rodrigo
+                                    8°
                                 </td>
-                                <td>
-                                    Pienda Funes
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                    rodrigopineda@gmail.com
+                                    9° 
                                 </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                    Inactivo
+                                    1.° Desarrollo de Software
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1.° Arquitectura
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1.° Diseño Gráfico 
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1.° Electrónica 
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1.° Electromecánica
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="#">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1.° Mantenimiento Automotriz
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-info btn-sm" href="#">
