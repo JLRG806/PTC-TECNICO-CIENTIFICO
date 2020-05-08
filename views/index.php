@@ -23,7 +23,7 @@
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
             <div class="form-group"><a href="dashboard.php" class="btn btn-primary btn-block">
                 Iniciar Sesión
-            </a></div><a class="forgot" href="r-pas.html">Olvidaste tu contraseña?</a>
+            </a></div><a class="forgot" href="r-pas.php">Olvidaste tu contraseña?</a>
         </form>
     </div>
     <script src="../resources/js/jquery.min.js"></script>

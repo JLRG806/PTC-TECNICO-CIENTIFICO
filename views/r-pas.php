@@ -24,7 +24,7 @@
             </div>
             <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Correo"></div>
             <div class="form-group">
-                <a href="r-pas-2.html" class="btn btn-primary btn-block">
+                <a href="r-pas-2.php" class="btn btn-primary btn-block">
                     Enviar codigo
                 </a>
             </div>

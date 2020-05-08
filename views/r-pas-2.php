@@ -26,7 +26,7 @@
                 <p class="small text-muted mx-3">XX-XX-XX-XX</p>
             </div>
             <div class="form-group">
-                <a href="r-pas-3.html" class="btn btn-primary btn-block">
+                <a href="r-pas-3.php" class="btn btn-primary btn-block">
                     Enviar codigo
                 </a>
             </div>

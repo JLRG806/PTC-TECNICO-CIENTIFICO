@@ -25,7 +25,7 @@
             <div class="form-group"><input class="form-control" type="password" name="password"
                     placeholder="Confirmar contraseña" required></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
-                    onclick="location.href='index.html';">Aceptar</button>
+                    onclick="location.href='index.php';">Aceptar</button>
             </div>
         </form>
     </div>
