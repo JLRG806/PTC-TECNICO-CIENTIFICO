@@ -172,34 +172,38 @@
                             <div class="row">
                                 <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombres">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombres">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Lugar procedencia: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Lugar Procedencia">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Lugar procedencia: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Lugar Procedencia">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Email">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Email">
+                                    </div>
 
                                 </div>
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Ocupación: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Ocupación">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Ocupación: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Ocupación">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estado">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estado">
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-warning">Guardar</button>
+                                    </div>
 
                                 </div>
                                 <!-- /.col (RIGHT) -->
@@ -322,7 +326,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>    
+                    </table>
                     <div class="card-footer clearfix">
                         <ul class="pagination pagination-sm m-0 float-right">
                             <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
@@ -332,7 +336,7 @@
                             <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                         </ul>
                     </div>
-                </div>      
+                </div>
             </section>
             <!-- /.content -->
         </div>

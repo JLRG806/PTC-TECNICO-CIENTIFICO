@@ -172,29 +172,34 @@
                             <div class="row">
                                 <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre proyecto: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre proyecto: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Descripción del proyecto">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Descripción del proyecto">
+                                    </div>
 
                                 </div>
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-warning">Guardar</button>
+                                    </div>
+
                                 </div>
                                 <!-- /.col (RIGHT) -->
                             </div>
@@ -227,7 +232,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    Araña seguidora de luz 
+                                    Araña seguidora de luz
                                 </td>
                                 <td>
                                     Representación de araña que con un sensor percibe la luz y se mueve hacia ella
@@ -304,7 +309,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>    
+                    </table>
                     <div class="card-footer clearfix">
                         <ul class="pagination pagination-sm m-0 float-right">
                             <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
@@ -314,7 +319,7 @@
                             <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                         </ul>
                     </div>
-                </div>      
+                </div>
             </section>
             <!-- /.content -->
         </div>

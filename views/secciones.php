@@ -181,10 +181,10 @@
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-warning">Guardar</button>
                                 </div>
+                                
                                 </div>
                                 <!-- /.col (RIGHT) -->
                             </div>

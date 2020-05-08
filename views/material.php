@@ -172,54 +172,59 @@
                             <div class="row">
                                 <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre equipo: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre equipo: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Descripción proyecto">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Descripción proyecto">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Cantidad: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Cantidad: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado equipo: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estado">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado equipo: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estado">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Condición equipo: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Condición">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Condición equipo: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Condición">
+                                    </div>
 
                                 </div>
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha ingreso: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Ingreso">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha ingreso: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Ingreso">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha salida: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha salida: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Tipo material: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Tipo material">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Tipo material: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Tipo material">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estudiante: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estudiante">
-                                </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estudiante: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estudiante">
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-warning">Guardar</button>
+                                    </div>
+
                                 </div>
                                 <!-- /.col (RIGHT) -->
                             </div>
@@ -348,7 +353,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>    
+                    </table>
                     <div class="card-footer clearfix">
                         <ul class="pagination pagination-sm m-0 float-right">
                             <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
@@ -358,7 +363,7 @@
                             <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                         </ul>
                     </div>
-                </div>      
+                </div>
             </section>
             <!-- /.content -->
         </div>
