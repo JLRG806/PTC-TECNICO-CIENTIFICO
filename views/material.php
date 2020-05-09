@@ -204,19 +204,10 @@
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
 
-                                    <!-- Date dd/mm/yyyy -->
                                     <div class="form-group">
-                                        <label>Date masks:</label>
-
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
-                                        </div>
-                                        <!-- /.input group -->
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha entrada: </label>
+                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Entrada">
                                     </div>
-                                    <!-- /.form group -->
 
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha salida: </label>

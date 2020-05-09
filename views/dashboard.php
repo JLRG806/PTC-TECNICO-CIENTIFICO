@@ -120,7 +120,7 @@
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="proyectos.php" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Administrar Proyectos
@@ -128,7 +128,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="material.php" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Administrar Material
@@ -136,7 +136,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="jurados.php" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Administrar Evaluadores
