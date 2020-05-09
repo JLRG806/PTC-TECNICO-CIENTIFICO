@@ -45,6 +45,11 @@
                     </div>
                 </div>
             </form>
+            <ul class="navbar-nav">
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="index.php" class="nav-link">Sing out</a>
+                </li>
+            </ul>
         </nav>
         <!-- /.navbar -->
 

@@ -216,9 +216,6 @@
                                 <th style="width: 1%">
                                     Nombres
                                 </th>
-                                <th style="width: 20%">
-                                    Apellidos
-                                </th>
                                 <th style="width: 30%">
                                     Correo electrónico
                                 </th>
