@@ -205,12 +205,12 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha entrada: </label>
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-calendar"></i> Fecha entrada: </label>
                                         <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Entrada">
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Fecha salida: </label>
+                                        <label class="col-form-label" for="inputWarning"><i class="far fa-calendar"></i> Fecha salida: </label>
                                         <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Salida">
                                     </div>
 
@@ -386,23 +386,6 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../resources/dist/js/demo.js"></script>
 
-    <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-                theme: 'bootstrap4'
-            })
-
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('dd/mm/yyyy', {
-                'placeholder': 'dd/mm/yyyy'
-            })
-
-        })
-    </script>
 </body>
 
 </html>
