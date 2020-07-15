@@ -230,7 +230,7 @@ class Validator
     public function validateDui($value)
     {
         // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
-        if (preg_match('/^[0-9]{8}+([\-][0-9]{1})?$/', $value)) {
+        if (preg_match('/^[0-9]{8}[-][0-9]{1}$/', $value)) {            
             return true;
         } else {
             return false;
@@ -238,10 +238,10 @@ class Validator
     }
     
     /**Validación numero de telefono */
-    public function validateTelefono($value)
+    public function validatePhone($value)
     {
         // Se verifica que el número tenga 2 partes de 4 digitos separadas por guión
-        if (preg_match('/^[0-9]{4}-[0-9]{4}$/', $value)) {
+        if (preg_match('/^[2,6,7]{1}[0-9]{3}[-][0-9]{4}$/', $value)) {
             return true;
         } else {
             return false;
@@ -290,18 +290,6 @@ class Validator
         }
     }
 
-    public function validateSatatus($value)
-    {
-        $est_1 = 'En carrito';
-        $est_2 = 'Procesado';
-        $est_3 = 'Entregado';
-        $est_4 = 'Cancelado';
-        if ($value == $est_1 || $value == $est_2 || $value == $est_3 || $value == $est_4) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     /*
     *   Método para validar una contraseña.
     *
@@ -311,8 +299,45 @@ class Validator
     */
     public function validatePassword($value)
     {
-        // Se verifica que la longitud de la contraseña sea de al menos 6 caracteres.
-        if (strlen($value) >= 6) {
+        /* 
+        Se verifica que la contraseña tenga:
+        - Una longitud de minímo 8 y máximo 128 caracteres. {8,128}
+        - Una letra minuscula (?=.*[a-z])
+        - Una letra mayuscula (?=.*[A-Z])
+        - Un digito (?=.*\d) 
+        - Un simbolo (!@#%&*) = (?=.*[!@#\$%\^&\*])
+        */
+        if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*]).{8,128}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateNivel($value, $minimum, $maximum)
+    {
+        // Se verifica el contenido y la longitud de acuerdo con la base de datos.
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\°]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateStudentEmail($value)
+    {
+        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
+        if (preg_match('/^(?:20)[0-9]{2}[0-9]{4}@(ricaldone)\.edu\.sv$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateAge($value)
+    {
+        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
+        if (preg_match('/^(1[89]|[2-9]\d)$/', $value)) {
             return true;
         } else {
             return false;
