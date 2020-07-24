@@ -6,15 +6,15 @@ require_once('../models/niveles.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
 	// Se instancia la clase correspondiente.
-	$nivel = new Niveles;
+	$nivel = new Nivel;
 	// Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
 	switch ($_GET['action']) {
 		case 'search':
-			$_POST = $nivel->validateForm($_POST);
+            $_POST = $nivel->validateForm($_POST);
 			if ($_POST['nivel_buscar'] != '') {
-				if ($result['dataset'] = $nivel->searchTipoU($_POST['nivel_buscar'])) {
+				if ($result['dataset'] = $nivel->searchNivel($_POST['nivel_buscar'])) {
 					$result['status'] = 1;
 					$rows = count($result['dataset']);
 					if ($rows > 1) {

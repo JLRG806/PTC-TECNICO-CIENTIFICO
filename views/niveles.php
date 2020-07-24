@@ -234,7 +234,6 @@
     <!-- AdminLTE App -->
     <script src="../resources/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../resources/dist/js/demo.js"></script>
     <script src="../resources/js/sweetalert.min.js"></script>
     <script src="../core/helpers/components.js"></script>
     <script src="../core/controllers/nivel.js"></script>

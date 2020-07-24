@@ -29,7 +29,7 @@ function fillTable( dataset )
 }
 
 // Evento para mostrar los resultados de una búsqueda.
-$( '#nivel_buscar' ).submit(function( event ) {
+$( '#buscar' ).submit(function( event ) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js

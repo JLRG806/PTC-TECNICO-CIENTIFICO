@@ -1,5 +1,6 @@
 <?php
-class Niveles extends Validator
+
+class Nivel extends Validator
 {
     private $id = null;
     private $nivel_estudiante = null;
@@ -16,7 +17,7 @@ class Niveles extends Validator
 
     public function setNivel($value)
     {
-        if ($this->validateAlphabetic($value, 1, 50)) {
+        if ($this->validateString($value, 1, 50)) {
             $this->nivel_estudiante = $value;
             return true;
         } else {
@@ -40,7 +41,7 @@ class Niveles extends Validator
                 FROM Niveles
                 WHERE nivel_estudiante ILIKE ?
                 ORDER BY nivel_estudiante';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 

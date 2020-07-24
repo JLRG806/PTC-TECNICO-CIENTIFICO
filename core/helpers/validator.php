@@ -1,11 +1,13 @@
 <?php
+/*
+*	Clase para validar todos los datos de entrada del lado del servidor.
+*   Es clase padre de los modelos porque los datos se validan en los métodos setter.
+*/
 class Validator
 {
     // Propiedades para manejar la validación de archivos de imagen.
     private $imageError = null;
     private $imageName = null;
-    // Propiedades para manejar la validación de fecha.
-    private $dateError = null;
 
     /*
     *   Método para obtener el nombre del archivo de la imagen validada previamente.
@@ -36,16 +38,6 @@ class Validator
                 break;
             default:
                 $error = 'Ocurrió un problema con la imagen';
-        }
-        return $error;
-    }
-
-    public function getDateError()
-    {
-        switch ($this->dateError) {
-            case 1:
-                $error = 'La edad minima para registrarse es de 18 años';
-                break;
         }
         return $error;
     }
@@ -105,7 +97,7 @@ class Validator
                         // Se obtiene la extensión del archivo.
                         $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
                         // Se establece un nombre único para el archivo.
-                        $this->imageName = uniqid() . '.' . $extension;
+                        $this->imageName = uniqid().'.'.$extension;
                         return true;
                     } else {
                         $this->imageError = 1;
@@ -115,10 +107,10 @@ class Validator
                     $this->imageError = 2;
                     return false;
                 }
-            } else {
+             } else {
                 $this->imageError = 3;
                 return false;
-            }
+             }
         } else {
             $this->imageError = 4;
             return false;
@@ -167,7 +159,7 @@ class Validator
     public function validateString($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.\°]{'.$minimum.','.$maximum.'}$/', $value)) {
             return true;
         } else {
             return false;
@@ -184,7 +176,7 @@ class Validator
     public function validateAlphabetic($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+        if (preg_match('/^[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{'.$minimum.','.$maximum.'}$/', $value)) {
             return true;
         } else {
             return false;
@@ -201,7 +193,7 @@ class Validator
     public function validateAlphanumeric($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s]{'.$minimum.','.$maximum.'}$/', $value)) {
             return true;
         } else {
             return false;
@@ -225,71 +217,6 @@ class Validator
         }
     }
 
-    /**Validacion DUI */
-
-    public function validateDui($value)
-    {
-        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
-        if (preg_match('/^[0-9]{8}[-][0-9]{1}$/', $value)) {            
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    /**Validación numero de telefono */
-    public function validatePhone($value)
-    {
-        // Se verifica que el número tenga 2 partes de 4 digitos separadas por guión
-        if (preg_match('/^[2,6,7]{1}[0-9]{3}[-][0-9]{4}$/', $value)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**Validación de URL */ 
-    public function validateUrl($value)
-    {
-        // Se verifica que el url sea valido
-        if (preg_match('/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}'.'((:[0-9]{1,5})?\\/.*)?$/i', $value)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**Validación de año */
-    public function validateYear($value)
-    {
-        if (preg_match('/^[0-9]{4}$/', $value)) {
-            return true;
-        } else {
-            return false;
-        }
-    } 
-
-    /**Validación de procentaje */
-    public function validatePercentage($value)
-    {
-        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
-        if (preg_match('/^([1-9]([0-9])?|0)(\.[0-9]{1,2})?$/', $value)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function validateNumerodocumento($value, $minimum, $maximum)
-    {
-        // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.\-\_\°]{'.$minimum.','.$maximum.'}$/', $value)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /*
     *   Método para validar una contraseña.
     *
@@ -299,45 +226,60 @@ class Validator
     */
     public function validatePassword($value)
     {
-        /* 
-        Se verifica que la contraseña tenga:
-        - Una longitud de minímo 8 y máximo 128 caracteres. {8,128}
-        - Una letra minuscula (?=.*[a-z])
-        - Una letra mayuscula (?=.*[A-Z])
-        - Un digito (?=.*\d) 
-        - Un simbolo (!@#%&*) = (?=.*[!@#\$%\^&\*])
-        */
-        if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*]).{8,128}$/', $value)) {
+        // Se verifica que la longitud de la contraseña sea de al menos 6 caracteres.
+        if (strlen($value) >= 6) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function validateNivel($value, $minimum, $maximum)
+    /*
+    *   Método para validar el formato del DUI (Documento Único de Identidad).
+    *
+    *   Parámetros: $value (dato a validar).
+    *   
+    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
+    */
+    public function validateDUI($value)
     {
-        // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\°]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+        // Se verifica que el número tenga el formato 00000000-0.
+        if (preg_match('/^[0-9]{8}[-][0-9]{1}$/', $value)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function validateStudentEmail($value)
+    /*
+    *   Método para validar un número telefónico.
+    *
+    *   Parámetros: $value (dato a validar).
+    *   
+    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
+    */
+    public function validatePhone($value)
     {
-        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
-        if (preg_match('/^(?:20)[0-9]{2}[0-9]{4}@(ricaldone)\.edu\.sv$/', $value)) {
+        // Se verifica que el número tenga el formato 0000-0000 y que inicie con 2, 6 o 7.
+        if (preg_match('/^[2,6,7]{1}[0-9]{3}[-][0-9]{4}$/', $value)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function validateAge($value)
+    /*
+    *   Método para validar una fecha.
+    *
+    *   Parámetros: $value (dato a validar).
+    *   
+    *   Retorno: booleano (true si el valor es correcto o false en caso contrario).
+    */
+    public function validateDate($value)
     {
-        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
-        if (preg_match('/^(1[89]|[2-9]\d)$/', $value)) {
+        // Se dividen las partes de la fecha y se guardan en un arreglo en el siguiene orden: año, mes y día.
+        $date = explode('-', $value);
+        if (checkdate($date[1], $date[2], $date[0])) {
             return true;
         } else {
             return false;
@@ -358,7 +300,7 @@ class Validator
             // Se comprueba que la ruta en el servidor exista.
             if (file_exists($path)) {
                 // Se verifica que el archivo sea movido al servidor.
-                if (move_uploaded_file($file['tmp_name'], $path . $name)) {
+                if (move_uploaded_file($file['tmp_name'], $path.$name)) {
                     return true;
                 } else {
                     return false;
@@ -383,7 +325,7 @@ class Validator
         // Se verifica que la ruta exista.
         if (file_exists($path)) {
             // Se comprueba que el archivo sea borrado del servidor.
-            if (@unlink($path . $name)) {
+            if (@unlink($path.$name)) {
                 return true;
             } else {
                 return false;
@@ -393,3 +335,4 @@ class Validator
         }
     }
 }
+?>
