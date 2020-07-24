@@ -16,7 +16,7 @@ class Niveles extends Validator
 
     public function setNivel($value)
     {
-        if ($this->validateNivel($value)) {
+        if ($this->validateAlphabetic($value, 1, 50)) {
             $this->nivel_estudiante = $value;
             return true;
         } else {
@@ -46,7 +46,7 @@ class Niveles extends Validator
 
     public function createNivel()
     {
-        $sql = 'INSERT INTO Niveles (nivel_estudiante)
+        $sql = 'INSERT INTO Niveles(nivel_estudiante)
                 VALUES(?)';
         $params = array($this->nivel_estudiante);
         return Database::executeRow($sql, $params);

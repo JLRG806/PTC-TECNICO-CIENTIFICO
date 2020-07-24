@@ -367,9 +367,9 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../resources/plugins/jquery/jquery.min.js"></script>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../resources/plugins/bootstrap-4.5.0/js/bootstrap.js"></script>
     <!-- ChartJS -->
     <script src="../resources/plugins/chart.js/Chart.min.js"></script>
     <!-- AdminLTE App -->

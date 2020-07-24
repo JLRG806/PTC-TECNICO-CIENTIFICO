@@ -165,208 +165,62 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-
                     <!-- Main content -->
                     <section class="content">
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6">
-
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
+                            <form method="post" id="NIVEL">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input id="id_nivel" type="text" class="d-none" name="id_nivel">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
+                                            <input id="nivel" type="text" class="form-control is-warning" name="nivel" placeholder="Nivel">
+                                        </div>
                                     </div>
+                                    <!-- /.col (LEFT) -->
+                                    <div class="col-md-6">
 
-                                </div>
-                                <!-- /.col (LEFT) -->
-                                <div class="col-md-6">
-
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-warning">Guardar</button>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-warning">Guardar</button>
+                                        </div>
                                     </div>
+                                    <!-- /.col (RIGHT) -->
                                 </div>
-                                <!-- /.col (RIGHT) -->
-                            </div>
+                            </form>
                             <!-- /.row -->
                         </div><!-- /.container-fluid -->
                     </section>
                     <!-- /.content -->
                 </div>
 
+                <form method="post" id="buscar">
+                    <div class="col-md-3">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <i class="material-icons"></i>
+                            </span>
+                            <div class="form-line">
+                                <input id="nivel_buscar" type="text" class="form-control" name="nivel_buscar" placeholder="Buscar">
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-warning">BUSCAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
                 <div class="card-body p-0">
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
-                                <th style="width: 1%">
-                                    Nivel
-                                </th>
+                                <th>Niveles</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    7°
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    8°
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    9°
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    1.° Desarrollo de Software
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    1.° Arquitectura
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    1.° Diseño Gráfico
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    1.° Electrónica
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    1.° Electromecánica
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    1.° Mantenimiento Automotriz
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
+                        <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+                        <tbody id="tbody-rows">
                         </tbody>
                     </table>
-                    <div class="card-footer clearfix">
-                        <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
                 </div>
             </section>
             <!-- /.content -->
@@ -374,13 +228,16 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../resources/plugins/jquery/jquery.min.js"></script>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../resources/plugins/bootstrap-4.5.0/js/bootstrap.js"></script>
     <!-- AdminLTE App -->
     <script src="../resources/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../resources/dist/js/demo.js"></script>
+    <script src="../resources/js/sweetalert.min.js"></script>
+    <script src="../core/helpers/components.js"></script>
+    <script src="../core/controllers/nivel.js"></script>
 </body>
 
 </html>
