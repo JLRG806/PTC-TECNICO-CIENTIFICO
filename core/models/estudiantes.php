@@ -101,10 +101,11 @@ class Estudiantes extends Validator
 
     public function searchEstudiante($value)
     {
-        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, seccion_estudiante, especialidad_estudiante
-                FROM Estudiantes INNER JOIN Estudiantees USING (id_seccion) INNER JOIN Especialidad USING (id_especialidad)
+        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+                FROM Estudiantes e INNER JOIN Especialidad USING (id_especialidad)
+				INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 WHERE nombre_estudiante ILIKE ? or apellidos_estudiante ILIKE ? or email_estudiante ILIKE ?
-                ORDER BY nombre_estudiante, apellidos_estudiante, email_estudiante';
+                ORDER BY apellidos_estudiante';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -119,8 +120,9 @@ class Estudiantes extends Validator
 
     public function readAllEstudiante()
     {
-        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, seccion_estudiante, especialidad_estudiante
-                FROM Estudiantes INNER JOIN Estudiantees USING (id_seccion) INNER JOIN Especialidad USING (id_especialidad)
+        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+                FROM Estudiantes e INNER JOIN Especialidad USING (id_especialidad)
+                INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel                
                 ORDER BY apellidos_estudiante';
         $params = null;
         return Database::getRows($sql, $params);
@@ -128,8 +130,10 @@ class Estudiantes extends Validator
 
     public function readOneEstudiante()
     {
-        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, seccion_estudiante, especialidad_estudiante
-                FROM Estudiantes INNER JOIN Estudiantees USING (id_seccion) INNER JOIN Especialidad USING (id_especialidad)
+        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+                FROM Estudiantes e INNER JOIN Especialidad USING (id_especialidad)
+                INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel                
+                ORDER BY apellidos_estudiante
                 WHERE id_estudiante = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
