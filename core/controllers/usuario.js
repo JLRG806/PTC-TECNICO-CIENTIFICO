@@ -20,8 +20,8 @@ function fillTable( dataset )
                 <td>${row.email_usuario}</td>
                 <td>${row.estado_usuario}</td>
                 <td>
-                    <a href="#" onclick="openUpdateModal(${row.id_usuario})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="material-icons">mode_edit</i></a>
-                    <a href="#" onclick="openDeleteDialog(${row.id_usuario})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="material-icons">delete</i></a>
+                    <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_usuario})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">mode_edit</i></a>
+                    <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_usuario})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">delete</i></a>
                 </td>
             </tr>
         `;
