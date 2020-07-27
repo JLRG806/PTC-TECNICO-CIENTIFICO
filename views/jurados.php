@@ -169,173 +169,97 @@
                     <!-- Main content -->
                     <section class="content">
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6">
+                            <form method="post" id="JURADOS">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input id="id_evaluador" type="text" class="d-none" name="id_evaluador">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
+                                            <input id="nombres" type="text" class="form-control is-warning" name="nombres" placeholder="Nombres">
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombres">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Apelidos: </label>
+                                            <input id="apellidos" type="text" class="form-control is-warning" name="apellidos" placeholder="Apellidos">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
+                                            <input id="email" type="email" class="form-control is-warning" name="email" placeholder="example@gmail.com">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Teléfono: </label>
+                                            <input id="telefono" type="text" class="form-control is-warning" name="telefono" placeholder="____-____">
+                                        </div>
+
                                     </div>
+                                    <!-- /.col (LEFT) -->
+                                    <div class="col-md-6">
 
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Lugar procedencia: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Lugar Procedencia">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Lugar procedencia: </label>
+                                            <input id="procedencia" type="text" class="form-control is-warning" name="procedencia" placeholder="Nombres">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Ocupación: </label>
+                                            <input id="ocupacion" type="text" class="form-control is-warning" name="ocupacion" placeholder="Ocupación">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado: </label>
+                                            <input id="estado" type="text" class="form-control is-warning" name="estado" placeholder="Estado">
+                                        </div>
+
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-warning">Guardar</button>
+                                        </div>
+
                                     </div>
-
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Email">
-                                    </div>
-
+                                    <!-- /.col (RIGHT) -->
                                 </div>
-                                <!-- /.col (LEFT) -->
-                                <div class="col-md-6">
-
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Ocupación: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Ocupación">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estado">
-                                    </div>
-
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-warning">Guardar</button>
-                                    </div>
-
-                                </div>
-                                <!-- /.col (RIGHT) -->
-                            </div>
+                            </form>
                             <!-- /.row -->
                         </div><!-- /.container-fluid -->
                     </section>
                     <!-- /.content -->
                 </div>
 
+                <form method="post" id="buscar">
+                    <div class="col-md-3">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <i class="material-icons"></i>
+                            </span>
+                            <div class="form-line">
+                                <input id="jurado_buscar" type="text" class="form-control" name="jurado_buscar" placeholder="Buscar">
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-warning">BUSCAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
                 <div class="card-body p-0">
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
-                                <th style="width: 1%">
-                                    Nombre
-                                </th>
-                                <th style="width: 20%">
-                                    Lugar procedencia
-                                </th>
-                                <th style="width: 30%">
-                                    Correo electrónico
-                                </th>
-                                <th>
-                                    Ocupación
-                                </th>
-                                <th>
-                                    Estado jurado
-                                </th>
-                                <th style="width: 20%">
-                                </th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Lugar Procedencia</th>
+                                <th>Ocupación</th>
+                                <th>Estado</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Pamela Alejandra
-                                </td>
-                                <td>
-                                    Colegio Maria Auxiliadora
-                                </td>
-                                <td>
-                                    pame@gmail.com
-                                </td>
-                                <td>
-                                    Ingeniera de robotica
-                                </td>
-                                <td>
-                                    Convocado
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Javier Alexander
-                                </td>
-                                <td>
-                                    Colegio Bautista
-                                </td>
-                                <td>
-                                    javier@gmail.com
-                                </td>
-                                <td>
-                                    Ingeniera informática
-                                </td>
-                                <td>
-                                    Convocado
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Narda Elizabeth
-                                </td>
-                                <td>
-                                    Colegio Don Bosco
-                                </td>
-                                <td>
-                                    narda@gmail.com
-                                </td>
-                                <td>
-                                    Arquitecto
-                                </td>
-                                <td>
-                                    Convocado
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
+                        <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+                        <tbody id="tbody-rows">
                         </tbody>
                     </table>
-                    <div class="card-footer clearfix">
-                        <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
                 </div>
             </section>
             <!-- /.content -->
@@ -343,13 +267,15 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../resources/plugins/jquery/jquery.min.js"></script>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../resources/plugins/bootstrap-4.5.0/js/bootstrap.js"></script>
     <!-- AdminLTE App -->
     <script src="../resources/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../resources/dist/js/demo.js"></script>
+    <script src="../resources/js/sweetalert.min.js"></script>
+    <script src="../core/helpers/components.js"></script>
+    <script src="../core/controllers/evaluadores.js"></script>
 </body>
 
 </html>
