@@ -101,7 +101,7 @@ class Usuarios extends Validator
 
     public function readAllUsuarios()
     {
-        $sql = 'SELECT nombre_usuario, email_usuario, contrasena_usuario, estado_usuario
+        $sql = 'SELECT nombre_usuario, email_usuario, estado_usuario
                 FROM Usuarios
                 ORDER BY id_usuario';
         $params = null;
@@ -110,7 +110,7 @@ class Usuarios extends Validator
 
     public function readOneUsuario()
     {
-        $sql = 'SELECT nombre_usuario, email_usuario, contrasena_usuario, estado_usuario
+        $sql = 'SELECT nombre_usuario, email_usuario, estado_usuario
                 FROM Usuarios 
                 WHERE id_usuario = ?';
         $params = array($this->id);

@@ -12,13 +12,13 @@ if (isset($_GET['action'])) {
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
 	switch ($_GET['action']) {
 		case 'search':
-            $_POST = $usuario->validateForm($_POST);
+			$_POST = $usuario->validateForm($_POST);
 			if ($_POST['usuario_buscar'] != '') {
 				if ($result['dataset'] = $usuario->searchUsuario($_POST['usuario_buscar'])) {
 					$result['status'] = 1;
 					$rows = count($result['dataset']);
 					if ($rows > 1) {
-						$result['message'] = 'Se encontraron '.$rows.' coincidencias';
+						$result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
 					} else {
 						$result['message'] = 'Solo existe una coincidencia';
 					}
@@ -29,74 +29,82 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Ingrese un valor para buscar';
 			}
 			break;
-            case 'create':
-                $_POST = $usuario->validateForm($_POST);
-                if ($usuario->setNombre($_POST['nombre'])) {
-                    if ($usuario->setCorreo($_POST['email'])) {
-                        if ($usuario->setEstado($_POST['estado'])) {
-                            if ($_POST['password'] == $_POST['password_con']) {
-                                if ($usuario->setPassword($_POST['password'])) {
-                                    if ($usuario->createUsuario()) {
-                                        $result['status'] = 1;
-                                        $result['message'] = 'Usuario creado correctamente';
-                                    } else {
-                                        $result['exception'] = Database::getException();
-                                    }
-                                } else {
-                                    $result['exception'] = 'Clave menor a 6 caracteres';
-                                }
-                            } else {
-                                $result['exception'] = 'Claves diferentes';
-                            }                        
-                        } else {
-                            $result['exception'] = 'Estado incorrecto';
-                        }
-                    } else {
-                        $result['exception'] = 'Correo incorrecto';
-                    }
-                } else {
-                    $result['exception'] = 'Nombre incorrecto';
-                }
-            break;
-		case 'readOne':
-			if ($usuario->setId($_POST['id_usuario'])) {
-				if ($result['dataset'] = $nivel->readOneUsuario()) {
-					$result['status'] = 1;
+		case 'create':
+			$_POST = $usuario->validateForm($_POST);
+			if ($usuario->setNombre($_POST['nombre'])) {
+				if ($usuario->setCorreo($_POST['email'])) {
+					if ($usuario->setEstado($_POST['estado'])) {
+						if ($_POST['password'] == $_POST['password_con']) {
+							if ($usuario->setPassword($_POST['password'])) {
+								if ($usuario->createUsuario()) {
+									$result['status'] = 1;
+									$result['message'] = 'Usuario creado correctamente';
+								} else {
+									$result['exception'] = Database::getException();
+								}
+							} else {
+								$result['exception'] = 'Clave menor a 6 caracteres';
+							}
+						} else {
+							$result['exception'] = 'Claves diferentes';
+						}
+					} else {
+						$result['exception'] = 'Estado incorrecto';
+					}
 				} else {
-					$result['exception'] = 'Nivel inexistente';
+					$result['exception'] = 'Correo incorrecto';
 				}
 			} else {
-				$result['exception'] = 'Nivel incorrecto';
+				$result['exception'] = 'Nombre incorrecto';
+			}
+			break;
+		case 'readOne':
+			if ($usuario->setId($_POST['id_usuario'])) {
+				if ($result['dataset'] = $usuario->readOneUsuario()) {
+					$result['status'] = 1;
+				} else {
+					$result['exception'] = 'Usuario inexistente';
+				}
+			} else {
+				$result['exception'] = 'Usuario incorrecto';
 			}
 			break;
 		case 'readAll':
 			if ($result['dataset'] = $usuario->readAllUsuarios()) {
 				$result['status'] = 1;
 			} else {
-				$result['exception'] = 'Nivel inexistente';
+				$result['exception'] = 'Usuario inexistente';
 			}
 			break;
-            case 'update':
-                $_POST = $usuario->validateForm($_POST);
-                if ($usuario->setNombre($_POST['nombre'])) {
-                    if ($usuario->setCorreo($_POST['email'])) {
-                        if ($usuario->setEstado($_POST['estado'])) {
-                            if ($usuario->updateUsuario()) {
-                                $result['status'] = 1;
-                                $result['message'] = 'Usuario modificado correctamente';
-                            } else {
-                                $result['exception'] = Database::getException();
-                            }
-                        } else {
-                            $result['exception'] = 'Estado incorrecto';
-                        }
-                    } else {
-                        $result['exception'] = 'Correo incorrecto';
-                    }
-                } else {
-                    $result['exception'] = 'Nombre incorrecto';
-                }
-            break;
+		case 'update':
+			$_POST = $usuario->validateForm($_POST);
+			if ($usuario->setId($_POST['id_usuario'])) {
+				if ($usuario->readOneUsuario()) {
+					if ($usuario->setNombre($_POST['nombre'])) {
+						if ($usuario->setCorreo($_POST['email'])) {
+							if ($usuario->setEstado($_POST['estado'])) {
+								if ($usuario->updateUsuario()) {
+									$result['status'] = 1;
+									$result['message'] = 'Usuario modificado correctamente';
+								} else {
+									$result['exception'] = Database::getException();
+								}
+							} else {
+								$result['exception'] = 'Estado incorrecto';
+							}
+						} else {
+							$result['exception'] = 'Correo incorrecto';
+						}
+					} else {
+						$result['exception'] = 'Nombre incorrecto';
+					}
+				} else {
+					$result['exception'] = 'Usuario inexistente';
+				}
+			} else {
+				$result['exception'] = 'Usuario incorrecto';
+			}
+			break;
 		case 'delete':
 			if ($usuario->setId($_POST['id_usuario'])) {
 				if ($usuario->readOneUsuario()) {
