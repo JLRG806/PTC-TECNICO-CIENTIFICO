@@ -18,8 +18,8 @@ function fillTable( dataset )
             <tr>
                 <td>${row.nivel_estudiante}</td>
                 <td>
-                    <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_nivel})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">mode_edit</i></a>
-                    <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_nivel})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">delete</i></a>
+                    <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_nivel})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Editar</i></a>
+                    <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_nivel})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">Eliminar</i></a>
                 </td>
             </tr>
         `;
