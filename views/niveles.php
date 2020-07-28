@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+    <link type="text/css" rel="stylesheet" href="../resources/css/all.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -88,7 +89,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="estudiantes.php" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <i class="nav-icon far fa-users-class"></i>
                                 <p>
                                     Administrar Estudiantes
                                 </p>
