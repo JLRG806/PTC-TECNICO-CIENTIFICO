@@ -134,9 +134,9 @@ class Evaluadores extends Validator
     {
         $sql = 'SELECT id_evaluador, nombre_evaluador, apellidos_evaluador, email_evaluador, telefono_evaluador, lugar_procedencia, ocupacion, estado_evaluador
                 FROM Evaluadores
-                WHERE nombre_evaluador ILIKE ? or apellidos_evaluador ILIKE ? or email_evaluador ILIKE ? or telefono_evaluador ILIKE ? or lugar_procedencia ILIKE ?
-                ORDER BY estado_evaluador';
-        $params = array("%$value%", "%$value%");
+                WHERE nombre_evaluador ILIKE ? or apellidos_evaluador ILIKE ? or email_evaluador ILIKE ? 
+                ORDER BY id_evaluador';
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 

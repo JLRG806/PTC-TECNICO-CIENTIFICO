@@ -3,6 +3,10 @@ class Usuarios extends Validator
 {
 
     private $id = null;
+    private $nombre = null;
+    private $correo = null;
+    private $password = null;
+    private $estado = null;
 
     public function setId($value)
     {
@@ -14,61 +18,118 @@ class Usuarios extends Validator
         }
     }
 
+    public function setNombre($value)
+    {
+        if ($this->validateString($value, 1, 50)) {
+            $this->nombre = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function setCorreo($value)
+    {
+        if ($this->validateEmail($value)) {
+            $this->correo = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setPassword($value)
+    {
+        if ($this->validatePassword($value)) {
+            $this->password = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstado($value)
+    {
+        if ($this->validateString($value, 1, 50)){
+            $this->estado = $value;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getEstado(){
+        return $this->estado;
+    }
+
+    public function getPassword(){
+        return $this->password;
+    }
+
+    public function getCorreo(){
+        return $this->correo;
+    }
+
+    public function getNombre(){
+        return $this->nombre;
+    }
+
     public function getId()
     {
         return $this->id;
     }
 
-    public function searchBodegas($value)
+    public function searchUsuario($value)
     {
-        $sql = 'SELECT id_bodega, capacidad, direccion_bodega, telefono_bodega
-                FROM Bodegas 
-                WHERE direccion_bodega ILIKE ?
-                ORDER BY capacidad';
-        $params = array("%$value%", "%$value%");
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, contrasena_usuario, estado_usuario
+                FROM Usuarios
+                WHERE nombre_usuario ILIKE ?
+                ORDER BY id_usuario';
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
-    public function createBodegas()
+    public function createUsuario()
     {
-        $sql = 'INSERT INTO Bodegas (capacidad, direccion_bodega, telefono_bodega)
-                VALUES(?, ?, ?)';
-        $params = array($this->capacidad, $this->direccion_bodega, $this->telefono_bodega);
+        $hash = password_hash($this->password, PASSWORD_DEFAULT);
+        $sql = 'INSERT INTO Usuarios (nombre_usuario, email_usuario, contrasena_usuario, estado_usuario)
+                VALUES(?, ?, ?, ?)';
+        $params = array($this->nombre, $this->correo, $hash, $this->estado);
         return Database::executeRow($sql, $params);
 
     }
 
-    public function readAllBodegas()
+    public function readAllUsuarios()
     {
-        $sql = 'SELECT id_bodega, capacidad, direccion_bodega, telefono_bodega
-                FROM Bodegas 
-                ORDER BY capacidad';
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario
+                FROM Usuarios
+                ORDER BY id_usuario';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
-    public function readOneBodegas()
+    public function readOneUsuario()
     {
-        $sql = 'SELECT id_bodega, capacidad, direccion_bodega, telefono_bodega
-                FROM Bodegas 
-                WHERE id_bodega = ?';
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario
+                FROM Usuarios 
+                WHERE id_usuario = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
-    public function updateBodegas()
+    public function updateUsuario()
     {
-        $sql = 'UPDATE Bodegas 
-                SET capacidad = ?, direccion_bodega = ?, telefono_bodega = ?
-                WHERE id_bodega = ?';
-        $params = array($this->capacidad, $this->direccion_bodega, $this->telefono_bodega, $this->id);
+        $sql = 'UPDATE Usuarios
+                SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?
+                WHERE id_usuario = ?';
+        $params = array($this->nombre, $this->correo, $this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
 
-    public function deleteBodegas()
+    public function deleteUsuario()
     {
-        $sql = 'DELETE FROM Bodegas 
-                WHERE id_bodega = ?';
+        $sql = 'DELETE FROM Usuarios 
+                WHERE id_usuario = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
