@@ -68,6 +68,7 @@ Dashboard::headerTemplate('Secciones');
                         </div>
                     </form>
 
+<<<<<<< HEAD
                     <div class="card-body p-0">
                         <table class="table table-striped projects">
                             <thead>
@@ -85,6 +86,24 @@ Dashboard::headerTemplate('Secciones');
                 </section>
                 <!-- /.content -->
             </div>
+=======
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th>Secciones</th>
+                                <th>Niveles</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-rows">                           
+                        </tbody>
+                    </table>    
+                </div>      
+            </section>
+            <!-- /.content -->
+        </div>
+>>>>>>> 46010dfa51dbcb9039ecacfab82e6ce298e77338
 <?php
 Dashboard::footerTemplate('secciones.js');
 ?>
