@@ -99,7 +99,7 @@ class Dashboard
                                             </a>
                                         </li>
                                         <li class="nav-item has-treeview">
-                                            <a href="estudiantes.php" class="nav-link">
+                                            <a href="proyectos.php" class="nav-link">
                                                 <i class="nav-icon far fa-tasks"></i>
                                                 <p>
                                                     Proyectos
@@ -116,13 +116,13 @@ class Dashboard
                                             </a>
                                             <ul class="nav nav-treeview">
                                                 <li class="nav-item">
-                                                    <a href="niveles.php" class="nav-link">
+                                                    <a href="grados.php" class="nav-link">
                                                         <i class="far fa-circle nav-icon"></i>
                                                         <p>Grados</p>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="secciones.php" class="nav-link">
+                                                    <a href="especialidad.php" class="nav-link">
                                                         <i class="far fa-circle nav-icon"></i>
                                                         <p>Especialidades</p>
                                                     </a>
@@ -165,7 +165,7 @@ class Dashboard
                                             </ul>
                                         </li>
                                         <li class="nav-item has-treeview">
-                                            <a href="proyectos.php" class="nav-link">
+                                            <a href="aulas.php" class="nav-link">
                                                 <i class="nav-icon far fa-bell-school"></i>
                                                 <p>
                                                     Aulas
@@ -173,7 +173,7 @@ class Dashboard
                                             </a>
                                         </li>
                                         <li class="nav-item has-treeview">
-                                            <a href="jurados.php" class="nav-link">
+                                            <a href="docentes.php" class="nav-link">
                                                 <i class="nav-icon far fa-chalkboard-teacher"></i>
                                                 <p>
                                                     Docentes
@@ -189,7 +189,7 @@ class Dashboard
                                             </a>
                                         </li>
                                         <li class="nav-item has-treeview">
-                                            <a href="jurados.php" class="nav-link">
+                                            <a href="evaluaciones.php" class="nav-link">
                                                 <i class="nav-icon far fa-file-signature"></i>
                                                 <p>
                                                     Evaluaciones

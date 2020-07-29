@@ -59,7 +59,7 @@ Dashboard::headerTemplate('Secciones');
                                     <i class="material-icons"></i>
                                 </span>
                                 <div class="form-line">
-                                    <input id="especialidad_buscar" type="text" class="form-control" name="especialidad_buscar" placeholder="Buscar">
+                                    <input id="seccion_buscar" type="text" class="form-control" name="seccion_buscar" placeholder="Buscar">
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-warning">BUSCAR</button>
