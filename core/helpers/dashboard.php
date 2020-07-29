@@ -20,6 +20,8 @@ class Dashboard
                 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
                 <!-- Theme style -->
                 <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+                <!-- overlayScrollbars -->
+                <link rel="stylesheet" href="../resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
                 <!-- Google Font: Source Sans Pro -->
                 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
                 <link type="text/css" rel="stylesheet" href="../resources/css/all.min.css">
@@ -232,10 +234,10 @@ class Dashboard
                 </div>
                 <script src="../resources/js/jquery-3.4.1.min.js"></script>
                 <script src="../resources/plugins/bootstrap-4.5.0/js/bootstrap.js"></script>
+                <script src="../resources/plugins/chart.js/Chart.min.js"></script>
                 <script src="../resources/dist/js/adminlte.js"></script>
                 <script src="../resources/js/sweetalert.min.js"></script>
                 <script src="../core/helpers/components.js"></script>
-                <script src="../core/controllers/nivel.js"></script>
                 <script type="text/javascript" src="../core/controllers/'.$controller.'"></script>
             </body>
             </html>                
