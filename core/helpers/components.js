@@ -258,8 +258,6 @@ function fillSelect( api, selectId, selected )
         } else {
             $( '#' + selectId ).html( '<option value="">No hay opciones disponibles</option>' );
         }
-        // Se inicializa el componente Select del formulario para que muestre las opciones.
-        $( 'select' ).formSelect();
     })
     .fail(function( jqXHR ) {
         // Se verifica si la API ha respondido para mostrar la respuesta, de lo contrario se presenta el estado de la petición.
