@@ -151,13 +151,13 @@ class Dashboard
                                             </a>
                                             <ul class="nav nav-treeview">
                                                 <li class="nav-item">
-                                                    <a href="niveles.php" class="nav-link">
+                                                    <a href="material.php" class="nav-link">
                                                         <i class="far fa-circle nav-icon"></i>
                                                         <p>Materiales</p>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a href="niveles.php" class="nav-link">
+                                                    <a href="tipomaterial.php" class="nav-link">
                                                         <i class="far fa-circle nav-icon"></i>
                                                         <p>Tipo de Material</p>
                                                     </a>
@@ -233,6 +233,7 @@ class Dashboard
                 </main>
                 </div>
                 <script src="../resources/js/jquery-3.4.1.min.js"></script>
+                <script src="../resources/js/popper.min.js"></script>
                 <script src="../resources/plugins/bootstrap-4.5.0/js/bootstrap.js"></script>
                 <script src="../resources/plugins/chart.js/Chart.min.js"></script>
                 <script src="../resources/dist/js/adminlte.js"></script>
