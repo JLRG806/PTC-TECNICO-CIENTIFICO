@@ -1,12 +1,12 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_SECCION = '../core/api/secciones.php?action=';
-const API_NIVEL = '../core/api/nivel.php?action=readAll';
+const APINIVEL = '../core/api/nivel.php?action=readAll';
 
 // Método que se ejecuta cuando el documento está listo.
 $( document ).ready(function() {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
     readRows( API_SECCION );
-    fillSelect( API_NIVEL, 'grado', null );
+    fillSelect( APINIVEL, 'nivel', null );
 });
 
 // Función para llenar la tabla con los datos enviados por readRows().
@@ -53,11 +53,11 @@ function openUpdateModal( id )
     })
     .done(function( response ){
         // Se comprueba si la API ha retornado una respuesta satisfactoria, de lo contrario se muestra un mensaje de error.
-        if ( response.status ) {            
+        if ( response.status ) {
             // Se inicializan los campos del formulario con los datos del registro seleccionado previamente.
             $( '#id_seccion' ).val( response.dataset.id_seccion );
             $( '#seccion_estudiante' ).val( response.dataset.seccion_estudiante );
-            fillSelect( API_CATEGORIAS, 'grado', response.dataset.id_nivel );
+            fillSelect( APINIVEL, 'nivel', response.dataset.nivel_estudiante )
             // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
             //M.updateTextFields(); 
         } else {
