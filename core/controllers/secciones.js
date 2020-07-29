@@ -5,8 +5,8 @@ const API_NIVEL = '../core/api/nivel.php?action=readAll';
 // Método que se ejecuta cuando el documento está listo.
 $( document ).ready(function() {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
-    readRows( API_SECCION );
     fillSelect( API_NIVEL, 'grado', null );
+    readRows( API_SECCION );
 });
 
 // Función para llenar la tabla con los datos enviados por readRows().

@@ -57,23 +57,14 @@ Dashboard::headerTemplate('Secciones');
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
-                                <th style="width: 1%">
-                                    Sección
-                                </th>
+                                <th>Secciones</th>
+                                <th>Niveles</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody id="tbody-rows">                           
                         </tbody>
                     </table>    
-                    <div class="card-footer clearfix">
-                        <ul class="pagination pagination-sm m-0 float-right">
-                            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
                 </div>      
             </section>
             <!-- /.content -->
