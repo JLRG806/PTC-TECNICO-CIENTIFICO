@@ -29,7 +29,7 @@ class Proyectos extends Validator
 
     public function setDescripcion_proyecto($value)
     {
-        if ($this->validateString($value, 1, 200)) {
+        if ($this->validateString($value, 1, 50)) {
             $this->descripcion_proyecto = $value;
             return true;
         } else {
@@ -105,16 +105,16 @@ class Proyectos extends Validator
 
     public function createProyecto()
     {
-        $sql = 'INSERT INTO Proyectos (nombre_proyecto, descripcion_proyecto, codigo_proyecto, id_grado)
-                VALUES(?, ?, ?, ?)';
-        $params = array($this->nombre_proyecto, $this->descripcion_proyecto, $this->codigo_proyecto, $this->grado);
+        $sql = 'INSERT INTO Proyectos (nombre_proyecto, descripcion_proyecto, id_grado)
+                VALUES(?, ?, ?)';
+        $params = array($this->nombre_proyecto, $this->descripcion_proyecto, $this->grado);
         return Database::executeRow($sql, $params);
 
     }
 
     public function readAllProyecto()
     {
-        $sql = 'SELECT id_proyecto, nombre_proyecto, descripcion_proyecto, codigo_proyecto, s.seccion_estudiante, n.nivel_estudiante, e.especialidad_estudiante
+        $sql = 'SELECT id_proyecto, nombre_proyecto, descripcion_proyecto, id_grado, s.seccion_estudiante as "s", n.nivel_estudiante as "n", e.especialidad_estudiante as "e"
                 FROM Proyectos p INNER JOIN Grados g USING (id_grado)
                 INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 INNER JOIN Especialidad e ON g.id_especialidad = e.id_especialidad
@@ -125,7 +125,7 @@ class Proyectos extends Validator
 
     public function readOneProyecto()
     {
-        $sql = 'SELECT id_proyecto, nombre_proyecto, descripcion_proyecto, codigo_proyecto, s.seccion_estudiante, n.nivel_estudiante, e.especialidad_estudiante
+        $sql = 'SELECT id_proyecto, nombre_proyecto, descripcion_proyecto, id_grado,  s.seccion_estudiante, n.nivel_estudiante, e.especialidad_estudiante
                 FROM Proyectos p INNER JOIN Grados g USING (id_grado)
                 INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 INNER JOIN Especialidad e ON g.id_especialidad = e.id_especialidad
@@ -137,9 +137,9 @@ class Proyectos extends Validator
     public function updateProyecto()
     {
         $sql = 'UPDATE Proyectos 
-                SET nombre_proyecto = ?, descripcion_proyecto = ?, codigo_proyecto = ?, id_grado = ?
+                SET nombre_proyecto = ?, descripcion_proyecto = ?, id_grado = ?
                 WHERE id_proyecto = ?';
-        $params = array($this->nombre_proyecto, $this->descripcion_proyecto, $this->codigo_proyecto, $this->grado, $this->id);
+        $params = array($this->nombre_proyecto, $this->descripcion_proyecto, $this->grado, $this->id);
         return Database::executeRow($sql, $params);
     }
 

@@ -26,21 +26,21 @@ Dashboard::headerTemplate('Estudiantes');
                     <form method="post" id="ESTUDIANTES">
                         <div class="row">
                             <div class="col-md-6">
-                                <input id="id_estudianre" type="text" class="d-none" name="id_estudiante">
+                                <input id="id_estudiante" type="text" class="d-none" name="id_estudiante">
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
-                                    <input id="nombre" type="text" class="form-control is-warning" name="nombre" placeholder="Nombres">
+                                    <input id="nombre_estudiante" type="text" class="form-control is-warning" name="nombre_estudiante" placeholder="Nombres">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Apellidos: </label>
-                                    <input id="apellido" type="text" class="form-control is-warning" name="apellido" placeholder="Apeliidos">
+                                    <input id="apellidos_estudiante" type="text" class="form-control is-warning" name="apellidos_estudiante" placeholder="Apeliidos">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
-                                    <input id="email" type="email" class="form-control is-warning" name="email" placeholder="Email">
+                                    <input id="email_estudiante" type="email" class="form-control is-warning" name="email_estudiante" placeholder="Email">
                                 </div>
 
                             </div>
@@ -49,17 +49,17 @@ Dashboard::headerTemplate('Estudiantes');
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Código carnet: </label>
-                                    <input type="text" class="form-control is-warning" name="" placeholder="Código del estudiante">
+                                    <input id="codigo" type="text" class="form-control is-warning" name="codigo" placeholder="Código del estudiante">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
+                                    <label class="col-form-label" for="seccion"><i class="far fa-user"></i> Sección academica: </label>
+                                    <select id="seccion" class="custom-select form-control" name="seccion" required></select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
+                                    <label class="col-form-label" for="especialidad"><i class="far fa-user"></i> Especialidad: </label>
+                                    <select id="especialidad" class="custom-select form-control" name="especialidad" required></select>
                                 </div>
 
                                 <div class="card-footer">
@@ -75,11 +75,27 @@ Dashboard::headerTemplate('Estudiantes');
             <!-- /.content -->
         </div>
 
+        <form method="post" id="buscar">
+            <div class="col-md-3">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="material-icons"></i>
+                    </span>
+                    <div class="form-line">
+                        <input id="estdiante_buscar" type="text" class="form-control" name="estudiante_buscar" placeholder="Buscar">
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-warning">BUSCAR</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
         <div class="card-body p-0">
             <table class="table table-striped projects">
                 <thead>
                     <tr>
-                        <th style="width: 1%">
+                        <th style="width: 20%">
                             Nombres
                         </th>
                         <th style="width: 20%">
@@ -89,20 +105,20 @@ Dashboard::headerTemplate('Estudiantes');
                             Correo electrónico
                         </th>
                         <th>
-                            Código de carnet
-                        </th>
-                        <th>
                             Nivel académico
                         </th>
                         <th>
                             Sección académico
                         </th>
+                        <th style="width: 10%">
+                            Especialidad
+                        </th>
                         <th style="width: 20%">
+                            Opciones
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-
+                <tbody id="tbody-rows">
                 </tbody>
             </table>
         </div>

@@ -17,7 +17,7 @@ class Grados extends Validator
         }
     }
 
-    public function setAul($value)
+    public function setAula($value)
     {
         if ($this->validateNaturalNumber($value)) {
             $this->aula = $value;
@@ -84,7 +84,7 @@ class Grados extends Validator
 
     public function searchGrado($value)
     {
-        $sql = 'SELECT g.id_grado, nombre_aula, nombre_docente, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+        $sql = 'SELECT id_grado, nombre_aula, nombre_docente, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
                 FROM Grados g INNER JOIN Aulas USING (id_aula) INNER JOIN Docentes USING (id_docente)
                 INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 INNER JOIN Especialidad USING (id_especialidad)
@@ -104,7 +104,7 @@ class Grados extends Validator
 
     public function readAllGrado()
     {
-        $sql = 'SELECT g.id_grado, nombre_aula, nombre_docente, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+        $sql = 'SELECT id_grado, nombre_aula, nombre_docente, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
                 FROM Grados g INNER JOIN Aulas USING (id_aula) INNER JOIN Docentes USING (id_docente)
                 INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 INNER JOIN Especialidad USING (id_especialidad)
@@ -115,7 +115,7 @@ class Grados extends Validator
 
     public function readOneGrado()
     {
-        $sql = 'SELECT g.id_grado, nombre_aula, nombre_docente, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+        $sql = 'SELECT id_grado, nombre_aula, nombre_docente, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
                 FROM Grados g INNER JOIN Aulas USING (id_aula) INNER JOIN Docentes USING (id_docente)
                 INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 INNER JOIN Especialidad USING (id_especialidad)

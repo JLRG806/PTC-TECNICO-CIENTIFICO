@@ -1,5 +1,5 @@
 <?php
-class Docentes extends Validator
+class Docente extends Validator
 {
     private $id = null;
     private $nombre_docente = null;

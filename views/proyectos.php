@@ -23,31 +23,26 @@ Dashboard::headerTemplate('Proyectos');
                     <!-- Main content -->
                     <section class="content">
                         <div class="container-fluid">
+                        <form method="post" id="PROYECTO">
                             <div class="row">
                                 <div class="col-md-6">
 
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre proyecto: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
+                                        <input name="nombre_proyecto" type="text" class="form-control is-warning" id="nombre_proyecto" placeholder="Nombre">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Descripción del proyecto">
+                                        <input name="descripcion_proyecto" type="text" class="form-control is-warning" id="descripcion_proyecto" placeholder="Descripción del proyecto">
                                     </div>
 
                                 </div>
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
-
                                     <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
-                                        <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
+                                        <label class="col-form-label" for="grado"><i class="far fa-user"></i> Grado: </label>
+                                        <select id="grado" class="custom-select form-control" name="grado" required></select>
                                     </div>
 
                                     <div class="card-footer">
@@ -57,6 +52,7 @@ Dashboard::headerTemplate('Proyectos');
                                 </div>
                                 <!-- /.col (RIGHT) -->
                             </div>
+                        </form>   
                             <!-- /.row -->
                         </div><!-- /.container-fluid -->
                     </section>
@@ -73,95 +69,23 @@ Dashboard::headerTemplate('Proyectos');
                                 <th style="width: 20%">
                                     Descripción proyecto
                                 </th>
+                                <th style="width: 1%">
+                                    ID Grado
+                                </th>
                                 <th style="width: 30%">
                                     Nivel académico
                                 </th>
                                 <th>
                                     Sección académica
                                 </th>
-                                <th style="width: 20%">
+                                <th>
+                                    Especialidad
+                                </th>
+                                <th style="width: 30%">
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Araña seguidora de luz
-                                </td>
-                                <td>
-                                    Representación de araña que con un sensor percibe la luz y se mueve hacia ella
-                                </td>
-                                <td>
-                                    7°
-                                </td>
-                                <td>
-                                    A
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Hotel & Restaurante
-                                </td>
-                                <td>
-                                    Planos de un Hotel & Restaurante que aprovecha la radiación del sol
-                                </td>
-                                <td>
-                                    2.° Arquitectura
-                                </td>
-                                <td>
-                                    A-2
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Motor 2000 para marca Nissan
-                                </td>
-                                <td>
-                                    Funcionamineto del motor potenciado con lejía
-                                </td>
-                                <td>
-                                    3.° Mantenimiento Automotriz
-                                </td>
-                                <td>
-                                    B-1
-                                </td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                </td>
-                            </tr>
+                        <tbody id="tbody-rows">                            
                         </tbody>
                     </table>
                     <div class="card-footer clearfix">
@@ -178,7 +102,6 @@ Dashboard::headerTemplate('Proyectos');
             <!-- /.content -->
         </div>
     </div>
-
 <?php
 Dashboard::footerTemplate('proyectos.js');
 ?>

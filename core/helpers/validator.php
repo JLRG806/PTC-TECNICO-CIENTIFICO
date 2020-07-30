@@ -159,7 +159,7 @@ class Validator
     public function validateString($value, $minimum, $maximum)
     {
         // Se verifica el contenido y la longitud de acuerdo con la base de datos.
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.\°]{'.$minimum.','.$maximum.'}$/', $value)) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\-\°\.]{'.$minimum.','.$maximum.'}$/', $value)) {
             return true;
         } else {
             return false;
@@ -280,6 +280,36 @@ class Validator
         // Se dividen las partes de la fecha y se guardan en un arreglo en el siguiene orden: año, mes y día.
         $date = explode('-', $value);
         if (checkdate($date[1], $date[2], $date[0])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateNivel($value, $minimum, $maximum)
+    {
+        // Se verifica el contenido y la longitud de acuerdo con la base de datos.
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\°]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateStudentEmail($value)
+    {
+        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
+        if (preg_match('/^(?:20)[0-9]{2}[0-9]{4}@(ricaldone)\.edu\.sv$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateAge($value)
+    {
+        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
+        if (preg_match('/^(1[89]|[2-9]\d)$/', $value)) {
             return true;
         } else {
             return false;

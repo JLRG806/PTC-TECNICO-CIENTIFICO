@@ -6,6 +6,7 @@ class Estudiantes extends Validator
     private $nombre_estudiante = null;
     private $apellidos_estudiante = null;
     private $email_estudiante = null;
+    private $codigo_estudiante = null;
     private $seccion = null;
     private $especialidad = null;
 
@@ -48,8 +49,18 @@ class Estudiantes extends Validator
             return false;
         }
     }
+
+    public function setCodigo_estudiante($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->email_estudiante = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
     
-    public function setEstudiante($value)
+    public function setSeccion($value)
     {
         if ($this->validateNaturalNumber($value)) {
             $this->seccion = $value;
@@ -89,6 +100,12 @@ class Estudiantes extends Validator
         return $this->email_estudiante;
     }
 
+    public function getCodigo_estudiante()
+    {
+        return $this->codigo_estudiante;
+    }
+
+
     public function getEstudiante()
     {
         return $this->seccion;
@@ -106,7 +123,7 @@ class Estudiantes extends Validator
 				INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 WHERE nombre_estudiante ILIKE ? or apellidos_estudiante ILIKE ? or email_estudiante ILIKE ?
                 ORDER BY apellidos_estudiante';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
@@ -120,7 +137,7 @@ class Estudiantes extends Validator
 
     public function readAllEstudiante()
     {
-        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante as "seccion", n.nivel_estudiante as "nivel", especialidad_estudiante
                 FROM Estudiantes e INNER JOIN Especialidad USING (id_especialidad)
                 INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel                
                 ORDER BY apellidos_estudiante';
@@ -130,7 +147,7 @@ class Estudiantes extends Validator
 
     public function readOneEstudiante()
     {
-        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante
+        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante as "seccion" , n.nivel_estudiante, especialidad_estudiante
                 FROM Estudiantes e INNER JOIN Especialidad USING (id_especialidad)
                 INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel                
                 ORDER BY apellidos_estudiante

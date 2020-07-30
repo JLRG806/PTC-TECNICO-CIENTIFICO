@@ -1,0 +1,158 @@
+create table Usuarios (
+id_usuario Serial primary key,
+nombre_usuario varchar (80),
+email_usuario varchar (50) unique,
+contrasena_usuario varchar (25),
+estado_usuario varchar (15) default 'Activo' check (estado_usuario in ('Activo', 'Inactivo'))
+)
+					 
+create table Niveles (
+id_nivel Serial primary key,
+nivel_estudiante varchar (30)
+)
+
+create table Secciones (
+id_seccion Serial primary key,
+id_nivel int references Niveles(id_nivel),
+seccion_estudiante varchar (4)
+)
+
+create table Especialidad (
+id_especialidad Serial primary key,
+especialidad_estudiante varchar (25)
+)
+
+create table Estudiantes (
+id_estudiante Serial primary key,
+nombre_estudiante varchar (80),
+apellidos_estudiante varchar (80),
+email_estudiante varchar (30) unique,
+id_seccion int references Secciones(id_seccion),
+id_especialidad int references Especialidad(id_especialidad)
+)
+
+create table Docentes (
+id_docente Serial primary key,
+nombre_docente varchar (80),
+email_docente varchar (100) unique,
+edad_docente date,
+telefono_docente varchar(15),
+dui_docente varchar(15) unique NULL
+)
+
+create table Aulas (
+id_aula Serial primary key,
+nombre_aula varchar (20) unique,
+ubicacion_aula varchar (100),
+imagen_aula varchar(255)
+)
+
+create table Grados (
+id_grado Serial primary key,
+id_aula int references Aulas(id_aula),
+id_docente int references Docentes(id_docente),
+id_seccion int references Secciones(id_seccion),
+id_especialidad int references Especialidad(id_especialidad)
+)
+
+create table Evaluadores (
+id_evaluador Serial primary key,
+nombre_evaluador varchar (40),
+apellidos_evaluador varchar(40),
+email_evaluador varchar (320) unique,
+telefono_evaluador varchar(10),
+lugar_procedencia varchar (50),
+ocupacion varchar(30),
+estado_evaluador varchar (20) default 'No asignado' check (estado_evaluador in ('Convocado', 'No asignado', 'Presente', 'Evaluando', 'Nota pendiente de procesar', 'Nota procesada', 'Inactivo'))
+)
+
+create table Proyectos (
+id_proyecto Serial primary key,
+nombre_proyecto varchar(50),
+descripcion_proyecto varchar(255),
+codigo_proyecto varchar (15),
+id_grado int references Grados(id_grado)
+)
+
+create table Evaluacion (
+id_evaluacion Serial primary key,
+id_grado int references Grados(id_grado),
+id_evaluador int references Evaluadores(id_evaluador),
+observaciones varchar (200)
+)						
+
+create table Detalle_Proyecto (
+id_det_proyecto Serial primary key,
+id_proyecto int references Proyectos(id_proyecto),
+id_estudiante int references Estudiantes(id_estudiante),
+puesto_estudiante varchar(20) check (puesto_estudiante in ('Coordinador', 'Sub-coordinador', 'Tesorero', 'Secretario', 'Vocero'))
+)
+
+create table Tipo_Equipo (
+id_tipo_equipo Serial primary key,
+tipo_equipo varchar (20) unique,
+imagen_tipo_equipo varchar(255)
+)
+
+create table Equipo (
+id_equipo Serial primary key,
+nombre_equipo varchar (30) not null,
+descripcion_equipo varchar (200),
+cantidad int not null,
+id_estudiante int references Estudiantes(id_estudiante),
+id_tipo_equipo int references Tipo_Equipo(id_tipo_equipo),
+estado_equipo varchar (30) default 'Pendiente de confirmar entrada' check (estado_equipo in ('Pendiente de confirmar entrada', 'Entrada Confirmada', 'Pendiente de confirmar salida', 'Salida Confirmada'))
+)
+
+create table Imagen_Equipo (
+id_imagen_equipo Serial primary key,
+id_equipo int references Equipo(id_equipo),
+imagen_equipo varchar(255)
+)
+
+create table Bitacora (
+id_bitacora Serial primary key,
+accion varchar (100),
+persona varchar (40),
+fecha_hora timestamp,
+tipo_bitacora varchar(30)
+)
+
+
+
+insert into Usuarios (nombre_usuario, email_usuario, contrasena_usuario, estado_usuario)
+			values	 ('José Rivas', 'joseker@gamil.com','Hola123', 'Activo'),
+					 ('Mario Alvarado', 'mario21@gmail.com', 'Adios123', 'Activo'),
+					 ('Rodrigo Pineda', 'piendarodrigo@gmail.com', 'contrasena123', 'Inactivo'),
+					 ('José Luis', 'puma@gmail.com', 'Minecraft', 'Activo'),
+					 ('Adriana Romero', 'adriromero@gmail.com', 'Arcoiris','Activo'),
+					 ('Gustavo Martínez', 'guslee@gmail.com', 'RoyLeee', 'Activo'),
+					 ('Ulises Rosales', 'yulises@gmail.com', 'Caramelo', 'Inactivo'),
+					 ('Sergio Mayén', 'sergiomayen@gmail.com', 'PostgreSQL', 'Activo'),
+					 ('Cristina Rosa', 'cristina@gmail.com', 'Spikers', 'Inactivo'),
+					 ('Fátima Alvarez', 'alvarez1@gmail.com', 'Fresa', 'Activo'),
+					 ('Monica Urrutia', 'momourrutia@gmail.com', 'LiberoVC', 'Inactivo'),
+					 ('Samuel Rivera', 'riverasamu@gmail.com', 'Crack17', 'Activo'),
+					 ('Jessica Arias', 'arias@gmail.com', 'Centrokiller', 'Inactivo'),
+					 ('Yaret Majano', 'yaret@gmail.com', 'Pumba', 'Activo'),
+					 ('Luis Galdamez', 'hakuna@gmail.com', 'Netflix', 'Inactivo'),
+					 ('Marisol Sánchez', 'marisol@gmail.com', 'Superpoderosa', 'Inactivo'),
+					 ('Mashaa Tomicka', 'mashaa@gmail.com', 'Poderosa', 'Activo'),
+					 ('Ever Ruanet', 'luffy@gmail.com', 'Gooku', 'Activo'),
+					 ('Lorenzo Sánchez', 'lore@gmail.com', 'CallofDuty', 'Inactivo'),
+					 ('Axel Realejeño', 'axel@gmail.com', 'Batman', 'Inactivo')
+					 																	
+insert into Niveles (nivel_estudiante)
+			values 	('7°'), ('8°'), ('9°'), ('Primer Año'), ('Segundo Año'), ('Tercer Año')
+
+insert into Secciones (id_nivel, seccion_estudiante)
+			values 	(1, 'A'), (1, 'B'), (1, 'C'),
+					(2, 'A'), (2, 'B'), (2, 'C'), (2, 'D'),
+					(3, 'A'), (3, 'B'), (3, 'C'), (3, 'D'), (3, 'E'),
+					(4, 'A-1'), (4, 'A-2'), (4, 'A-3'), (4, 'A-4'), (4, 'A-5'), (4, 'B-1'), (4, 'B-2'), (4, 'B-3'), (4, 'B-4'), (4, 'B-5'),
+					(5, 'A-1'), (5, 'A-2'), (5, 'A-3'), (5, 'A-4'), (5, 'A-5'), (5, 'B-1'), (5, 'B-2'), (5, 'B-3'), (5, 'B-4'), (5, 'B-5'),
+					(6, 'A-1'), (6, 'A-2'), (6, 'A-3'), (6, 'A-4'), (6, 'A-5'), (6, 'B-1'), (6, 'B-2'), (6, 'B-3'), (6, 'B-4'), (6, 'B-5')
+
+insert into Especialidad (especialidad_estudiante)
+values ('Administrativo Contable'), ('Arquitectura'), ('Desarrollo de Software'), ('Diseño Gráfico'), ('Electromecánica'), ('Electrónica'), ('Mantenimiento Automotriz'), ('ITEC')
+

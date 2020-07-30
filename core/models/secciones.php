@@ -56,7 +56,7 @@ class Secciones extends Validator
                 FROM Secciones INNER JOIN Niveles USING (id_nivel)
                 WHERE seccion_estudiante ILIKE ?
                 ORDER BY seccion_estudiante';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
@@ -82,6 +82,15 @@ class Secciones extends Validator
         $sql = 'SELECT id_seccion, seccion_estudiante, nivel_estudiante
                 FROM Secciones INNER JOIN Niveles USING (id_nivel)
                 WHERE id_seccion = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    public function readOneSeccionxNivel()
+    {
+        $sql = 'SELECT id_seccion, seccion_estudiante
+                FROM Secciones INNER JOIN Niveles USING (id_nivel)
+                WHERE id_nivel = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
