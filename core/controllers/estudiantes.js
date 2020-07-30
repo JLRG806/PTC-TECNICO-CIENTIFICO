@@ -23,7 +23,8 @@ function fillTable( dataset )
                 <td>${row.apellidos_estudiante}</td>
                 <td>${row.nombre_estudiante}</td>
                 <td>${row.email_estudiante}</td>
-                <td>${row.seccion}</td>
+                <td>${row.nivel}</td>
+                <td>${row.seccion}</td>                
                 <td>${row.especialidad_estudiante }</td>
                 <td>
                     <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_estudiante})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Editar</i></a>

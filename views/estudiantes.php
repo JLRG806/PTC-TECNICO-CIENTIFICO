@@ -102,8 +102,7 @@ Dashboard::headerTemplate('Estudiantes');
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-
+                <tbody id="tbody-rows">
                 </tbody>
             </table>
         </div>
