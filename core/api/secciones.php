@@ -62,7 +62,7 @@ if (isset($_GET['action'])) {
 			}
 			break;
 		case 'readOnexNivel':
-			if ($seccion->setId($_POST['id_seccion'])) {
+			if ($seccion->setId($_POST['id_nivel'])) {
 				if ($result['dataset'] = $seccion->readOneSeccionxNivel()) {
 					$result['status'] = 1;
 				} else {

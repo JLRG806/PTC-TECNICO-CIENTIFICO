@@ -49,17 +49,17 @@ Dashboard::headerTemplate('Estudiantes');
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Código carnet: </label>
-                                    <input type="text" class="form-control is-warning" name="" placeholder="Código del estudiante">
+                                    <input id="codigo" type="text" class="form-control is-warning" name="codigo" placeholder="Código del estudiante">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="nivel"><i class="far fa-user"></i> Nivel academico: </label>
-                                    <select id="nivel" class="custom-select form-control" name="nivel" required></select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="nivel"><i class="far fa-user"></i> Sección academica: </label>
+                                    <label class="col-form-label" for="seccion"><i class="far fa-user"></i> Sección academica: </label>
                                     <select id="seccion" class="custom-select form-control" name="seccion" required></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label" for="especialidad"><i class="far fa-user"></i> Especialidad: </label>
+                                    <select id="especialidad" class="custom-select form-control" name="especialidad" required></select>
                                 </div>
 
                                 <div class="card-footer">
@@ -79,7 +79,7 @@ Dashboard::headerTemplate('Estudiantes');
             <table class="table table-striped projects">
                 <thead>
                     <tr>
-                        <th style="width: 1%">
+                        <th style="width: 20%">
                             Nombres
                         </th>
                         <th style="width: 20%">
@@ -89,15 +89,16 @@ Dashboard::headerTemplate('Estudiantes');
                             Correo electrónico
                         </th>
                         <th>
-                            Código de carnet
-                        </th>
-                        <th>
                             Nivel académico
                         </th>
                         <th>
                             Sección académico
                         </th>
+                        <th style="width: 10%">
+                            Especialidad
+                        </th>
                         <th style="width: 20%">
+                            Opciones
                         </th>
                     </tr>
                 </thead>

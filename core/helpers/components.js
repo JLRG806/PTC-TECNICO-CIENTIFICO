@@ -269,12 +269,12 @@ function fillSelect( api, selectId, selected )
     });
 }
 
-function fillSelectDepent( api, selectId, selected )
+function fillSelectDepent( api, selectId, selected, identifier )
 {
     $.ajax({
         dataType: 'json',
-        url: api + 'readOne',
-        data: { id_seccion: id },
+        url: api,
+        data: identifier,
         type: 'post'
     })
     .done(function( response ) {
