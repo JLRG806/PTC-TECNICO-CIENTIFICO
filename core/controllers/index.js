@@ -10,7 +10,7 @@ $( document ).ready(function() {
 // Evento para validar el usuario al momento de iniciar sesión.
 $( '#session-form' ).submit(function( event ) {
     // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
+    event.preventDefault();    
     $.ajax({
         type: 'post',
         url: API_USUARIOS + 'login',

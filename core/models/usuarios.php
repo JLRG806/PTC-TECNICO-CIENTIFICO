@@ -81,10 +81,11 @@ class Usuarios extends Validator
 
     public function checkUser($correo)
     {
-        $sql = 'SELECT id_usuario FROM usuarios WHERE email_usuario = ?';
+        $sql = 'SELECT id_usuario , nombre_usuario FROM usuarios WHERE email_usuario = ?';
         $params = array($correo);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_usuario'];
+            $this->nombre = $data['nombre_usuario'];
             $this->correo = $correo;
             return true;
         } else {
@@ -108,7 +109,7 @@ class Usuarios extends Validator
         $sql = 'SELECT contrasena_usuario FROM usuarios WHERE id_usuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
-        if (password_verify($password, $data['clave_usuario'])) {
+        if (password_verify($password, $data['contrasena_usuario'])) {
             return true;
         } else {
             return false;

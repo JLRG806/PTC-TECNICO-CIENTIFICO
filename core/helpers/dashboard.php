@@ -31,7 +31,7 @@ class Dashboard
             <div class="wrapper">
         ');        
         $filename = basename($_SERVER['PHP_SELF']);    
-        if (true) /* isset($_SESSION['id_usuario']) */{            
+        if (true)   /* isset($_SESSION['id_usuario']) */{            
             if ($filename != 'index.php' && $filename != 'register.php') {
                 print('
                     <header>
@@ -68,7 +68,7 @@ class Dashboard
                                         <img src="../resources/img/IMG_20190331_144612.jpg" class="img-square" alt="User Image">
                                     </div>
                                     <div class="info">
-                                        <a href="" class="d-block">'.$_SESSION['alias_usuario'].'</a>
+                                        <a href="" class="d-block">'.$_SESSION['nombre_usuario'].'</a>
                                     </div>
                                 </div>            
                                 <nav class="mt-2">
