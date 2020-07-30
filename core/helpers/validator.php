@@ -286,6 +286,36 @@ class Validator
         }
     }
 
+    public function validateNivel($value, $minimum, $maximum)
+    {
+        // Se verifica el contenido y la longitud de acuerdo con la base de datos.
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\°]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateStudentEmail($value)
+    {
+        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
+        if (preg_match('/^(?:20)[0-9]{2}[0-9]{4}@(ricaldone)\.edu\.sv$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function validateAge($value)
+    {
+        // Se verifica que el número tenga una parte entera y como máximo dos cifras decimales.
+        if (preg_match('/^(1[89]|[2-9]\d)$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Método para validar la ubicación de un archivo antes de subirlo al servidor.
     *
