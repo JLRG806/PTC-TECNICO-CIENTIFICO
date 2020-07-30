@@ -56,7 +56,7 @@ class Secciones extends Validator
                 FROM Secciones INNER JOIN Niveles USING (id_nivel)
                 WHERE seccion_estudiante ILIKE ?
                 ORDER BY seccion_estudiante';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
