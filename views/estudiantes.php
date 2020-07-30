@@ -75,6 +75,22 @@ Dashboard::headerTemplate('Estudiantes');
             <!-- /.content -->
         </div>
 
+        <form method="post" id="buscar">
+            <div class="col-md-3">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="material-icons"></i>
+                    </span>
+                    <div class="form-line">
+                        <input id="estdiante_buscar" type="text" class="form-control" name="estudiante_buscar" placeholder="Buscar">
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-warning">BUSCAR</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
         <div class="card-body p-0">
             <table class="table table-striped projects">
                 <thead>

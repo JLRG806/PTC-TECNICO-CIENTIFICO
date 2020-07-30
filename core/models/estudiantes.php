@@ -123,7 +123,7 @@ class Estudiantes extends Validator
 				INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 WHERE nombre_estudiante ILIKE ? or apellidos_estudiante ILIKE ? or email_estudiante ILIKE ?
                 ORDER BY apellidos_estudiante';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
