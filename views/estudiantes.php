@@ -53,13 +53,13 @@ Dashboard::headerTemplate('Estudiantes');
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nivel académico: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nivel">
+                                    <label class="col-form-label" for="nivel"><i class="far fa-user"></i> Nivel academico: </label>
+                                    <select id="nivel" class="custom-select form-control" name="nivel" required></select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Sección académica: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Sección">
+                                    <label class="col-form-label" for="nivel"><i class="far fa-user"></i> Sección academica: </label>
+                                    <select id="seccion" class="custom-select form-control" name="seccion" required></select>
                                 </div>
 
                                 <div class="card-footer">
