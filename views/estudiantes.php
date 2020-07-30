@@ -26,7 +26,7 @@ Dashboard::headerTemplate('Estudiantes');
                     <form method="post" id="ESTUDIANTES">
                         <div class="row">
                             <div class="col-md-6">
-                                <input id="id_estudianre" type="text" class="d-none" name="id_estudiante">
+                                <input id="id_estudiante" type="text" class="d-none" name="id_estudiante">
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>

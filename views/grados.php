@@ -1,6 +1,6 @@
 <?php
 require_once('../core/helpers/dashboard.php');
-Dashboard::headerTemplate('Especialidades');
+Dashboard::headerTemplate('Grados');
 ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -22,17 +22,29 @@ Dashboard::headerTemplate('Especialidades');
                         <!-- Main content -->
                         <section class="content">
                             <div class="container-fluid">
-                                <form method="post" id="ESPECIALIDAD">
+                                <form method="post" id="GRADO">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <input id="id_especialidad" type="text" class="d-none" name="id_especialidad">
                                             <div class="form-group">
-                                                <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Especialidad: </label>
-                                                <input id="especialidad_estudiante" type="text" class="form-control is-warning" name="especialidad_estudiante" placeholder="Especialidad">
+                                                <label class="col-form-label" for="aula"><i class="far fa-user"></i> Aula: </label>
+                                                <select id="aula" class="custom-select form-control" name="aula" required></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="docente"><i class="far fa-user"></i> Docente: </label>
+                                                <select id="docente" class="custom-select form-control" name="docente" required></select>
                                             </div>
                                         </div>
                                         <!-- /.col (LEFT) -->
                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="seccion"><i class="far fa-user"></i> Sección: </label>
+                                                <select id="seccion" class="custom-select form-control" name="seccion" required></select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="especialidad"><i class="far fa-user"></i> Especialidad: </label>
+                                                <select id="especialidad" class="custom-select form-control" name="especialidad" required></select>
+                                            </div>
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-warning">Guardar</button>
                                             </div>
@@ -53,7 +65,7 @@ Dashboard::headerTemplate('Especialidades');
                                     <i class="material-icons"></i>
                                 </span>
                                 <div class="form-line">
-                                    <input id="especialidad_buscar" type="text" class="form-control" name="especialidad_buscar" placeholder="Buscar">
+                                    <input id="grado_buscar" type="text" class="form-control" name="grado_buscar" placeholder="Buscar">
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-warning">BUSCAR</button>
@@ -66,6 +78,10 @@ Dashboard::headerTemplate('Especialidades');
                         <table class="table table-striped projects">
                             <thead>
                                 <tr>
+                                
+                                    <th>Aula</th>
+                                    <th>Docente</th>
+                                    <th>Sección</th>
                                     <th>Especialidades</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -79,5 +95,5 @@ Dashboard::headerTemplate('Especialidades');
                 <!-- /.content -->
             </div>
 <?php
-Dashboard::footerTemplate('especialidad.js');
+Dashboard::footerTemplate('grados.js');
 ?>
