@@ -31,7 +31,6 @@ if (isset($_GET['action'])) {
 			break;
 		case 'create':
 			$_POST = $aula->validateForm($_POST);
-			print_r($_POST);
 			if ($aula->setNombre_aula($_POST['nombre_aula'])) {
 				if ($aula->setUbicacion_aula($_POST['ubicacion_aula'])) {
 					if (is_uploaded_file($_FILES['foto_aula']['tmp_name'])) {

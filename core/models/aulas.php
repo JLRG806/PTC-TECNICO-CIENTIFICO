@@ -6,7 +6,7 @@ class Aulas extends Validator
     private $ubicacion_aula = null;
     private $imagen = null;
     private $archivo = null;
-    private $ruta = '../../../resources/img/aulas/';
+    private $ruta = '../../resources/img/aulas/';
 
     public function setId($value)
     {
