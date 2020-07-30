@@ -12,13 +12,13 @@ if (isset($_GET['action'])) {
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
 	switch ($_GET['action']) {
 		case 'search':
-            $_POST = $aula->validateForm($_POST);
+			$_POST = $aula->validateForm($_POST);
 			if ($_POST['aula_buscar'] != '') {
 				if ($result['dataset'] = $aula->searchAula($_POST['aula_buscar'])) {
 					$result['status'] = 1;
 					$rows = count($result['dataset']);
 					if ($rows > 1) {
-						$result['message'] = 'Se encontraron '.$rows.' coincidencias';
+						$result['message'] = 'Se encontraron ' . $rows . ' coincidencias';
 					} else {
 						$result['message'] = 'Solo existe una coincidencia';
 					}
@@ -30,29 +30,30 @@ if (isset($_GET['action'])) {
 			}
 			break;
 		case 'create':
-            $_POST = $aula->validateForm($_POST);
-            if (is_uploaded_file($_FILES['archivo_aula']['tmp_name'])) {
-                if ($aula->setImagen_aula($_FILES['archivo_aula'])) {
-                    if ($aula->setNombre_aula($_POST['nombre_aula'])) {
-                        if ($aula->setUbicacion_aula($_POST['ubicacion_aula'])) {
-                            if ($aula->createAula()) {
-                                $result['status'] = 1;
-                                $result['message'] = 'Aula Ingresada correctamente';
-                            } else {
-                                $result['exception'] = Database::getException();
-                            }
-                        } else {
-                            $result['exception'] = 'Ubicación invalida';
-                        }
-                    } else {
-                        $result['exception'] = 'Nombre invalido';
-                    }
-                } else {
-                    $result['exception'] = $aula->getImageError();
-                }
-            } else {
-                $result['exception'] = 'Seleccione una imagen';
-            }		                    
+			$_POST = $aula->validateForm($_POST);
+			print_r($_POST);
+			if ($aula->setNombre_aula($_POST['nombre_aula'])) {
+				if ($aula->setUbicacion_aula($_POST['ubicacion_aula'])) {
+					if (is_uploaded_file($_FILES['foto_aula']['tmp_name'])) {
+						if ($aula->setImagen_aula($_FILES['foto_aula'])) {
+							if ($aula->createAula()) {
+								$result['status'] = 1;
+								$result['message'] = 'Aula Ingresada correctamente';
+							} else {
+								$result['exception'] = Database::getException();
+							}
+						} else {
+							$result['exception'] = $aula->getImageError();
+						}
+					} else {
+						$result['exception'] = 'Seleccione una foto';
+					}
+				} else {
+					$result['exception'] = 'Ubicación invalida';
+				}
+			} else {
+				$result['exception'] = 'Aula incorrecta';
+			}
 			break;
 		case 'readOne':
 			if ($aula->setId($_POST['id_aula'])) {
@@ -77,36 +78,36 @@ if (isset($_GET['action'])) {
 			if ($aula->setId($_POST['id_aula'])) {
 				if ($aula->readOneAula()) {
 					if ($aula->setNombre_aula($_POST['nombre_aula'])) {
-                        if ($aula->setUbicacion_aula($_POST['ubicacion_aula'])) {
-                            if (is_uploaded_file($_FILES['archivo_aula']['tmp_name'])) {
-                                if ($aula->setImagen($_FILES['archivo_aula'])) {
-                                    if ($aula->updateAula()) {
-                                        $result['status'] = 1;
-                                        if ($aula->deleteFile($aula->getRuta(), $data['imagen_aula'])) {
-                                            $result['message'] = 'Aula modificada correctamente';
-                                        } else {
-                                            $result['message'] = 'Aula modificada pero no se borro la imagen anterior';
-                                        }
-                                    } else {
-                                        $result['exception'] = Database::getException();
-                                    } 
-                                } else {
-                                    $result['exception'] = $aula->getImageError();
-                                }
-                            } else {
-                                if ($aula->updateAula()) {
-                                    $result['status'] = 1;
-                                    $result['message'] = 'Aula modificada correctamente';
-                                } else {
-                                    $result['exception'] = Database::getException();
-                                }
-                            }
-                        } else {
-                            $result['exception'] = 'Ubicación invalida';
-                        }
-                    } else {
-                        $result['exception'] = 'Nombre invalido';
-                    }
+						if ($aula->setUbicacion_aula($_POST['ubicacion_aula'])) {
+							if (is_uploaded_file($_FILES['foto_aula']['tmp_name'])) {
+								if ($aula->setImagen_aula($_FILES['foto_aula'])) {
+									if ($aula->updateAula()) {
+										$result['status'] = 1;
+										if ($aula->deleteFile($aula->getRuta(), $data['foto_aula'])) {
+											$result['message'] = 'Aula modificada correctamente';
+										} else {
+											$result['message'] = 'Aula modificada pero no se borro la imagen anterior';
+										}
+									} else {
+										$result['exception'] = Database::getException();
+									}
+								} else {
+									$result['exception'] = $aula->getImageError();
+								}
+							} else {
+								if ($aula->updateAula()) {
+									$result['status'] = 1;
+									$result['message'] = 'Aula modificada correctamente';
+								} else {
+									$result['exception'] = Database::getException();
+								}
+							}
+						} else {
+							$result['exception'] = 'Ubicación invalida';
+						}
+					} else {
+						$result['exception'] = 'Nombre invalido';
+					}
 				} else {
 					$result['exception'] = 'Aula inexistente';
 				}

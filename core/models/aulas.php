@@ -4,7 +4,7 @@ class Aulas extends Validator
     private $id = null;
     private $nombre_aula = null;
     private $ubicacion_aula = null;
-    private $imagen_aula = null;
+    private $imagen = null;
     private $archivo = null;
     private $ruta = '../../../resources/img/aulas/';
 
@@ -20,7 +20,7 @@ class Aulas extends Validator
 
     public function setNombre_aula($value)
     {
-        if ($this->validateString($value, 1, 20)) {
+        if ($this->validateString($value, 1, 6)) {
             $this->nombre_aula = $value;
             return true;
         } else {
@@ -41,7 +41,7 @@ class Aulas extends Validator
     public function setImagen_aula($file)
     {
         if ($this->validateImageFile($file, 500, 500)) {
-            $this->imagen_aula = $this->getImageName();
+            $this->imagen = $this->getImageName();
             $this->archivo = $file;
             return true;
         } else {
@@ -66,7 +66,7 @@ class Aulas extends Validator
 
     public function getImagen_aula()
     {
-        return $this->imagen_aula;
+        return $this->imagen;
     }
 
     public function getRuta()
@@ -81,16 +81,16 @@ class Aulas extends Validator
                 FROM Aulas
                 WHERE nombre_aula ILIKE ?
                 ORDER BY nombre_aula';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createAula()
     {
-        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_aula)) {
-            $sql = 'INSERT INTO Aulas (nombre_aula, ubicacion_aula, imagen_aula)
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
+            $sql = 'INSERT INTO Aulas(nombre_aula, ubicacion_aula, imagen_aula)
                     VALUES(?, ?, ?)';
-            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen_aula);
+            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen);
             return Database::executeRow($sql, $params);
         } else {
             return false;
@@ -117,11 +117,11 @@ class Aulas extends Validator
 
     public function updateAula()
     {
-        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_aula)) {
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
             $sql = 'UPDATE Aulas 
                     SET nombre_aula = ?, ubicacion_aula = ?, imagen_aula = ?
                     WHERE id_aula = ?';
-            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen_aula, $this->id);
+            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen, $this->id);
         } else {
             $sql = 'UPDATE Aulas 
                     SET nombre_aula = ?, ubicacion_aula = ?
