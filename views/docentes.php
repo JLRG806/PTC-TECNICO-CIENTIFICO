@@ -25,7 +25,7 @@ Dashboard::headerTemplate('Docente');
                             <form method="post" id="DOCENTE">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input id="id_nivel" type="text" class="d-none" name="id_nivel">
+                                        <input id="id_docente" type="text" class="d-none" name="id_docente">
                                         <div class="form-group">
                                             <label class="col-form-label" for="nombre_docente"><i class="far fa-user"></i> Nombre y Apellidos: </label>
                                             <input id="nombre_docente" type="text" class="form-control is-warning" name="nombre_docente" placeholder="Nombre y Apellidos">
