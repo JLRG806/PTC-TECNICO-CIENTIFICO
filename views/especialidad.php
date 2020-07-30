@@ -33,7 +33,6 @@ Dashboard::headerTemplate('Especialidades');
                                         </div>
                                         <!-- /.col (LEFT) -->
                                         <div class="col-md-6">
-
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-warning">Guardar</button>
                                             </div>

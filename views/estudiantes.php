@@ -30,17 +30,17 @@ Dashboard::headerTemplate('Estudiantes');
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
-                                    <input id="nombre" type="text" class="form-control is-warning" name="nombre" placeholder="Nombres">
+                                    <input id="nombre_estudiante" type="text" class="form-control is-warning" name="nombre_estudiante" placeholder="Nombres">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Apellidos: </label>
-                                    <input id="apellido" type="text" class="form-control is-warning" name="apellido" placeholder="Apeliidos">
+                                    <input id="apellidos_estudiante" type="text" class="form-control is-warning" name="apellidos_estudiante" placeholder="Apeliidos">
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
-                                    <input id="email" type="email" class="form-control is-warning" name="email" placeholder="Email">
+                                    <input id="email_estudiante" type="email" class="form-control is-warning" name="email_estudiante" placeholder="Email">
                                 </div>
 
                             </div>
