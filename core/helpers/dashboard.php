@@ -42,7 +42,8 @@ class Dashboard
                                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                                 </li>
                                 <li class="nav-item d-none d-sm-inline-block">
-                                    <a href="#" class="nav-link">Contact</a>
+                                    <a href="account.php" class="btn btn-outline-primary">Editar cuenta</a>
+                                    <a href="#" onclick="signOff()" class="btn btn-outline-primary">Cerrar Sesión</a>
                                 </li>
                             </ul>
                             <form class="form-inline ml-3">
@@ -57,7 +58,7 @@ class Dashboard
                             </form>
                         </nav>
                         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                            <a href="" class="brand-link">
+                            <a href="main.php" class="brand-link">
                                 <img src="../resources/img/Logo.png" style="opacity: .8" width="230px">
                             </a>
                             <div class="sidebar">
@@ -67,7 +68,7 @@ class Dashboard
                                         <img src="../resources/img/IMG_20190331_144612.jpg" class="img-square" alt="User Image">
                                     </div>
                                     <div class="info">
-                                        <a href="" class="d-block">Sergio Mayén</a>
+                                        <a href="" class="d-block">'.$_SESSION['alias_usuario'].'</a>
                                     </div>
                                 </div>            
                                 <nav class="mt-2">
@@ -238,6 +239,7 @@ class Dashboard
                 <script src="../resources/dist/js/adminlte.js"></script>
                 <script src="../resources/js/sweetalert.min.js"></script>
                 <script src="../core/helpers/components.js"></script>
+                <script type="text/javascript" src="../core/controllers/dashboard/account.js"></script>
                 <script type="text/javascript" src="../core/controllers/'.$controller.'"></script>
             </body>
             </html>                

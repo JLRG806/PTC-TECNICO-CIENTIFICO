@@ -5,12 +5,23 @@ require_once('../models/usuarios.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
+	session_start();
 	// Se instancia la clase correspondiente.
 	$usuario = new Usuarios;
 	// Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
-	switch ($_GET['action']) {
+	if (isset($_SESSION['id_usuario'])) { 
+
+		switch ($_GET['action']) {
+		case 'logout':
+			if (session_destroy()) {
+				$result['status'] = 1;
+				$result['message'] = 'Sesión eliminada correctamente';
+			} else {
+				$result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+			}
+			break;
 		case 'search':
 			$_POST = $usuario->validateForm($_POST);
 			if ($_POST['usuario_buscar'] != '') {
@@ -123,6 +134,60 @@ if (isset($_GET['action'])) {
 			break;
 		default:
 			exit('Acción no disponible log');
+	}
+	} else {
+		switch ($_GET['action']) {
+            case 'readAll':
+                if ($usuario->readAllUsuarios()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existe al menos un usuario registrado';
+                } else {
+                    $result['exception'] = 'No existen usuarios registrados';
+                }
+                break;
+            case 'register':
+                $_POST = $usuario->validateForm($_POST);
+                if ($usuario->setNombre($_POST['nombres'])) {                   
+                        if ($usuario->setCorreo($_POST['correo'])) {                            
+                                if ($_POST['clave1'] == $_POST['clave2']) {
+                                    if ($usuario->setPassword($_POST['clave1'])) {
+                                        if ($usuario->createRow()) {
+                                            $result['status'] = 1;
+                                            $result['message'] = 'Usuario registrado correctamente';
+                                        } else {
+                                            $result['exception'] = Database::getException();
+                                        }
+                                    } else {
+                                        $result['exception'] = 'Clave menor a 6 caracteres';
+                                    }
+                                } else {
+                                    $result['exception'] = 'Claves diferentes';
+                                }                            
+                        } else {
+                            $result['exception'] = 'Correo incorrecto';
+                        }                     
+                } else {
+                    $result['exception'] = 'Nombres incorrectos';
+                }
+                break;
+            case 'login':
+                $_POST = $usuario->validateForm($_POST);
+                if ($usuario->checkUser($_POST['email_usuario'])) {
+                    if ($usuario->checkPassword($_POST['clave_usuario'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Autenticación correcta';
+                        $_SESSION['id_usuario'] = $usuario->getId();
+                        $_SESSION['email_usuario'] = $usuario->getCorreo();
+                    } else {
+                        $result['exception'] = 'Clave incorrecta';
+                    }
+                } else {
+                    $result['exception'] = 'Correo incorrecto';
+                }
+                break;
+            default:
+                exit('Acción no disponible fuera de la sesión');
+        }
 	}
 	// Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
 	header('content-type: application/json; charset=utf-8');

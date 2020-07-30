@@ -13,21 +13,25 @@
 
 <body>
     <div class="login-dark container-fluid">
-        <form method="post contaiter-fluid">
-            <h2 class="sr-only">Iniciar Sesión</h2>            
+        <form method="post" id="session-form">
+            <h2 class="sr-only">Iniciar Sesión</h2>
             <img src="../resources/img/logo-ricaldone.png" class="img-fluid">
             <hr class="bg-info">
             <h2 class="text-center">Administrador</h2>
             <div class="illustration"></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><a href="dashboard.php" class="btn btn-primary btn-block">
-                Iniciar Sesión
-            </a></div><a class="forgot" href="r-pas.php">Olvidaste tu contraseña?</a>
+            <div class="form-group"><input class="form-control" type="email" id="email_usuario" name="email_usuario" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" id="clave_usuario" name="clave_usuario" placeholder="Contraseña"></div>
+            <div class="form-group"><button class="form-control btn btn-primary btn-block " type="submit">Iniciar Sesión</button>
+            </div><a class="forgot" href="r-pas.php">Olvidaste tu contraseña?</a>
         </form>
     </div>
-    <script src="../resources/js/jquery.min.js"></script>
-    <script src="../resources/css/bootstrap.min.css"></script>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <script src="../resources/plugins/bootstrap-4.5.0/js/bootstrap.js"></script>
+    <script src="../resources/plugins/chart.js/Chart.min.js"></script>
+    <script src="../resources/dist/js/adminlte.js"></script>
+    <script src="../resources/js/sweetalert.min.js"></script>
+    <script src="../core/helpers/components.js"></script>
+    <script src="../core/controllers/index.js"></script>
 </body>
 
 </html>

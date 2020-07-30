@@ -79,6 +79,59 @@ class Usuarios extends Validator
         return $this->id;
     }
 
+    public function checkUser($correo)
+    {
+        $sql = 'SELECT id_usuario FROM usuarios WHERE email_usuario = ?';
+        $params = array($correo);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['id_usuario'];
+            $this->correo = $correo;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function createRow()
+    {
+        // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
+        $hash = password_hash($this->password, PASSWORD_DEFAULT);
+        $estado = 'Activo';
+        $sql = 'INSERT INTO usuarios(nombre_usuario, email_usuario, contrasena_usuario,estado_usuario)
+                VALUES(?, ?, ?, ?, ?)';
+        $params = array($this->nombres, $this->correo, $hash, $estado);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT contrasena_usuario FROM usuarios WHERE id_usuario = ?';
+        $params = array($this->id);
+        $data = Database::getRow($sql, $params);
+        if (password_verify($password, $data['clave_usuario'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function changePassword()
+    {
+        $hash = password_hash($this->password, PASSWORD_DEFAULT);
+        $sql = 'UPDATE usuarios SET contrasena_usuario = ? WHERE id_usuario = ?';
+        $params = array($hash, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function editProfile()
+    {
+        $sql = 'UPDATE usuarios
+                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?, alias_usuario = ?
+                WHERE id_usuario = ?';
+        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
     public function searchUsuario($value)
     {
         $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, contrasena_usuario, estado_usuario

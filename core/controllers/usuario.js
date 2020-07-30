@@ -1,4 +1,3 @@
-// Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_USUARIO = '../core/api/usuario.php?action=';
 
 // Método que se ejecuta cuando el documento está listo.
