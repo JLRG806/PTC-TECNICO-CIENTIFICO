@@ -7,6 +7,9 @@ class Usuarios extends Validator
     private $correo = null;
     private $password = null;
     private $estado = null;
+    private $imagen = null;
+    private $archivo = null;
+    private $ruta = '../../resources/img/usuarios/';
 
     public function setId($value)
     {
@@ -58,6 +61,17 @@ class Usuarios extends Validator
         }
     }
 
+    public function setImagen_usuario($file)
+    {
+        if ($this->validateImageFile($file, 500, 500)) {
+            $this->imagen = $this->getImageName();
+            $this->archivo = $file;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getEstado(){
         return $this->estado;
     }
@@ -77,6 +91,16 @@ class Usuarios extends Validator
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getImagen_aula()
+    {
+        return $this->imagen;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 
     public function checkUser($correo)
@@ -146,16 +170,19 @@ class Usuarios extends Validator
     public function createUsuario()
     {
         $hash = password_hash($this->password, PASSWORD_DEFAULT);
-        $sql = 'INSERT INTO Usuarios (nombre_usuario, email_usuario, contrasena_usuario, estado_usuario)
-                VALUES(?, ?, ?, ?)';
-        $params = array($this->nombre, $this->correo, $hash, $this->estado);
-        return Database::executeRow($sql, $params);
-
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
+            $sql = 'INSERT INTO Usuarios (nombre_usuario, email_usuario, contrasena_usuario, estado_usuario, imagen_usuario)
+                    VALUES(?, ?, ?, ?)';
+            $params = array($this->nombre, $this->correo, $hash, $this->estado, $this->imagen);
+            return Database::executeRow($sql, $params);
+        } else {
+            return false;
+        }
     }
 
     public function readAllUsuarios()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, imagen_usuario
                 FROM Usuarios
                 ORDER BY id_usuario';
         $params = null;
@@ -164,7 +191,7 @@ class Usuarios extends Validator
 
     public function readOneUsuario()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, imagen_usuario
                 FROM Usuarios 
                 WHERE id_usuario = ?';
         $params = array($this->id);
@@ -173,10 +200,17 @@ class Usuarios extends Validator
 
     public function updateUsuario()
     {
-        $sql = 'UPDATE Usuarios
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
+            $sql = 'UPDATE Usuarios 
+                     SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?, imagen_usuario = ?
+                    WHERE id_usuario = ?';
+            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen, $this->id);
+        } else {
+            $sql = 'UPDATE Usuarios
                 SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?
                 WHERE id_usuario = ?';
-        $params = array($this->nombre, $this->correo, $this->estado, $this->id);
+            $params = array($this->nombre, $this->correo, $this->estado, $this->id);
+        }
         return Database::executeRow($sql, $params);
     }
 
