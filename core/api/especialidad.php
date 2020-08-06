@@ -11,6 +11,7 @@ if (isset($_GET['action'])) {
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
 	switch ($_GET['action']) {
+		//accion para buscar especialidades academicas
 		case 'search':
             $_POST = $especialidad->validateForm($_POST);
 			if ($_POST['especialidad_buscar'] != '') {
@@ -29,6 +30,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Ingrese un valor para buscar';
 			}
 			break;
+			//accion para crear registros de especialidades academicas
 		case 'create':
             $_POST = $especialidad->validateForm($_POST);
 			if ($especialidad->setEspecialidad_estudiante($_POST['especialidad_estudiante'])) {
@@ -42,6 +44,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Especialidad incorrecta';
 			}
 			break;
+			//accion para leer un registro o variado de especialidades academicas
 		case 'readOne':
 			if ($especialidad->setId($_POST['id_especialidad'])) {
 				if ($result['dataset'] = $especialidad->readOneEspecialidad()) {
@@ -53,6 +56,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Especialidad incorrecta';
 			}
 			break;
+			//accion para leer y mostrar todos los registros de especialidades academicas
 		case 'readAll':
 			if ($result['dataset'] = $especialidad->readAllEspecialidad()) {
 				$result['status'] = 1;
@@ -60,6 +64,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Especialidad inexistente';
 			}
 			break;
+			//accion para actualizar registros en la base de datos.
 		case 'update':
 			$_POST = $especialidad->validateForm($_POST);
 			if ($especialidad->setId($_POST['id_especialidad'])) {
@@ -81,6 +86,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Especialidad incorrecta';
 			}
 			break;
+			//accion para borrar registros de especialidades academicas
 		case 'delete':
 			if ($especialidad->setId($_POST['id_especialidad'])) {
 				if ($especialidad->readOneEspecialidad()) {

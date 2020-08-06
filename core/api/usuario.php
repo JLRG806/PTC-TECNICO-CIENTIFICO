@@ -14,6 +14,7 @@ if (isset($_GET['action'])) {
 	if (isset($_SESSION['id_usuario'])) {
 
 		switch ($_GET['action']) {
+			//accion para cerrar la secion actual.
 			case 'logout':
 				if (session_destroy()) {
 					$result['status'] = 1;
@@ -22,6 +23,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Ocurrió un problema al cerrar la sesión';
 				}
 				break;
+				//accion para leer los datos de usuarios existentes.
 			case 'readProfile':
 				if ($usuario->setId($_SESSION['id_usuario'])) {
 					if ($result['dataset'] = $usuario->readOneUsuario()) {
@@ -33,6 +35,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario incorrecto';
 				}
 				break;
+				//accion para editar el perfil de usuario.
 			case 'editProfile':
 				if ($usuario->setId($_SESSION['id_usuario'])) {
 					if ($usuario->readOneUsuario()) {
@@ -79,6 +82,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario incorrecto';
 				}
 				break;
+				//accion para editar la contraseña de usuario.
 			case 'password':
 				if ($usuario->setId($_SESSION['id_usuario'])) {
 					$_POST = $usuario->validateForm($_POST);
@@ -112,6 +116,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario incorrecto';
 				}
 				break;
+				//accion para buscar los usuarios deseados
 			case 'search':
 				$_POST = $usuario->validateForm($_POST);
 				if ($_POST['usuario_buscar'] != '') {
@@ -130,6 +135,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Ingrese un valor para buscar';
 				}
 				break;
+				//accion para crear cuantas de usuarios 
 			case 'create':
 				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setNombre($_POST['nombre'])) {
@@ -167,6 +173,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Nombre incorrecto';
 				}
 				break;
+				//accion para lleer si exuste usuarios.
 			case 'readOne':
 				if ($usuario->setId($_POST['id_usuario'])) {
 					if ($result['dataset'] = $usuario->readOneUsuario()) {
@@ -178,6 +185,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario incorrecto';
 				}
 				break;
+				//accion para leer y mostrar todos los usuarios existentes
 			case 'readAll':
 				if ($result['dataset'] = $usuario->readAllUsuarios()) {
 					$result['status'] = 1;
@@ -185,6 +193,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario inexistente';
 				}
 				break;
+				//accion para actualizar registros de usuarios
 			case 'update':
 				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setId($_POST['id_usuario'])) {
@@ -226,6 +235,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario incorrecto';
 				}
 				break;
+				//accionp para eliminar usuarios existentes.
 			case 'delete':
 				if ($usuario->setId($_POST['id_usuario'])) {
 					if ($usuario->readOneUsuario()) {
@@ -255,6 +265,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'No existen usuarios registrados';
 				}
 				break;
+				//accion para registrarsi si en un dado caso no existiera un usuario.
 			case 'register':
 				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setNombre($_POST['nombres'])) {
@@ -281,6 +292,7 @@ if (isset($_GET['action'])) {
 				}
 				break;
 			case 'login':
+				//accion para iniciar sesion en el sistema
 				$_POST = $usuario->validateForm($_POST);
 				//-print_r($_POST);
 				if ($usuario->checkUser($_POST['email_usuario'])) {

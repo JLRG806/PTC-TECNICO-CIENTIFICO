@@ -1,7 +1,7 @@
 <?php
 class Usuarios extends Validator
 {
-
+    //Se crean los atributos que necesitaremos para los metodos a utilizar (se crean los campos que estan en la base)
     private $id = null;
     private $nombre = null;
     private $correo = null;
@@ -10,6 +10,8 @@ class Usuarios extends Validator
     private $imagen_usuario = null;
     private $archivo = null;
     private $ruta = '../../resources/img/';
+
+    //Creando los SET de cada atributo establecidos
 
     public function setId($value)
     {
@@ -72,6 +74,8 @@ class Usuarios extends Validator
         }
     }
 
+    //Creando los GET de los atributos establecidos
+
     public function getEstado()
     {
         return $this->estado;
@@ -107,6 +111,9 @@ class Usuarios extends Validator
         return $this->ruta;
     }
 
+    //Creación de los metodos a utilizar en nuestra programación
+
+    //Este metodo nos sirve para verificar que usuario esta logeado y que pueda visualizar sus datos en su pantalla
     public function checkUser($correo)
     {
         $sql = 'SELECT id_usuario , nombre_usuario, foto_usuario FROM usuarios WHERE email_usuario = ?';
@@ -122,6 +129,7 @@ class Usuarios extends Validator
         }
     }
 
+    //Este metodo sirve para crear un nuevo registro si aun no hay ninguno en la base de datos
     public function createRow()
     {
         // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
@@ -134,6 +142,7 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo utilizado para validar la contraseña al momento de logearse
     public function checkPassword($password)
     {
         $sql = 'SELECT contrasena_usuario FROM usuarios WHERE id_usuario = ?';
@@ -146,6 +155,7 @@ class Usuarios extends Validator
         }
     }
 
+    //Metodo utilizado para actualizar o cambiar la contraseña de un usuario
     public function changePassword()
     {
         $hash = password_hash($this->password, PASSWORD_DEFAULT);
@@ -154,6 +164,7 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo utilizado para editar perfil de un usuario
     public function editProfileUser()
     {
         if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_usuario)) {
@@ -170,6 +181,7 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
+
     public function editProfile()
     {
         $sql = 'UPDATE usuarios
@@ -179,6 +191,7 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo usado para buscar un registro en la tabla Usuario
     public function searchUsuario($value)
     {
         $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, contrasena_usuario, estado_usuario
@@ -189,6 +202,7 @@ class Usuarios extends Validator
         return Database::getRows($sql, $params);
     }
 
+    //Metodo usado para crear un nuevo registro en la tabla Usuario
     public function createUsuario()
     {
         $hash = password_hash($this->password, PASSWORD_DEFAULT);
@@ -202,6 +216,7 @@ class Usuarios extends Validator
         }
     }
 
+    //Metodo para mostrar todos los registros de la tabla Usuario
     public function readAllUsuarios()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, foto_usuario
@@ -211,6 +226,7 @@ class Usuarios extends Validator
         return Database::getRows($sql, $params);
     }
 
+    //Metodo para motrar un registro seleccionado
     public function readOneUsuario()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, foto_usuario
@@ -220,6 +236,7 @@ class Usuarios extends Validator
         return Database::getRow($sql, $params);
     }
 
+    //Metodo para actualizar un usuario
     public function updateUsuario()
     {
         if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_usuario)) {
@@ -236,6 +253,7 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo para eliminar un usuario
     public function deleteUsuario()
     {
         $sql = 'DELETE FROM Usuarios 

@@ -11,6 +11,7 @@ if (isset($_GET['action'])) {
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
 	switch ($_GET['action']) {
+		//accion para buscar aulas en conjuno o especifico
 		case 'search':
 			$_POST = $aula->validateForm($_POST);
 			if ($_POST['aula_buscar'] != '') {
@@ -29,6 +30,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Ingrese un valor para buscar';
 			}
 			break;
+			//accion para crear registros de aulas
 		case 'create':
 			$_POST = $aula->validateForm($_POST);
 			if ($aula->setNombre_aula($_POST['nombre_aula'])) {
@@ -54,6 +56,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Aula incorrecta';
 			}
 			break;
+			//accion para consultar y mostrar un aula en especifico
 		case 'readOne':
 			if ($aula->setId($_POST['id_aula'])) {
 				if ($result['dataset'] = $aula->readOneAula()) {
@@ -65,6 +68,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Aula incorrecta';
 			}
 			break;
+			//accion para mostrar todas las aulas existentes
 		case 'readAll':
 			if ($result['dataset'] = $aula->readAllAula()) {
 				$result['status'] = 1;
@@ -72,6 +76,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Aula inexistente';
 			}
 			break;
+			//accion para actualizar registros de aulas
 		case 'update':
 			$_POST = $aula->validateForm($_POST);
 			if ($aula->setId($_POST['id_aula'])) {
@@ -117,6 +122,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Aula incorrecto';
 			}
 			break;
+			//accion para borrar registros de aulas.
 		case 'delete':
 			if ($aula->setId($_POST['id_aula'])) {
 				if ($aula->readOneAula()) {
