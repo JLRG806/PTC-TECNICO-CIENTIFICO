@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../resources/css/ionicons.min.css">
     <link rel="stylesheet" href="../resources/css/Login-Form-Dark.css">
-    <link rel="stylesheet" href="../resources/css/">
+    
 </head>
 
 <body>
@@ -20,7 +20,7 @@
             <h2 class="text-center">Registrarse</h2>
             <div class="illustration"></div>
             <div class="form-group"><input class="form-control" type="text" id="nombres" name="nombres" placeholder="Nombre"></div>
-            <div class="form-group"><input class="form-control" type="email" id="nombres" name="correo" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="email" id="correo" name="correo" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" id="clave1" name="clave1" placeholder="Contraseña"></div>
             <div class="form-group"><input class="form-control" type="password" id="clave2" name="clave2" placeholder="Confirmar Contraseña"></div>
             <div class="form-group"><button class="form-control btn btn-primary btn-block " type="submit">Registrarse</button>            
@@ -34,6 +34,7 @@
     <script src="../resources/dist/js/adminlte.js"></script>
     <script src="../resources/js/sweetalert.min.js"></script>
     <script src="../core/helpers/components.js"></script>
+    <script type="text/javascript" src="../core/controllers/account.js"></script>
     <script src="../core/controllers/register.js"></script>
 </body>
 

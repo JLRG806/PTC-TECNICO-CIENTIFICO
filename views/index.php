@@ -31,6 +31,7 @@
     <script src="../resources/dist/js/adminlte.js"></script>
     <script src="../resources/js/sweetalert.min.js"></script>
     <script src="../core/helpers/components.js"></script>
+    <script type="text/javascript" src="../core/controllers/account.js"></script>
     <script src="../core/controllers/index.js"></script>
 </body>
 
