@@ -18,9 +18,6 @@ $("#foto_usuario").change(function(){
     readURL(this);
 });
 
-
-
-
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
 *

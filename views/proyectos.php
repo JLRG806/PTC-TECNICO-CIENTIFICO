@@ -26,17 +26,15 @@ Dashboard::headerTemplate('Proyectos');
                         <form method="post" id="PROYECTO">
                             <div class="row">
                                 <div class="col-md-6">
-
+                                    <input id="id_proyecto" type="text" class="d-none" name="id_proyecto">
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre proyecto: </label>
                                         <input name="nombre_proyecto" type="text" class="form-control is-warning" id="nombre_proyecto" placeholder="Nombre">
                                     </div>
-
                                     <div class="form-group">
                                         <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
                                         <input name="descripcion_proyecto" type="text" class="form-control is-warning" id="descripcion_proyecto" placeholder="Descripción del proyecto">
                                     </div>
-
                                 </div>
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
@@ -59,6 +57,22 @@ Dashboard::headerTemplate('Proyectos');
                     <!-- /.content -->
                 </div>
 
+                <form method="post" id="buscar">
+                    <div class="col-md-3">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <i class="material-icons"></i>
+                            </span>
+                            <div class="form-line">
+                                <input id="proyecto_buscar" type="text" class="form-control" name="proyecto_buscar" placeholder="Buscar">
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-warning">BUSCAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
                 <div class="card-body p-0">
                     <table class="table table-striped projects">
                         <thead>

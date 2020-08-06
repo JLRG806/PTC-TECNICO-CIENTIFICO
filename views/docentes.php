@@ -36,7 +36,7 @@ Dashboard::headerTemplate('Docente');
                                         </div>
                                         <div class="form-group">
                                             <label class="col-form-label" for="fecha_nacimiento"><i class="far fa-user"></i> Fecha Nacimiento: </label>
-                                            <input id="fecha_nacimiento" type="date" class="form-control is-warning" name="fecha_nacimiento" required>
+                                            <input id="fecha_nacimiento" type="date" class="form-control is-warning" name="fecha_nacimiento" required>                                            
                                         </div>
                                     </div>
                                     <!-- /.col (LEFT) -->
