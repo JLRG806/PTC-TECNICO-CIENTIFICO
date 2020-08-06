@@ -18,7 +18,7 @@ function fillTable( dataset )
                 <td>${row.nombre_usuario}</td>
                 <td>${row.email_usuario}</td>
                 <td>${row.estado_usuario}</td>
-                <td><img src="../resources/img/aulas/${row.imagen_usuario}" class="materialboxed" height="100"></td> 
+                <td><img src="../resources/img/fotos_usuario/${row.imagen_usuario}" class="materialboxed" height="100"></td> 
                 <td>
                     <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_usuario})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Editar</i></a>
                     <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_usuario})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">Eliminar</i></a>

@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
     <title>Index e-App</title>
     <link rel="stylesheet" href="../resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="../resources/css/ionicons.min.css">
@@ -34,8 +37,8 @@
     <script src="../resources/dist/js/adminlte.js"></script>
     <script src="../resources/js/sweetalert.min.js"></script>
     <script src="../core/helpers/components.js"></script>
-    <script type="text/javascript" src="../core/controllers/account.js"></script>
-    <script src="../core/controllers/register.js"></script>
+    <script src="../core/controllers/account.js"></script>
+    <script src="../core/controllers/register.js?v=1234"></script>
 </body>
 
 </html>

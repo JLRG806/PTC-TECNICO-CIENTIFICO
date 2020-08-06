@@ -11,6 +11,7 @@ if (isset($_GET['action'])) {
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
 	switch ($_GET['action']) {
+		//accion para buscar coincidencias de docentes en la BD
 		case 'search':
             $_POST = $docente->validateForm($_POST);
 			if ($_POST['docente_buscar'] != '') {
@@ -29,6 +30,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Ingrese un valor para buscar';
 			}
 			break;
+			//accion para crear registros de docentes
 		case 'create':
             $_POST = $docente->validateForm($_POST);
 			if ($docente->setNombre_docente($_POST['nombre_docente'])) {
@@ -58,6 +60,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Nombre invalido';
 			}
 			break;
+			//accion para leer en la bd un docente en especifico
 		case 'readOne':
 			if ($docente->setId($_POST['id_docente'])) {
 				if ($result['dataset'] = $docente->readOneDocente()) {
@@ -69,6 +72,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Docente incorrecto';
 			}
 			break;
+			//accion para leer los docentes existentes para luego mostrarlos en la view
 		case 'readAll':
 			if ($result['dataset'] = $docente->readAllDocente()) {
 				$result['status'] = 1;
@@ -76,6 +80,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Docente inexistente';
 			}
 			break;
+			//accion para actualizar regidtro de docente
 		case 'update':
 			$_POST = $docente->validateForm($_POST);
 			if ($docente->setId($_POST['id_docente'])) {
@@ -113,6 +118,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Docente incorrecto';
 			}
 			break;
+			//accion para borrar registros de docentes
 		case 'delete':
 			if ($docente->setId($_POST['id_docente'])) {
 				if ($docente->readOneDocente()) {

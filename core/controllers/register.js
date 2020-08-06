@@ -1,4 +1,4 @@
-const API_USUARIOS = '../core/api/dashboard/usuarios.php?action=';
+const API_USUARIOS = '../core/api/usuario.php?action=';
 
 // Método que se ejecuta cuando el documento está listo.
 $( document ).ready(function() {

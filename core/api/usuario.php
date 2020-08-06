@@ -14,6 +14,7 @@ if (isset($_GET['action'])) {
 	if (isset($_SESSION['id_usuario'])) {
 
 		switch ($_GET['action']) {
+			//accion para cerrar la secion actual.
 			case 'logout':
 				if (session_destroy()) {
 					$result['status'] = 1;
@@ -22,6 +23,100 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Ocurrió un problema al cerrar la sesión';
 				}
 				break;
+				//accion para leer los datos de usuarios existentes.
+			case 'readProfile':
+				if ($usuario->setId($_SESSION['id_usuario'])) {
+					if ($result['dataset'] = $usuario->readOneUsuario()) {
+						$result['status'] = 1;
+					} else {
+						$result['exception'] = 'Usuario inexistente';
+					}
+				} else {
+					$result['exception'] = 'Usuario incorrecto';
+				}
+				break;
+				//accion para editar el perfil de usuario.
+			case 'editProfile':
+				if ($usuario->setId($_SESSION['id_usuario'])) {
+					if ($usuario->readOneUsuario()) {
+						$_POST = $usuario->validateForm($_POST);
+						if ($usuario->setNombre($_POST['nombre_usuario'])) {
+							if ($usuario->setCorreo($_POST['email_usuario'])) {
+								if (is_uploaded_file($_FILES['foto_usuario']['tmp_name'])) {
+									if ($usuario->setImagen_usuario($_FILES['foto_usuario'])) {		
+										print '<pre>';
+                            			print_r($_FILES);
+                            			print '</pre>';								
+										if ($usuario->editProfileUser()) {
+											$_SESSION['email_usuario'] = $usuario->getCorreo();
+											$result['status'] = 1;
+											if ($usuario->deleteFile($usuario->getRuta(), $data['foto_usuario'])) {
+												$result['message'] = 'Perfil modificado correctamente';
+											} else {
+												$result['message'] = 'Perfil modificado pero no se borro la imagen anterior';
+											}
+										} else {
+											$result['exception'] = Database::getException();
+										}
+									} else {
+										$result['exception'] = $aula->getImageError();
+									}
+								} else {
+									if ($usuario->editProfileUser()) {
+										$result['status'] = 1;
+										$result['message'] = 'Datos modificados correctamente xD';
+									} else {
+										$result['exception'] = Database::getException();
+									}
+								}
+							} else {
+								$result['exception'] = 'Correo incorrecto';
+							}
+						} else {
+							$result['exception'] = 'Nombres incorrectos';
+						}
+					} else {
+						$result['exception'] = 'Usuario inexistente';
+					}
+				} else {
+					$result['exception'] = 'Usuario incorrecto';
+				}
+				break;
+				//accion para editar la contraseña de usuario.
+			case 'password':
+				if ($usuario->setId($_SESSION['id_usuario'])) {
+					$_POST = $usuario->validateForm($_POST);
+					if ($_POST['clave_actual_1'] == $_POST['clave_actual_2']) {
+						if ($usuario->setPassword($_POST['clave_actual_1'])) {
+							if ($usuario->checkPassword($_POST['clave_actual_1'])) {
+								if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
+									if ($usuario->setPassword($_POST['clave_nueva_1'])) {
+										if ($usuario->changePassword()) {
+											$result['status'] = 1;
+											$result['message'] = 'Contraseña cambiada correctamente';
+										} else {
+											$result['exception'] = Database::getException();
+										}
+									} else {
+										$result['exception'] = 'Clave nueva menor a 6 caracteres';
+									}
+								} else {
+									$result['exception'] = 'Claves nuevas diferentes';
+								}
+							} else {
+								$result['exception'] = 'Clave actual incorrecta';
+							}
+						} else {
+							$result['exception'] = 'Clave actual menor a 6 caracteres';
+						}
+					} else {
+						$result['exception'] = 'Claves actuales diferentes';
+					}
+				} else {
+					$result['exception'] = 'Usuario incorrecto';
+				}
+				break;
+				//accion para buscar los usuarios deseados
 			case 'search':
 				$_POST = $usuario->validateForm($_POST);
 				if ($_POST['usuario_buscar'] != '') {
@@ -40,6 +135,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Ingrese un valor para buscar';
 				}
 				break;
+				//accion para crear cuantas de usuarios 
 			case 'create':
 				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setNombre($_POST['nombre'])) {
@@ -77,6 +173,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Nombre incorrecto';
 				}
 				break;
+				//accion para lleer si exuste usuarios.
 			case 'readOne':
 				if ($usuario->setId($_POST['id_usuario'])) {
 					if ($result['dataset'] = $usuario->readOneUsuario()) {
@@ -88,6 +185,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario incorrecto';
 				}
 				break;
+				//accion para leer y mostrar todos los usuarios existentes
 			case 'readAll':
 				if ($result['dataset'] = $usuario->readAllUsuarios()) {
 					$result['status'] = 1;
@@ -95,6 +193,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario inexistente';
 				}
 				break;
+				//accion para actualizar registros de usuarios
 			case 'update':
 				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setId($_POST['id_usuario'])) {
@@ -136,6 +235,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Usuario incorrecto';
 				}
 				break;
+				//accionp para eliminar usuarios existentes.
 			case 'delete':
 				if ($usuario->setId($_POST['id_usuario'])) {
 					if ($usuario->readOneUsuario()) {
@@ -165,6 +265,7 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'No existen usuarios registrados';
 				}
 				break;
+				//accion para registrarsi si en un dado caso no existiera un usuario.
 			case 'register':
 				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setNombre($_POST['nombres'])) {
@@ -191,6 +292,7 @@ if (isset($_GET['action'])) {
 				}
 				break;
 			case 'login':
+				//accion para iniciar sesion en el sistema
 				$_POST = $usuario->validateForm($_POST);
 				//-print_r($_POST);
 				if ($usuario->checkUser($_POST['email_usuario'])) {
@@ -200,7 +302,7 @@ if (isset($_GET['action'])) {
 						$_SESSION['id_usuario'] = $usuario->getId();
 						$_SESSION['email_usuario'] = $usuario->getCorreo();
 						$_SESSION['nombre_usuario'] = $usuario->getNombre();
-						$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();						
+						$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();
 					} else {
 						$result['exception'] = 'Clave incorrecta';
 					}

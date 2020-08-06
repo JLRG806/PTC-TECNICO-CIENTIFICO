@@ -11,6 +11,7 @@ if (isset($_GET['action'])) {
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
 	switch ($_GET['action']) {
+		// accion para buscar estudiantes existentes en la base de datos
 		case 'search':
             $_POST = $estudiante->validateForm($_POST);
 			if ($_POST['estudiante_buscar'] != '') {
@@ -29,6 +30,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Ingrese un valor para buscar';
 			}
 			break;
+			//accion para crear registros de estudiantes en la base de datos.
         case 'create':                    
             $_POST = $estudiante->validateForm($_POST);
 			if ($estudiante->setNombre_estudiante($_POST['nombre_estudiante'])) {
@@ -66,6 +68,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Nombre invalido';
 			}
 			break;
+			//accion para leer un registro de estudiante
 		case 'readOne':
 			if ($estudiante->setId($_POST['id_estudiante'])) {
 				if ($result['dataset'] = $estudiante->readOneEstudiante()) {
@@ -77,6 +80,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Estudiante incorrecto';
 			}
 			break;
+			//accion para leer y mostrar todos los registros existentes
 		case 'readAll':
 			if ($result['dataset'] = $estudiante->readAllEstudiante()) {
 				$result['status'] = 1;
@@ -84,6 +88,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Estudiante inexistente';
 			}
 			break;
+			//accion para actualizar los registros de estudiantes
         case 'update':            
 			$_POST = $estudiante->validateForm($_POST);
 			if ($estudiante->setId($_POST['id_estudiante'])) {
@@ -129,6 +134,7 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Estudiante incorrecto';
 			}
 			break;
+			//accion para borrar registros de la base de datos
 		case 'delete':
 			if ($estudiante->setId($_POST['id_estudiante'])) {
 				if ($estudiante->readOneEstudiante()) {
