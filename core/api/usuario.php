@@ -200,7 +200,7 @@ if (isset($_GET['action'])) {
 						$_SESSION['id_usuario'] = $usuario->getId();
 						$_SESSION['email_usuario'] = $usuario->getCorreo();
 						$_SESSION['nombre_usuario'] = $usuario->getNombre();
-						$_SESSION['foto_usuario'] = $usuario->getImagen_aula();						
+						$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();						
 					} else {
 						$result['exception'] = 'Clave incorrecta';
 					}
