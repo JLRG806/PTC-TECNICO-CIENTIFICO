@@ -41,7 +41,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#ESPECIALIDAD' )[0].reset();
-
+    // Se hace una consulta por medio a la api especialidad en readOne de AJAX usando el id de la consulta readAll
     $.ajax({
         dataType: 'json',
         url: API_ESPECIALIDAD + 'readOne',
@@ -54,8 +54,6 @@ function openUpdateModal( id )
             // Se inicializan los campos del formulario con los datos del registro seleccionado previamente.
             $( '#id_especialidad' ).val( response.dataset.id_especialidad );
             $( '#especialidad_estudiante' ).val( response.dataset.especialidad_estudiante );
-            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-            //M.updateTextFields(); 
         } else {
             sweetAlert( 2, result.exception, null );
         }

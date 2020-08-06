@@ -76,6 +76,7 @@ function openDetailModal( id )
     $( '#save-modal' ).modal( 'show' );
     /*let identifier = { id_proyecto: id };
     readRows2( API_DETALLE, identifier );*/
+    // Se hace una consulta por medio a la api detalle en readOne de AJAX usando el id del proyecto
     $.ajax({
         dataType: 'json',
         url: API_DETALLE + 'readOne',
@@ -111,6 +112,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#PROYECTO' )[0].reset()
+    // Se hace una consulta por medio a la api proyecto en readOne de AJAX usando el id de la consulta readAll
     $.ajax({
         dataType: 'json',
         url: API_PROYECTO + 'readOne',
@@ -125,8 +127,6 @@ function openUpdateModal( id )
             $( '#nombre_proyecto' ).val( response.dataset.nombre_proyecto  );
             $( '#descripcion_proyecto' ).val( response.dataset.descripcion_proyecto );
             fillSelect2( API_GRADO, 'grado', response.dataset.id_grado )
-            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-            //M.updateTextFields(); 
         } else {
             sweetAlert( 2, result.exception, null );
         }

@@ -41,7 +41,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#NIVEL' )[0].reset();
-
+    // Se hace una consulta por medio a la api nivel en readOne de AJAX usando el id de la consulta readAll
     $.ajax({
         dataType: 'json',
         url: API_NIVEL + 'readOne',

@@ -7,6 +7,7 @@ const API_ESPECIALIDAD = '../core/api/especialidad.php?action=readAll';
 
 // Método que se ejecuta cuando el documento está listo.
 $( document ).ready(function() {
+    // Se llama a la función que llena los select por medio de la api especificada y el metodo readAll
     fillSelect( API_AULA, 'aula', null );
     fillSelect( API_DOCENTE, 'docente', null );
     fillSelect( API_SECCION, 'seccion', null );
@@ -52,7 +53,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#GRADO' )[0].reset();
-
+    // Se hace una consulta por medio a la api grado en readOne de AJAX usando el id de la consulta readAll
     $.ajax({
         dataType: 'json',
         url: API_GRADO + 'readOne',
@@ -68,8 +69,6 @@ function openUpdateModal( id )
             fillSelect( API_DOCENTE, 'docente', response.dataset.nombre_docente )
             fillSelect( API_SECCION, 'seccion', response.dataset.seccion_estudiante )
             fillSelect( API_ESPECIALIDAD, 'especialidad', response.dataset.especialidad_estudiante )
-            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-            //M.updateTextFields(); 
         } else {
             sweetAlert( 2, result.exception, null );
         }

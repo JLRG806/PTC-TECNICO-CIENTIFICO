@@ -1,4 +1,4 @@
-
+// Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_USUARIO = '../core/api/usuario.php?action=';
 
 // Método que se ejecuta cuando el documento está listo.
@@ -44,7 +44,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#USUARIOS' )[0].reset();
-
+    // Se hace una consulta por medio a la api usuario en readOne de AJAX usando el id de la consulta readAll
     $.ajax({
         dataType: 'json',
         url: API_USUARIO + 'readOne',

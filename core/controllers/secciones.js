@@ -4,6 +4,7 @@ const APINIVEL = '../core/api/nivel.php?action=readAll';
 
 // Método que se ejecuta cuando el documento está listo.
 $( document ).ready(function() {
+    // Se llama a la función que llena los select por medio de la api especificada y el metodo readAll
     fillSelect( APINIVEL, 'nivel', null );
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js    
     readRows( API_SECCION );
@@ -44,7 +45,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#SECCION' )[0].reset();
-
+    // Se hace una consulta por medio a la api seccion en readOne de AJAX usando el id de la consulta readAll
     $.ajax({
         dataType: 'json',
         url: API_SECCION + 'readOne',

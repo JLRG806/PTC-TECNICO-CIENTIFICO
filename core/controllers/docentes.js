@@ -45,7 +45,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#DOCENTE' )[0].reset();
-
+    // Se hace una consulta por medio a la api docente en readOne de AJAX usando el id de la consulta readAll
     $.ajax({
         dataType: 'json',
         url: API_DOCENTE + 'readOne',
@@ -62,8 +62,6 @@ function openUpdateModal( id )
             $( '#edad_docente' ).val( response.dataset.edad_docente );
             $( '#telefono_docente' ).val( response.dataset.telefono_docente );
             $( '#dui_docente' ).val( response.dataset.dui_docente );
-            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-            //M.updateTextFields(); 
         } else {
             sweetAlert( 2, result.exception, null );
         }
