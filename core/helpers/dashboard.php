@@ -239,8 +239,8 @@ class Dashboard
                 <script src="../resources/plugins/chart.js/Chart.min.js"></script>
                 <script src="../resources/dist/js/adminlte.js"></script>
                 <script src="../resources/js/sweetalert.min.js"></script>
-                <script src="../core/helpers/components.js"></script>
-                <script type="text/javascript" src="../core/controllers/account.js"></script>
+                <script src="../core/helpers/components.js?v=1234"></script>
+                <script type="text/javascript" src="../core/controllers/account.js?v=1234"></script>
                 <script type="text/javascript" src="../core/controllers/'.$controller.'"></script>
             </body>
             </html>                

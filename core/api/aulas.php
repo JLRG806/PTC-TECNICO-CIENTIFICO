@@ -35,7 +35,7 @@ if (isset($_GET['action'])) {
 				if ($aula->setUbicacion_aula($_POST['ubicacion_aula'])) {
 					if (is_uploaded_file($_FILES['foto_aula']['tmp_name'])) {
 						if ($aula->setImagen_aula($_FILES['foto_aula'])) {
-							if ($aula->createAula()) {
+							if ($aula->createAula()) {								
 								$result['status'] = 1;
 								$result['message'] = 'Aula Ingresada correctamente';
 							} else {
@@ -84,6 +84,9 @@ if (isset($_GET['action'])) {
 										$result['status'] = 1;
 										if ($aula->deleteFile($aula->getRuta(), $data['foto_aula'])) {
 											$result['message'] = 'Aula modificada correctamente';
+											print '<pre>';
+                            			print_r($_POST);
+                            			print '</pre>';
 										} else {
 											$result['message'] = 'Aula modificada pero no se borro la imagen anterior';
 										}
