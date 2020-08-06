@@ -9,7 +9,7 @@ class Usuarios extends Validator
     private $estado = null;
     private $imagen_usuario = null;
     private $archivo = null;
-    private $ruta = '../../resources/img/';
+    private $ruta = '../resources/img/fotos_usuario/';
 
     //Creando los SET de cada atributo establecidos
 
@@ -206,10 +206,10 @@ class Usuarios extends Validator
     public function createUsuario()
     {
         $hash = password_hash($this->password, PASSWORD_DEFAULT);
-        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
-            $sql = 'INSERT INTO Usuarios (nombre_usuario, email_usuario, contrasena_usuario, estado_usuario, imagen_usuario)
-                    VALUES(?, ?, ?, ?)';
-            $params = array($this->nombre, $this->correo, $hash, $this->estado, $this->imagen);
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_usuario)) {
+            $sql = 'INSERT INTO Usuarios (nombre_usuario, email_usuario, contrasena_usuario, estado_usuario, foto_usuario)
+                    VALUES(?, ?, ?, ?, ?)';
+            $params = array($this->nombre, $this->correo, $hash, $this->estado, $this->imagen_usuario);
             return Database::executeRow($sql, $params);
         } else {
             return false;
@@ -243,7 +243,7 @@ class Usuarios extends Validator
             $sql = 'UPDATE Usuarios 
                      SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?, foto_usuario = ?
                     WHERE id_usuario = ?';
-            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen_usuario, $this->id);
+            $params = array($this->nombre, $this->correo, $this->estado, $this->imagen_usuario, $this->id);
         } else {
             $sql = 'UPDATE Usuarios
                 SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?

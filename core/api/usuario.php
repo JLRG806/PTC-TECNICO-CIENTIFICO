@@ -197,7 +197,7 @@ if (isset($_GET['action'])) {
 			case 'update':
 				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setId($_POST['id_usuario'])) {
-					if ($usuario->readOneUsuario()) {
+					if ($data = $usuario->readOneUsuario()) {
 						if ($usuario->setNombre($_POST['nombre'])) {
 							if ($usuario->setCorreo($_POST['email'])) {
 								if ($usuario->setEstado($_POST['estado'])) {

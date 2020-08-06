@@ -40,7 +40,7 @@ class Especialidades extends Validator
                 FROM Especialidad
                 WHERE especialidad_estudiante ILIKE ?
                 ORDER BY especialidad_estudiante';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
