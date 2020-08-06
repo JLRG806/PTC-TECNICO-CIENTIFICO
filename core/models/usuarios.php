@@ -7,9 +7,9 @@ class Usuarios extends Validator
     private $correo = null;
     private $password = null;
     private $estado = null;
-    private $imagen = null;
+    private $imagen_usuario = null;
     private $archivo = null;
-    private $ruta = '../../resources/img/fotos_usuario/';
+    private $ruta = '../../resources/img/';
 
     //Creando los SET de cada atributo establecidos
 
@@ -66,7 +66,7 @@ class Usuarios extends Validator
     public function setImagen_usuario($file)
     {
         if ($this->validateImageFile($file, 500, 500)) {
-            $this->imagen = $this->getImageName();
+            $this->imagen_usuario = $this->getImageName();
             $this->archivo = $file;
             return true;
         } else {
@@ -103,7 +103,7 @@ class Usuarios extends Validator
 
     public function getImagen_usuario()
     {
-        return $this->imagen;
+        return $this->imagen_usuario;
     }
 
     public function getRuta()
@@ -122,7 +122,7 @@ class Usuarios extends Validator
             $this->id = $data['id_usuario'];
             $this->nombre = $data['nombre_usuario'];
             $this->correo = $correo;
-            $this->imagen = $data['foto_usuario'];
+            $this->imagen_usuario = $data['foto_usuario'];
             return true;
         } else {
             return false;
@@ -167,11 +167,11 @@ class Usuarios extends Validator
     //Metodo utilizado para editar perfil de un usuario
     public function editProfileUser()
     {
-        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_usuario)) {
             $sql = 'UPDATE usuarios 
                     SET nombre_usuario = ?, email_usuario = ?, foto_usuario = ?
                     WHERE id_usuario = ?';
-            $params = array($this->nombre, $this->correo, $this->imagen, $this->id);
+            $params = array($this->nombre, $this->correo, $this->imagen_usuario, $this->id);
         } else {
             $sql = 'UPDATE usuarios 
                     SET nombre_usuario = ?, email_usuario = ?
@@ -219,7 +219,7 @@ class Usuarios extends Validator
     //Metodo para mostrar todos los registros de la tabla Usuario
     public function readAllUsuarios()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, fto_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, foto_usuario
                 FROM usuarios
                 ORDER BY id_usuario';
         $params = null;
@@ -229,7 +229,7 @@ class Usuarios extends Validator
     //Metodo para motrar un registro seleccionado
     public function readOneUsuario()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, imagen_usuario
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, foto_usuario
                 FROM Usuarios 
                 WHERE id_usuario = ?';
         $params = array($this->id);
@@ -239,11 +239,11 @@ class Usuarios extends Validator
     //Metodo para actualizar un usuario
     public function updateUsuario()
     {
-        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_usuario)) {
             $sql = 'UPDATE Usuarios 
-                     SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?, imagen_usuario = ?
+                     SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?, foto_usuario = ?
                     WHERE id_usuario = ?';
-            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen, $this->id);
+            $params = array($this->nombre_aula, $this->ubicacion_aula, $this->imagen_usuario, $this->id);
         } else {
             $sql = 'UPDATE Usuarios
                 SET nombre_usuario = ?, email_usuario = ?, estado_usuario = ?
