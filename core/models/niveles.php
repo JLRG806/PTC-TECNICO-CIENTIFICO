@@ -2,9 +2,11 @@
 
 class Nivel extends Validator
 {
+    //Se crean los atributos que necesitaremos para los metodos a utilizar (se crean los campos que estan en la base)
     private $id = null;
     private $nivel_estudiante = null;
 
+    //Creando los SET de cada atributo establecidos
     public function setId($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -25,6 +27,7 @@ class Nivel extends Validator
         }
     }
 
+    //Creando los GET de los atributos establecidos
     public function getId()
     {
         return $this->id;
@@ -34,7 +37,9 @@ class Nivel extends Validator
     {
         return $this->nivel_estudiante;
     }
+    //Creación de los metodos a utilizar en nuestra programación
 
+    //Metodo usado para buscar un registro en la tabla Niveles
     public function searchNivel($value)
     {
         $sql = 'SELECT id_nivel, nivel_estudiante
@@ -45,6 +50,7 @@ class Nivel extends Validator
         return Database::getRows($sql, $params);
     }
 
+    //Metodo usado para crear un nuevo registro en la tabla Niveles
     public function createNivel()
     {
         $sql = 'INSERT INTO Niveles(nivel_estudiante)
@@ -53,6 +59,7 @@ class Nivel extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo para mostrar todos los registros de la tabla Niveles
     public function readAllNivel()
     {
         $sql = 'SELECT id_nivel, nivel_estudiante
@@ -62,6 +69,7 @@ class Nivel extends Validator
         return Database::getRows($sql, $params);
     }
 
+    //Metodo para motrar un registro seleccionado
     public function readOneNivel()
     {
         $sql = 'SELECT id_nivel, nivel_estudiante
@@ -71,6 +79,7 @@ class Nivel extends Validator
         return Database::getRow($sql, $params);
     }
 
+    //Metodo para actualizar un Nivel
     public function updateNivel()
     {
         $sql = 'UPDATE Niveles
@@ -80,6 +89,7 @@ class Nivel extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo para eliminar un Nivel
     public function deleteNivel()
     {
         $sql = 'DELETE FROM Niveles

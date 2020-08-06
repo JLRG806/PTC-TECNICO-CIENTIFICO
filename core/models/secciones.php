@@ -1,10 +1,12 @@
 <?php
 class Secciones extends Validator
 {
+    //Se crean los atributos que necesitaremos para los metodos a utilizar (se crean los campos que estan en la base)
     private $id = null;
     private $nivel = null;
     private $seccion_estudiante = null;
 
+    //Creando los SET de cada atributo establecidos
     public function setId($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -35,6 +37,7 @@ class Secciones extends Validator
         }
     }
 
+    //Creando los GET de los atributos establecidos
     public function getId()
     {
         return $this->id;
@@ -50,6 +53,9 @@ class Secciones extends Validator
         return $this->seccion_estudiante;
     }
 
+    //Creación de los metodos a utilizar en nuestra programación
+
+    //Metodo usado para buscar un registro en la tabla Secciones
     public function searchSeccion($value)
     {
         $sql = 'SELECT id_seccion, seccion_estudiante, nivel_estudiante
@@ -60,6 +66,7 @@ class Secciones extends Validator
         return Database::getRows($sql, $params);
     }
 
+    //Metodo usado para crear un nuevo registro en la tabla Secciones
     public function createSeccion()
     {
         $sql = 'INSERT INTO Secciones (seccion_estudiante, id_nivel)
@@ -68,6 +75,7 @@ class Secciones extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo para mostrar todos los registros de la tabla Secciones
     public function readAllSeccion()
     {
         $sql = 'SELECT id_seccion, seccion_estudiante, nivel_estudiante
@@ -77,6 +85,7 @@ class Secciones extends Validator
         return Database::getRows($sql, $params);
     }
 
+    //Metodo para motrar un registro seleccionado
     public function readOneSeccion()
     {
         $sql = 'SELECT id_seccion, seccion_estudiante, nivel_estudiante
@@ -95,6 +104,7 @@ class Secciones extends Validator
         return Database::getRow($sql, $params);
     }
 
+    //Metodo para actualizar una Seccion
     public function updateSeccion()
     {
         $sql = 'UPDATE Secciones 
@@ -104,6 +114,7 @@ class Secciones extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo para eliminar una seccion
     public function deleteSeccion()
     {
         $sql = 'DELETE FROM Secciones 
