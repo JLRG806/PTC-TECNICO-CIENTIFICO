@@ -28,20 +28,18 @@ Dashboard::headerTemplate('Usuarios');
                                         <input id="id_usuario" type="text" class="d-none" name="id_usuario">
                                         <div class="form-group">
                                             <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre: </label>
-                                            <input id="nombre_usuario" type="text" class="form-control is-warning" name="nombre_usuario" placeholder="Nombre">
+                                            <input id="nombre" type="text" class="form-control is-warning" name="nombre" placeholder="Nombre">
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Correo electrónico: </label>
-                                            <input id="email_usuario" type="email" class="form-control is-warning" name="email_usuario" placeholder="Email">
+                                            <input id="email" type="email" class="form-control is-warning" name="email" placeholder="Email">
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Foto de perfil: <span class="small">500 x 500 pixeles.</span> </label>
-                                            <input id="foto_usuario" type="file"  class="form-control is-warning" name="foto_usuario" placeholder="Foto">
-                                            <img id="preview" src="../resources/img/fotos_usuario/noIMG.png" accept="image/*" alt="foto_usuario" width="150" height="150" class="img-thumbnail">
+                                            <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado: </label>
+                                            <input id="estado" type="text" class="form-control is-warning" name="estado" placeholder="Seleccione estado">
                                         </div>
-                                        
 
                                     </div>
                                     <!-- /.col (LEFT) -->
