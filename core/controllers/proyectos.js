@@ -7,7 +7,7 @@ const API_GRADO = '../core/api/grados.php?action=readAll';
 $( document ).ready(function() {
     fillSelect2( API_GRADO, 'grado', null );
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js    
-    readRows( API_PROYECTO );    
+    readRows( API_PROYECTO );
 });
 
 // Función para llenar la tabla con los datos enviados por readRows().
@@ -26,7 +26,7 @@ function fillTable( dataset )
                 <td>${row.s}</td>
                 <td>${row.e}</td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="#" onclick="openDetailModal(${row.id_proyecto})" class="white-text tooltipped" data-tooltip="Detalle"><i class="fas fa-eye">Ver detalle</i></a>
+                    <a class="btn btn-warning btn-sm" href="#" onclick="openCreateModal(${row.id_proyecto})" class="white-text tooltipped" data-tooltip="Detalle"><i class="fas fa-eye">Ver detalle</i></a>
                     <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_proyecto})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Editar</i></a>
                     <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_proyecto})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">Eliminar</i></a>
                 </td>
@@ -67,7 +67,7 @@ $( '#buscar' ).submit(function( event ) {
     searchRows( API_PROYECTO, this );
 });
 
-function openDetailModal( id )
+function openCreateModal()
 {
     $( '#save-form' )[0].reset();
     $( '.modal-header' ).css( 'background-color', '#3CB371' );
@@ -110,7 +110,8 @@ function openDetailModal( id )
 function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
-    $( '#PROYECTO' )[0].reset()
+    $( '#PROYECTO' )[0].reset();
+
     $.ajax({
         dataType: 'json',
         url: API_PROYECTO + 'readOne',

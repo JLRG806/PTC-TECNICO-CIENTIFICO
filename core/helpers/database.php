@@ -8,7 +8,7 @@ class Database
     private function connect()
     {
         $server = 'localhost';
-        $database = 'TC-EXPO';
+        $database = 'PTC_EXPO';
         $username = 'postgres';
         $password = 'postgres';
         try {

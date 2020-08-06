@@ -118,24 +118,19 @@ if (isset($_GET['action'])) {
 											$result['exception'] = $usuario->getImageError();
 										}
 									} else {
-										if ($usuario->updateUsuario()) {
-											$result['status'] = 1;
-											$result['message'] = 'Usuario modificada correctamente';
-										} else {
-											$result['exception'] = Database::getException();
-										}
+										$result['exception'] = 'Estado incorrecto';
 									}
 								} else {
-									$result['exception'] = 'Estado invalida';
+									$result['exception'] = 'Estado incorrecto';
 								}
 							} else {
-								$result['exception'] = 'Correo invalida';
+								$result['exception'] = 'Email incorrecto';
 							}
 						} else {
-							$result['exception'] = 'Usuario invalido';
+							$result['exception'] = 'Usuario inexistente';
 						}
 					} else {
-						$result['exception'] = 'Usuario inexistente';
+						$result['exception'] = 'Usuario incorrecto';
 					}
 				} else {
 					$result['exception'] = 'Usuario incorrecto';
@@ -205,6 +200,7 @@ if (isset($_GET['action'])) {
 						$_SESSION['id_usuario'] = $usuario->getId();
 						$_SESSION['email_usuario'] = $usuario->getCorreo();
 						$_SESSION['nombre_usuario'] = $usuario->getNombre();
+						$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();						
 					} else {
 						$result['exception'] = 'Clave incorrecta';
 					}

@@ -150,6 +150,7 @@ class Estudiantes extends Validator
         $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, s.seccion_estudiante as "seccion" , n.nivel_estudiante, especialidad_estudiante
                 FROM Estudiantes e INNER JOIN Especialidad USING (id_especialidad)
                 INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel                
+                ORDER BY apellidos_estudiante
                 WHERE id_estudiante = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);

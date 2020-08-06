@@ -65,7 +65,7 @@ class Dashboard
                                 <!-- Sidebar user panel (optional) -->
                                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                                     <div class="image">
-                                        <img src="../resources/img/IMG_20190331_144612.jpg" class="img-square" alt="User Image">
+                                        <img src="../resources/img/fotos_usuario/'.$_SESSION['foto_usuario'].'" class="img-square" alt="User Image">
                                     </div>
                                     <div class="info">
                                         <a href="" class="d-block">'.$_SESSION['nombre_usuario'].'</a>
@@ -76,7 +76,7 @@ class Dashboard
                                         <!-- Add icons to the links using the .nav-icon class
                                         with font-awesome or any other icon font library -->
                                         <li class="nav-item has-treeview menu-open">
-                                            <a href="dashboard.php" class="nav-link active">
+                                            <a href="main.php" class="nav-link active">
                                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                                 <p>
                                                     Dashboard
@@ -240,7 +240,7 @@ class Dashboard
                 <script src="../resources/dist/js/adminlte.js"></script>
                 <script src="../resources/js/sweetalert.min.js"></script>
                 <script src="../core/helpers/components.js"></script>
-                <script type="text/javascript" src="../core/controllers/dashboard/account.js"></script>
+                <script type="text/javascript" src="../core/controllers/account.js"></script>
                 <script type="text/javascript" src="../core/controllers/'.$controller.'"></script>
             </body>
             </html>                

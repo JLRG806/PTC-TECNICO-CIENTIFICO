@@ -27,6 +27,7 @@ Dashboard::headerTemplate('Estudiantes');
                         <div class="row">
                             <div class="col-md-6">
                                 <input id="id_estudiante" type="text" class="d-none" name="id_estudiante">
+
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombres: </label>
                                     <input id="nombre_estudiante" type="text" class="form-control is-warning" name="nombre_estudiante" placeholder="Nombres">
@@ -49,11 +50,6 @@ Dashboard::headerTemplate('Estudiantes');
                                 <div class="form-group">
                                     <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Código carnet: </label>
                                     <input id="codigo" type="text" class="form-control is-warning" name="codigo" placeholder="Código del estudiante">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="nivel"><i class="far fa-user"></i> Nivel: </label>
-                                    <select id="nivel" class="custom-select form-control" name="nivel" required></select>
                                 </div>
 
                                 <div class="form-group">
@@ -98,12 +94,12 @@ Dashboard::headerTemplate('Estudiantes');
         <div class="card-body p-0">
             <table class="table table-striped projects">
                 <thead>
-                    <tr>                        
-                        <th style="width: 20%">
-                            Apellidos
-                        </th>
+                    <tr>
                         <th style="width: 20%">
                             Nombres
+                        </th>
+                        <th style="width: 20%">
+                            Apellidos
                         </th>
                         <th style="width: 30%">
                             Correo electrónico

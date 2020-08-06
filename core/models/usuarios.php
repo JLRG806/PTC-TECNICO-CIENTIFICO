@@ -9,7 +9,7 @@ class Usuarios extends Validator
     private $estado = null;
     private $imagen = null;
     private $archivo = null;
-    private $ruta = '../../resources/img/usuarios/';
+    private $ruta = '../../resources/img/fotos_usuario/';
 
     public function setId($value)
     {
@@ -26,7 +26,7 @@ class Usuarios extends Validator
         if ($this->validateString($value, 1, 50)) {
             $this->nombre = $value;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -53,10 +53,10 @@ class Usuarios extends Validator
 
     public function setEstado($value)
     {
-        if ($this->validateString($value, 1, 50)){
+        if ($this->validateString($value, 1, 50)) {
             $this->estado = $value;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -72,19 +72,23 @@ class Usuarios extends Validator
         }
     }
 
-    public function getEstado(){
+    public function getEstado()
+    {
         return $this->estado;
     }
 
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function getCorreo(){
+    public function getCorreo()
+    {
         return $this->correo;
     }
 
-    public function getNombre(){
+    public function getNombre()
+    {
         return $this->nombre;
     }
 
@@ -93,7 +97,7 @@ class Usuarios extends Validator
         return $this->id;
     }
 
-    public function getImagen_aula()
+    public function getImagen_usuario()
     {
         return $this->imagen;
     }
@@ -105,12 +109,13 @@ class Usuarios extends Validator
 
     public function checkUser($correo)
     {
-        $sql = 'SELECT id_usuario , nombre_usuario FROM usuarios WHERE email_usuario = ?';
+        $sql = 'SELECT id_usuario , nombre_usuario, foto_usuario FROM usuarios WHERE email_usuario = ?';
         $params = array($correo);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_usuario'];
             $this->nombre = $data['nombre_usuario'];
             $this->correo = $correo;
+            $this->imagen = $data['foto_usuario'];
             return true;
         } else {
             return false;
@@ -122,9 +127,10 @@ class Usuarios extends Validator
         // Se encripta la clave por medio del algoritmo bcrypt que genera un string de 60 caracteres.
         $hash = password_hash($this->password, PASSWORD_DEFAULT);
         $estado = 'Activo';
-        $sql = 'INSERT INTO usuarios(nombre_usuario, email_usuario, contrasena_usuario,estado_usuario)
+        $foto = 'usuario.png';
+        $sql = 'INSERT INTO usuarios(nombre_usuario, email_usuario, contrasena_usuario, estado_usuario, foto_usuario)
                 VALUES(?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->correo, $hash, $estado);
+        $params = array($this->nombres, $this->correo, $hash, $estado, $foto);
         return Database::executeRow($sql, $params);
     }
 
@@ -148,10 +154,26 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    public function editProfileUser()
+    {
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen)) {
+            $sql = 'UPDATE usuarios 
+                    SET nombre_usuario = ?, email_usuario = ?, foto_usuario = ?
+                    WHERE id_usuario = ?';
+            $params = array($this->nombre, $this->correo, $this->imagen, $this->id);
+        } else {
+            $sql = 'UPDATE usuarios 
+                    SET nombre_usuario = ?, email_usuario = ?
+                    WHERE id_usuario = ?';
+            $params = array($this->nombre, $this->correo, $this->id);
+        }
+        return Database::executeRow($sql, $params);
+    }
+
     public function editProfile()
     {
         $sql = 'UPDATE usuarios
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?, alias_usuario = ?
+                SET nombre_usuario = ?, correo_usuario = ?, foto_usuario = ?
                 WHERE id_usuario = ?';
         $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->id);
         return Database::executeRow($sql, $params);
@@ -182,8 +204,8 @@ class Usuarios extends Validator
 
     public function readAllUsuarios()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, imagen_usuario
-                FROM Usuarios
+        $sql = 'SELECT id_usuario, nombre_usuario, email_usuario, estado_usuario, fto_usuario
+                FROM usuarios
                 ORDER BY id_usuario';
         $params = null;
         return Database::getRows($sql, $params);
