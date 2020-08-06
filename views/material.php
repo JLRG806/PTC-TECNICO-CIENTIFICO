@@ -27,58 +27,9 @@ Dashboard::headerTemplate('Material');
                         <div class="row">
                             <div class="col-md-6">
 
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Nombre equipo: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Nombre">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Descripción: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Descripción proyecto">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Cantidad: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Cantidad">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estado equipo: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estado">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Condición equipo: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Condición">
-                                </div>
-
                             </div>
                             <!-- /.col (LEFT) -->
                             <div class="col-md-6">
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-calendar"></i> Fecha entrada: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Entrada">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-calendar"></i> Fecha salida: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Salida">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Tipo material: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Tipo material">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-form-label" for="inputWarning"><i class="far fa-user"></i> Estudiante: </label>
-                                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Estudiante">
-                                </div>
-
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-warning">Guardar</button>
-                                </div>
 
                             </div>
                             <!-- /.col (RIGHT) -->
@@ -97,7 +48,7 @@ Dashboard::headerTemplate('Material');
                         <i class="material-icons"></i>
                     </span>
                     <div class="form-line">
-                        <input id="equipo_buscar" type="text" class="form-control" name="equipo_buscar" placeholder="Buscar">
+                        <input id="material_buscar" type="text" class="form-control" name="material_buscar" placeholder="Buscar">
                     </div>
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-warning">BUSCAR</button>
@@ -120,18 +71,6 @@ Dashboard::headerTemplate('Material');
                             Cantidad
                         </th>
                         <th>
-                            Estado material
-                        </th>
-                        <th>
-                            Condición material
-                        </th>
-                        <th>
-                            Fecha entrada
-                        </th>
-                        <th>
-                            Fecha salida
-                        </th>
-                        <th>
                             Tipo material
                         </th>
                         <th>
@@ -141,7 +80,7 @@ Dashboard::headerTemplate('Material');
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody-rows">
                 </tbody>
             </table>
             <div class="card-footer clearfix">
