@@ -102,51 +102,6 @@ Dashboard::headerTemplate('Proyectos');
             <!-- /.content -->
         </div>
     </div>
-    <div class="modal fade" id="save-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="save-modal" style="color: white !important"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form method="post" class="needs-validation" id="save-form" enctype="multipart/form-data" novalidate>
-                            <input id="id_usuario" class="invisible" name="id_usuario"/>
-                            <div class="form-row m-3">
-                            <div class="col-md-3 mb-3">
-                                    <label for="nombre_usuario">Nombre</label>
-                                    <input id="nombre_usuario" type="text" class="form-control" name="nombre_usuario" required>
-                                </div>             
-                            </div>     
-                            <div class="col-md-3 mb-3">
-                                <table class="table table-striped projects">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 1%">
-                                                Nombre proyecto
-                                            </th>
-                                            <th style="width: 20%">
-                                                Descripción proyecto
-                                            </th>
-                                            <th style="width: 1%">
-                                                ID Grado
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbody-subrows">                            
-                                    </tbody>
-                                </table>
-                            </div>                                                     
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" id="btn_guardar" class="btn btn-dark">Guardar</button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
 <?php
 Dashboard::footerTemplate('proyectos.js');
 ?>

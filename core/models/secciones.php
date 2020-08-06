@@ -77,20 +77,20 @@ class Secciones extends Validator
         return Database::getRows($sql, $params);
     }
 
-    public function readNivel()
-    {
-        $sql = 'SELECT id_seccion, seccion_estudiante
-                FROM Secciones INNER JOIN Niveles USING (id_nivel)
-                WHERE id_nivel = ?';
-        $params = array($this->nivel);
-        return Database::getRow($sql, $params);
-    }
-
     public function readOneSeccion()
     {
         $sql = 'SELECT id_seccion, seccion_estudiante, nivel_estudiante
                 FROM Secciones INNER JOIN Niveles USING (id_nivel)
                 WHERE id_seccion = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    public function readOneSeccionxNivel()
+    {
+        $sql = 'SELECT id_seccion, seccion_estudiante
+                FROM Secciones INNER JOIN Niveles USING (id_nivel)
+                WHERE id_nivel = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }

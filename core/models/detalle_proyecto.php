@@ -105,7 +105,7 @@ class Detalle_Proyecto extends Validator
                 FROM Detalle_Proyecto d INNER JOIN Estudiantes e USING (id_estudiante) INNER JOIN Proyectos p USING (id_proyecto)
                 INNER JOIN Grados g ON p.id_grado = g.id_grado INNER JOIN Secciones s ON g.id_seccion = s.id_seccion 
                 INNER JOIN Niveles n ON n.id_nivel = s.id_nivel INNER JOIN Especialidad c ON g.id_especialidad = c.id_especialidad                      
-                WHERE id_proyecto = ?';
+                WHERE id_det_proyecto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
