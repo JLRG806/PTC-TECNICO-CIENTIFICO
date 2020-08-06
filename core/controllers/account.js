@@ -79,11 +79,8 @@ function signOff()
 }
 
 // Función para mostrar el formulario de editar perfil con los datos del usuario que ha iniciado sesión.
-function openModalProfile()
-{
-    // Se abre la caja de dialogo (modal) que contiene el formulario para editar perfil, ubicado en el archivo de las plantillas.
-    $( '#profile-modal' ).modal( 'open' );
-
+$( document ).ready(function() {
+    // Se llama a la función que obtiene los registros para llenar los campos. Se encuentra en el archivo components.js
     $.ajax({
         dataType: 'json',
         url: API + 'readProfile'
@@ -92,12 +89,11 @@ function openModalProfile()
         // Se comprueba si la API ha retornado una respuesta satisfactoria, de lo contrario se muestra un mensaje de error.
         if ( response.status ) {
             // Se inicializan los campos del formulario con los datos del usuario que ha iniciado sesión.
-            $( '#nombres_perfil' ).val( response.dataset.nombres_usuario );
-            $( '#apellidos_perfil' ).val( response.dataset.apellidos_usuario );
-            $( '#correo_perfil' ).val( response.dataset.correo_usuario );
-            $( '#alias_perfil' ).val( response.dataset.alias_usuario );
+            $( '#nombre_usuario' ).val( response.dataset.nombre_usuario );
+            $( '#email_usuario' ).val( response.dataset.email_usuario );
+            
             // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-            M.updateTextFields();
+            
         } else {
             sweetAlert( 2, response.exception, null );
         }
@@ -110,7 +106,8 @@ function openModalProfile()
             console.log( jqXHR.status + ' ' + jqXHR.statusText );
         }
     });
-}
+});
+
 
 // Evento para editar el perfil del usuario que ha iniciado sesión.
 $( '#profile-form' ).submit(function( event ) {
@@ -126,7 +123,7 @@ $( '#profile-form' ).submit(function( event ) {
         // Se comprueba si la API ha retornado una respuesta satisfactoria, de lo contrario se muestra un mensaje de error.
         if ( response.status ) {
             // Se cierra la caja de dialogo (modal) que contiene el formulario para editar perfil, ubicado en el archivo de las plantillas.
-            $( '#profile-modal' ).modal( 'close' );
+            
             sweetAlert( 1, response.message, 'main.php' );
         } else {
             sweetAlert( 2, response.exception, null );
