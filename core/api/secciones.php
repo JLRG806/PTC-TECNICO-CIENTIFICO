@@ -61,9 +61,9 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Sección incorrecta';
 			}
 			break;
-		case 'readOnexNivel':
-			if ($seccion->setId($_POST['id_nivel'])) {
-				if ($result['dataset'] = $seccion->readOneSeccionxNivel()) {
+		case 'readNivel':
+			if ($seccion->setNivel($_POST['id_nivel'])) {
+				if ($result['dataset'] = $seccion->readNivel()) {
 					$result['status'] = 1;
 				} else {
 					$result['exception'] = 'Sección inexistente';

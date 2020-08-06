@@ -6,7 +6,7 @@ const API_GRADO = '../core/api/grados.php?action=readAll';
 $( document ).ready(function() {
     fillSelect2( API_GRADO, 'grado', null );
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js    
-    readRows( API_PROYECTO );
+    readRows( API_PROYECTO );    
 });
 
 // Función para llenar la tabla con los datos enviados por readRows().
@@ -25,7 +25,7 @@ function fillTable( dataset )
                 <td>${row.s}</td>
                 <td>${row.e}</td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="#" onclick="openCreateModal(${row.id_proyecto})" class="white-text tooltipped" data-tooltip="Detalle"><i class="fas fa-eye">Ver detalle</i></a>
+                    <a class="btn btn-warning btn-sm" href="#" onclick="openDetailModal(${row.id_proyecto})" class="white-text tooltipped" data-tooltip="Detalle"><i class="fas fa-eye">Ver detalle</i></a>
                     <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_proyecto})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Editar</i></a>
                     <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_proyecto})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">Eliminar</i></a>
                 </td>
@@ -36,6 +36,32 @@ function fillTable( dataset )
     $( '#tbody-rows' ).html( content );
 }
 
+function fillTable2( dataset )
+{
+    let content = '';
+    // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
+    dataset.forEach(function( row ) {
+        // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+        content += `
+            <tr>
+                <td>${row.nombre_proyecto}</td>
+                <td>${row.descripcion_proyecto}</td>
+                <td>${row.id_grado}</td>
+                <td>${row.n}</td>
+                <td>${row.s}</td>
+                <td>${row.e}</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" href="#" onclick="openDetailModal(${row.id_proyecto})" class="white-text tooltipped" data-tooltip="Detalle"><i class="fas fa-eye">Ver detalle</i></a>
+                    <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_proyecto})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Editar</i></a>
+                    <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_proyecto})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">Eliminar</i></a>
+                </td>
+            </tr>
+        `;
+    });
+    // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
+    $( '#tbody-subrows' ).html( content );
+}
+
 // Evento para mostrar los resultados de una búsqueda.
 $( '#buscar' ).submit(function( event ) {
     // Se evita recargar la página web después de enviar el formulario.
@@ -44,7 +70,7 @@ $( '#buscar' ).submit(function( event ) {
     searchRows( API_PROYECTO, this );
 });
 
-function openCreateModal()
+function openDetailModal( id )
 {
     $( '#save-form' )[0].reset();
     $( '.modal-header' ).css( 'background-color', '#FFFF33' );
@@ -52,14 +78,42 @@ function openCreateModal()
     $( '.modal-title' ).text( 'Equipo' );
     $( '#archivo_producto' ).prop( 'required', true );
     $( '#save-modal' ).modal( 'show' );
-    $( '#estado_producto' ).prop( 'selectedIndex', 0 )
+    let identifier = { id_proyecto: id };
+    readRows2( API_PROYECTO, identifier );
+    $.ajax({
+        dataType: 'json',
+        url: api + 'readOneDetalle',
+        data: { id_proyecto: id },
+        type: 'post'
+    })
+    .done(function( response ) {
+        // Se comprueba si la API ha retornado una respuesta satisfactoria, de lo contrario se muestra un mensaje de error.
+        if ( response.status ) {
+            // Se inicializan los campos del formulario con los datos del registro seleccionado previamente.
+            $( '#id_proyecto' ).val( response.dataset.id_proyecto );
+            $( '#nombre_proyecto' ).val( response.dataset.nombre_proyecto  );
+            $( '#descripcion_proyecto' ).val( response.dataset.descripcion_proyecto )
+            fillSelect2( API_GRADO, 'grado', response.dataset.id_grado )
+            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+            //M.updateTextFields(); 
+        } else {
+            sweetAlert( 2, result.exception, null );
+        }
+    })
+    .fail(function( jqXHR ) {
+        // Se verifica si la API ha respondido para mostrar la respuesta, de lo contrario se presenta el estado de la petición.
+        if ( jqXHR.status == 200 ) {
+            console.log( jqXHR.responseText );
+        } else {
+            console.log( jqXHR.status + ' ' + jqXHR.statusText );
+        }
+    });
 }
 // Función que prepara formulario para modificar un registro.
 function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
-    $( '#PROYECTO' )[0].reset();
-
+    $( '#PROYECTO' )[0].reset()
     $.ajax({
         dataType: 'json',
         url: API_PROYECTO + 'readOne',
@@ -73,7 +127,7 @@ function openUpdateModal( id )
             $( '#id_proyecto' ).val( response.dataset.id_proyecto );
             $( '#nombre_proyecto' ).val( response.dataset.nombre_proyecto  );
             $( '#descripcion_proyecto' ).val( response.dataset.descripcion_proyecto )
-            fillSelect2( API_GRADO, 'grado', response.dataset.id_grado )
+            fillSelect( API_GRADO, 'grado', response.dataset.id_grado )
             // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
             //M.updateTextFields(); 
         } else {

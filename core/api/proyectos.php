@@ -2,11 +2,13 @@
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
 require_once('../models/proyectos.php');
+require_once('../models/detalle_proyecto.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
 	// Se instancia la clase correspondiente.
 	$proyecto = new Proyectos;
+	$detalle_proyecto = new Detalle_Proyecto;
 	// Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
@@ -57,6 +59,17 @@ if (isset($_GET['action'])) {
 		case 'readOne':
 			if ($proyecto->setId($_POST['id_proyecto'])) {
 				if ($result['dataset'] = $proyecto->readOneProyecto()) {
+					$result['status'] = 1;
+				} else {
+					$result['exception'] = 'Proyecto inexistente';
+				}
+			} else {
+				$result['exception'] = 'Proyecto incorrecta';
+			}
+			break;
+		case 'readOneDetalle':
+			if ($proyecto->setId($_POST['id_proyecto'])) {
+				if ($result['dataset'] = $proyecto->readOneDetalle_Proyecto()) {
 					$result['status'] = 1;
 				} else {
 					$result['exception'] = 'Proyecto inexistente';
