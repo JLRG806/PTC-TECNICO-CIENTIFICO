@@ -2,6 +2,20 @@
 *   Este archivo es de uso general en todas las páginas web. Se importa en las plantillas del pie del documento.
 */
 
+$(function () {
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;// jan=0; feb=1 .......
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear() - 18;
+    if (month < 10)
+        month = '0' + month.toString();
+    if (day < 10)
+        day = '0' + day.toString();
+    var minDate = year + '-' + month + '-' + day;
+    var maxDate = year + '-' + month + '-' + day;
+    $('#fecha_nacimiento').attr('max', maxDate);
+});
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
 *
@@ -37,7 +51,7 @@ function readRows2( api, identifier )
 {
     $.ajax({
         type: 'post',
-        url: api + 'readOneDetalle',
+        url: api + 'readOne',
         data: identifier,
         dataType: 'json'
     })
@@ -295,11 +309,11 @@ function fillSelect( api, selectId, selected )
     });
 }
 
-function fillSelect2( api, selectId, selected, lnk )
+function fillSelect2( api, selectId, selected )
 {
     $.ajax({
         dataType: 'json',
-        url: api + lnk
+        url: api
     })
     .done(function( response ) {
         // Se comprueba si la API ha retornado una respuesta satisfactoria para mostrar los datos, de lo contrario se muestra un mensaje de error.
@@ -314,7 +328,7 @@ function fillSelect2( api, selectId, selected, lnk )
                 // Se obtiene el valor del primer campo de la sentencia SQL (valor para cada opción).
                 value = Object.values( row )[0];
                 // Se obtiene el valor del segundo campo de la sentencia SQL (texto para cada opción).
-                text = Object.values( row )[1];
+                text = Object.values( row )[0];
                 // Se verifica si el valor de la API es diferente al valor seleccionado para enlistar una opción, de lo contrario se establece la opción como seleccionada.
                 if ( value != selected ) {
                     content += `<option value="${value}">${text}</option>`;
