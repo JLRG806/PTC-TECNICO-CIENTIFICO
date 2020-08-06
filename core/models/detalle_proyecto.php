@@ -101,11 +101,12 @@ class Detalle_Proyecto extends Validator
 
     public function readOneDetalle_Proyecto()
     {
-        $sql = 'SELECT id_det_proyecto, nombre_proyecto, codigo_proyecto, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante, apellidos_estudiante, nombre_estudiante, puesto_estudiante
+        $sql = 'SELECT id_det_proyecto, nombre_proyecto, descripcion_proyecto, codigo_proyecto, s.seccion_estudiante as "s", n.nivel_estudiante, especialidad_estudiante, apellidos_estudiante, nombre_estudiante, puesto_estudiante, nombre_docente
                 FROM Detalle_Proyecto d INNER JOIN Estudiantes e USING (id_estudiante) INNER JOIN Proyectos p USING (id_proyecto)
                 INNER JOIN Grados g ON p.id_grado = g.id_grado INNER JOIN Secciones s ON g.id_seccion = s.id_seccion 
-                INNER JOIN Niveles n ON n.id_nivel = s.id_nivel INNER JOIN Especialidad c ON g.id_especialidad = c.id_especialidad                      
-                WHERE id_det_proyecto = ?';
+                INNER JOIN Niveles n ON n.id_nivel = s.id_nivel INNER JOIN Especialidad c ON g.id_especialidad = c.id_especialidad
+                INNER JOIN Docentes k ON g.id_docente  = k.id_docente 
+                WHERE id_proyecto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }

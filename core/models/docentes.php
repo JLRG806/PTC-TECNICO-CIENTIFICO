@@ -40,7 +40,7 @@ class Docente extends Validator
 
     public function setEdad_docente($value)
     {
-        if ($this->validateAge($value)) {
+        if ($this->validateDate($value)) {
             $this->edad_docente = $value;
             return true;
         } else {
@@ -102,7 +102,7 @@ class Docente extends Validator
     {
         $sql = 'SELECT id_docente, nombre_docente, email_docente, edad_docente, telefono_docente, dui_docente
                 FROM Docentes
-                WHERE nombre_docente ILIKE ?
+                WHERE nombre_docente ILIKE ? or email_docente ILIKE ?
                 ORDER BY nombre_docente';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);

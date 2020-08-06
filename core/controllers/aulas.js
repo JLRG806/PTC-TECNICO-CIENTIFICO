@@ -43,7 +43,7 @@ function openUpdateModal( id )
 {
     // Se limpian los campos del formulario.
     $( '#AULA' )[0].reset();
-
+    // Se hace una consulta por medio de AJAX usando el id 
     $.ajax({
         dataType: 'json',
         url: API_AULA + 'readOne',

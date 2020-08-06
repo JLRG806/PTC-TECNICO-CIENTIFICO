@@ -35,7 +35,7 @@ if (isset($_GET['action'])) {
             $_POST = $docente->validateForm($_POST);
 			if ($docente->setNombre_docente($_POST['nombre_docente'])) {
 				if ($docente->setEmail_docente($_POST['email_docente'])) {
-                    if ($docente->setEdad_docente($_POST['edad_docente'])) {
+                    if ($docente->setEdad_docente($_POST['fecha_nacimiento'])) {
                         if ($docente->setTelefono_docente($_POST['telefono_docente'])) {
                             if ($docente->setDui_docente($_POST['dui_docente'])) {
                                 if ($docente->createDocente()) {
@@ -87,7 +87,7 @@ if (isset($_GET['action'])) {
 				if ($docente->readOneDocente()) {
 					if ($docente->setNombre_docente($_POST['nombre_docente'])) {
                         if ($docente->setEmail_docente($_POST['email_docente'])) {
-                            if ($docente->setEdad_docente($_POST['edad_docente'])) {
+                            if ($docente->setEdad_docente($_POST['fecha_nacimiento'])) {
                                 if ($docente->setTelefono_docente($_POST['telefono_docente'])) {
                                     if ($docente->setDui_docente($_POST['dui_docente'])) {
                                         if ($docente->updateDocente()) {
