@@ -68,7 +68,7 @@ class Dashboard
                                         <img src="../resources/img/IMG_20190331_144612.jpg" class="img-square" alt="User Image">
                                     </div>
                                     <div class="info">
-                                        <a href="" class="d-block">'.$_SESSION['nombre_usuario'].'</a>
+                                        
                                     </div>
                                 </div>            
                                 <nav class="mt-2">

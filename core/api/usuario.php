@@ -56,7 +56,7 @@ if (isset($_GET['action'])) {
 												$result['exception'] = Database::getException();
 											}
 										} else {
-											$result['exception'] = $aula->getImageError();
+											$result['exception'] = $usuario->getImageError();
 										}
 									} else {
 										$result['exception'] = 'Seleccione una foto';
@@ -118,26 +118,24 @@ if (isset($_GET['action'])) {
 											$result['exception'] = $usuario->getImageError();
 										}
 									} else {
-									if ($usuario->updateUsuario()) {
-										$result['status'] = 1;
-										$result['message'] = 'Usuario modificado correctamente';
-									} else {
-										$result['exception'] = Database::getException();
+										if ($usuario->updateUsuario()) {
+											$result['status'] = 1;
+											$result['message'] = 'Usuario modificada correctamente';
+										} else {
+											$result['exception'] = Database::getException();
+										}
 									}
 								} else {
-									$result['exception'] = 'Estado incorrecto';
+									$result['exception'] = 'Estado invalida';
 								}
 							} else {
-								$result['exception'] = 'Correo incorrecto';
+								$result['exception'] = 'Correo invalida';
 							}
 						} else {
-							$result['exception'] = 'Nombre incorrecto';
-						}
-						} else {
-							$result['exception'] = 'Usuario inexistente';
+							$result['exception'] = 'Usuario invalido';
 						}
 					} else {
-						$result['exception'] = 'Usuario incorrecto';
+						$result['exception'] = 'Usuario inexistente';
 					}
 				} else {
 					$result['exception'] = 'Usuario incorrecto';
