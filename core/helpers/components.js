@@ -2,6 +2,25 @@
 *   Este archivo es de uso general en todas las páginas web. Se importa en las plantillas del pie del documento.
 */
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#foto_usuario").change(function(){
+    readURL(this);
+});
+
+
+
+
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
 *
@@ -22,32 +41,6 @@ function readRows( api )
         }
         // Se envían los datos a la función del controlador para que llene la tabla en la vista.
         fillTable( response.dataset );
-    })
-    .fail(function( jqXHR ) {
-        // Se verifica si la API ha respondido para mostrar la respuesta, de lo contrario se presenta el estado de la petición.
-        if ( jqXHR.status == 200 ) {
-            console.log( jqXHR.responseText );
-        } else {
-            console.log( jqXHR.status + ' ' + jqXHR.statusText );
-        }
-    });
-}
-
-function readRows2( api, identifier )
-{
-    $.ajax({
-        type: 'post',
-        url: api + 'readOneDetalle',
-        data: identifier,
-        dataType: 'json'
-    })
-    .done(function( response ) {
-        // Si no hay datos se muestra un mensaje indicando la situación.
-        if ( ! response.status ) {
-            sweetAlert( 4, response.exception, null );
-        }
-        // Se envían los datos a la función del controlador para que llene la tabla en la vista.
-        fillTable2( response.dataset );
     })
     .fail(function( jqXHR ) {
         // Se verifica si la API ha respondido para mostrar la respuesta, de lo contrario se presenta el estado de la petición.
@@ -295,11 +288,56 @@ function fillSelect( api, selectId, selected )
     });
 }
 
-function fillSelect2( api, selectId, selected, lnk )
+function fillSelect2( api, selectId, selected )
 {
     $.ajax({
         dataType: 'json',
-        url: api + lnk
+        url: api
+    })
+    .done(function( response ) {
+        // Se comprueba si la API ha retornado una respuesta satisfactoria para mostrar los datos, de lo contrario se muestra un mensaje de error.
+        if ( response.status ) {
+            let content = '';
+            // Si no existe un valor previo para seleccionar, se muestra una opción para indicarlo.
+            if ( ! selected ) {
+                content += '<option value="0" disabled selected>Seleccione una opción</option>';
+            }
+            // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
+            response.dataset.forEach(function( row ) {
+                // Se obtiene el valor del primer campo de la sentencia SQL (valor para cada opción).
+                value = Object.values( row )[0];
+                // Se obtiene el valor del segundo campo de la sentencia SQL (texto para cada opción).
+                text = Object.values( row )[0];
+                // Se verifica si el valor de la API es diferente al valor seleccionado para enlistar una opción, de lo contrario se establece la opción como seleccionada.
+                if ( value != selected ) {
+                    content += `<option value="${value}">${text}</option>`;
+                } else {
+                    content += `<option value="${value}" selected>${text}</option>`;
+                }
+            });
+            // Se agregan las opciones a la etiqueta select mediante su id.
+            $( '#' + selectId ).html( content );
+        } else {
+            $( '#' + selectId ).html( '<option value="">No hay opciones disponibles</option>' );
+        }
+    })
+    .fail(function( jqXHR ) {
+        // Se verifica si la API ha respondido para mostrar la respuesta, de lo contrario se presenta el estado de la petición.
+        if ( jqXHR.status == 200 ) {
+            console.log( jqXHR.responseText );
+        } else {
+            console.log( jqXHR.status + ' ' + jqXHR.statusText );
+        }
+    });
+}
+
+function fillSelectDepent( api, selectId, selected, identifier )
+{
+    $.ajax({
+        dataType: 'json',
+        url: api,
+        data: identifier,
+        type: 'post'
     })
     .done(function( response ) {
         // Se comprueba si la API ha retornado una respuesta satisfactoria para mostrar los datos, de lo contrario se muestra un mensaje de error.
@@ -337,7 +375,6 @@ function fillSelect2( api, selectId, selected, lnk )
         }
     });
 }
-
 /*
 *   Función para generar una gráfica de barras verticales. Requiere el archivo chart.js para funcionar.
 *

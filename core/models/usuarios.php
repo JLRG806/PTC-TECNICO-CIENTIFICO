@@ -9,7 +9,7 @@ class Usuarios extends Validator
     private $estado = null;
     private $imagen = null;
     private $archivo = null;
-    private $ruta = '../../resources/img/usuarios/';
+    private $ruta = '../../resources/img/fotos_usuario/';
 
     public function setId($value)
     {
@@ -105,12 +105,13 @@ class Usuarios extends Validator
 
     public function checkUser($correo)
     {
-        $sql = 'SELECT id_usuario , nombre_usuario FROM usuarios WHERE email_usuario = ?';
+        $sql = 'SELECT id_usuario , nombre_usuario, foto_usuario FROM usuarios WHERE email_usuario = ?';
         $params = array($correo);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_usuario'];
             $this->nombre = $data['nombre_usuario'];
             $this->correo = $correo;
+            $this->imagen = $data['foto_usuario'];
             return true;
         } else {
             return false;
