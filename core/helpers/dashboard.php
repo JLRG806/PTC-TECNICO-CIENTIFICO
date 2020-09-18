@@ -31,7 +31,7 @@ class Dashboard
             <div class="wrapper">
         ');        
         $filename = basename($_SERVER['PHP_SELF']);    
-        if (true)   /* isset($_SESSION['id_usuario']) */{            
+        if (isset($_SESSION['id_usuario'])){            
             if ($filename != 'index.php' && $filename != 'register.php') {
                 print('
                     <header>
