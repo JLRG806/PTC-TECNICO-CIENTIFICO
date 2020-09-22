@@ -1,7 +1,7 @@
 <?php
-require('../../helpers/database.php');
-require('../../helpers/validator.php');
-require('../../../libraries/fpdf181/fpdf.php');
+require('../helpers/database.php');
+require('../helpers/validator.php');
+require('../../libraries/fpdf181/fpdf.php');
 
 /**
 *   Clase para definir las plantillas de los reportes del sitio privado. Para más información http://www.fpdf.org/
@@ -48,7 +48,7 @@ class Report extends FPDF
     public function Header()
     {
         // Se establece el logo.
-        $this->Image('../../../resources/img/IMG-20200325-WA0006.jpg', 15, 15, 20);
+        $this->Image('../../resources/img/Logo.png', 15, 15, 20);
         // Se ubica el título.
         $this->Cell(20);
         $this->SetFont('Arial', 'B', 15);
