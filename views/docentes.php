@@ -73,6 +73,7 @@ Dashboard::headerTemplate('Docente');
                             </div>
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-warning">BUSCAR</button>
+                                <a href="../core/reports/docentes.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de docentes en aulas"><i class="material-icons">assignment</i></a>
                             </div>
                         </div>
                     </div>

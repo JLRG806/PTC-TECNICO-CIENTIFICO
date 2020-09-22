@@ -138,4 +138,17 @@ class Aulas extends Validator
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    /*Consultas para generar reportes*/
+
+    public function readDocentesxAulas()
+    {
+        $sql = 'SELECT nombre_docente, nombre_aula
+                FROM Grados INNER JOIN Docentes USING(id_docente)
+                INNER JOIN Aulas USING(id_aula)
+                WHERE id_docente = ?
+                ORDER BY nombre_docente';
+        $params = array($this->nombre_aula);
+        return Database::getRows($sql, $params);
+    }
 }
