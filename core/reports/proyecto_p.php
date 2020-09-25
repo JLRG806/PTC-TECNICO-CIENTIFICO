@@ -54,10 +54,10 @@ if ($proyecto->setId($params['id'])) {
                     $pdf->Cell(30, 10, utf8_decode($rowEstudiante['puesto_estudiante']), 1, 1);                    
                 }           
             }  else {
-                $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el ticket'), 1, 1);
+                $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el reporte'), 1, 1);
             }
         } else {
-            $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el ticket'), 1, 1);
+            $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el reporte'), 1, 1);
         }
     } else {
         $pdf->Cell(0, 10, utf8_decode('No hay proyectos para mostrar'), 1, 1);

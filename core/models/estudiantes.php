@@ -165,7 +165,7 @@ class Estudiantes extends Validator
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
+    
     public function readEstudiantesProyecto()
     {
         $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, puesto_estudiante
@@ -175,6 +175,14 @@ class Estudiantes extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function readMaterialReporte()
+    {
+        $sql = 'SELECT nombre_equipo, descripcion_equipo, cantidad, tipo_equipo, estado_equipo
+                FROM Equipo INNER JOIN tipo_equipo USING (id_tipo_equipo)
+                WHERE id_estudiante = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
     public function updateEstudiante()
     {
         $sql = 'UPDATE Estudiantes 

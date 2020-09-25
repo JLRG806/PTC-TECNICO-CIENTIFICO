@@ -1,7 +1,7 @@
 <?php
 require('../helpers/report.php');
-require('../models/proyectos.php');
 require('../models/estudiantes.php');
+require('../models/material.php');
 
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
@@ -32,32 +32,34 @@ if ($estudiante->setId($params['id'])) {
         $pdf->Cell(90, 10, utf8_decode('Correo: '.$dataEstudiantes['email_estudiante']), 0, 0, 'L', 1);
         $pdf->Cell(60, 10, utf8_decode('Nivel: '.$dataEstudiantes['nivel_estudiante']), 0, 1, 'L', 1);
 
-        $pdf->Cell(60, 10, utf8_decode('Sección (si aplica): '.$dataEstudiantes['seccion']), 0, 0, 'L', 1);
+        $pdf->Cell(90, 10, utf8_decode('Sección (si aplica): '.$dataEstudiantes['seccion']), 0, 0, 'L', 1);
         $pdf->Cell(60, 10, utf8_decode('Especialidad (si aplica): '.$dataEstudiantes['especialidad_estudiante']), 0, 1, 'L', 1);        
 
-        $estudiante = new Estudiantes; 
-        if ($estudiante->setId($params['id'])) {
-            if ($dataEstudiantes = $estudiante->readEstudiantesProyecto()) {  
+        $material = new Material; 
+        if ($material->setId($params['id'])) {
+            if ($dataMateriales = $material->readMaterialReporte()) {  
                 $pdf->SetFillColor(225);
                 // Se establece la fuente para los encabezados.
                 $pdf->SetFont('Helvetica', 'B', 11);
                 // Se imprimen las celdas con los encabezados.
-                $pdf->Cell(40, 10, utf8_decode('Nombre'), 1, 0, 'C', 1);
-                $pdf->Cell(40, 10, utf8_decode('Apellidos'), 1, 0, 'C', 1);
-                $pdf->Cell(60, 10, utf8_decode('Correo Institucional'), 1, 0, 'C', 1);
-                $pdf->Cell(30, 10, utf8_decode('Cargo'), 1, 1, 'C', 1);      
+                $pdf->Cell(40, 10, utf8_decode('Nombre del Material'), 1, 0, 'C', 1);
+                $pdf->Cell(50, 10, utf8_decode('Detalles'), 1, 0, 'C', 1);
+                $pdf->Cell(30, 10, utf8_decode('Cantidad'), 1, 0, 'C', 1);
+                $pdf->Cell(40, 10, utf8_decode('Estado del Material'), 1, 0, 'C', 1);
+                $pdf->Cell(40, 10, utf8_decode('Tipo de Material'), 1, 1, 'C', 1);      
                 $pdf->SetFont('Helvetica', '', 11);    
-                foreach ($dataEstudiantes as $rowEstudiante) {
-                    $pdf->Cell(40, 10, utf8_decode($rowEstudiante['nombre_estudiante']), 1, 0);
-                    $pdf->Cell(40, 10, utf8_decode($rowEstudiante['apellidos_estudiante']), 1, 0);
-                    $pdf->Cell(60, 10, $rowEstudiante['email_estudiante'], 1, 0);
-                    $pdf->Cell(30, 10, utf8_decode($rowEstudiante['puesto_estudiante']), 1, 1);                    
-                }           
+                foreach ($dataMateriales as $rowMaterial) {
+                    $pdf->Cell(40, 10, utf8_decode($rowMaterial['nombre_equipo']), 1, 0);
+                    $pdf->Cell(50, 10, utf8_decode($rowMaterial['descripcion_equipo']), 1, 0);
+                    $pdf->Cell(30, 10, utf8_decode($rowMaterial['cantidad']), 1, 0;
+                    $pdf->Cell(40, 10, utf8_decode($rowMaterial['tipo_equipo']), 1, 0);
+                    $pdf->Cell(40, 10, utf8_decode($rowMaterial['estado_equipo']), 1, 1);
+                }   
             }  else {
-                $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el ticket'), 1, 1);
+                $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el detalle'), 1, 1);
             }
         } else {
-            $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el ticket'), 1, 1);
+            $pdf->Cell(0, 10, utf8_decode('Ocurrio un problema al intentar generar el reporte'), 1, 1);
         }
     } else {
         $pdf->Cell(0, 10, utf8_decode('No hay proyectos para mostrar'), 1, 1);

@@ -39,12 +39,12 @@ Dashboard::headerTemplate('Reportes');
                                 <form method="post" id="tipo_reporte">
                                     <div class="form-check-inline">
                                         <label class="form-check-label" for="estudiantes_op">
-                                            <input type="radio" class="form-check-input" id="estudiantes_op" name="reporte_op" value="estudiantes">Estudiantes
+                                            <input type="radio" class="form-check-input" id="estudiantes_op" name="reporte_op" value="estudiantes">Detalle de Grupos EXPO
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
                                         <label class="form-check-label" for="proyectos_op">
-                                            <input type="radio" class="form-check-input" id="proyectos_op" name="reporte_op" value="proyectos">Proyectos
+                                            <input type="radio" class="form-check-input" id="proyectos_op" name="reporte_op" value="proyectos">Maestros por Lugar de Procedencia
                                         </label>
                                     </div>
                                     <div class="form-check-inline">

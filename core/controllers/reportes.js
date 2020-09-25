@@ -70,7 +70,7 @@ function fillTable( dataset )
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
     dataset.forEach(function( row ) {
         if (r == 0) {
-            url = `ticket.php?id=${row.id}`;
+            
         } else if (r == 1) {
             url = `proyecto_p.php?id=${row.id}`;
             content += `

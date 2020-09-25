@@ -51,6 +51,17 @@ class Material extends Validator
         return Database::getRow($sql, $params);
     }
 
+    public function readMaterialReporte()
+    {
+        $sql = 'SELECT id_equipo, nombre_equipo, descripcion_equipo, cantidad, nombre_estudiante, tipo_equipo, estado_equipo, imagen_equipo 
+                FROM Equipo e INNER JOIN Estudiantes USING (id_estudiante)
+                INNER JOIN Tipo_equipo t ON e.id_tipo_equipo = t.id_tipo_equipo
+                ORDER BY id_equipo
+                WHERE id_estudiante = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
+
     public function cantidadMaterialTipo()
     {
         $sql = 'SELECT t.tipo_equipo, COUNT(e.id_equipo) cantidad
