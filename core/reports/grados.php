@@ -12,11 +12,11 @@ $grados = new Grados;
 // Se verifica si existen registros (productos) para mostrar, de lo contrario se imprime un mensaje.
 if ($dataGrado = $grados->readAllGrado()) {
     // Se establece un color de relleno para los encabezados.
-    $pdf->SetFillColor(225);
+    $pdf->SetFillColor(200);
     // Se establece la fuente para los encabezados.
     $pdf->SetFont('Times', 'B', 11);
     // Se imprimen las celdas con los encabezados.
-    $pdf->Cell(30, 10, utf8_decode('Nombre aula'), 1, 0, 'C', 1);
+    $pdf->Cell(30, 10, utf8_decode('Numero aula'), 1, 0, 'C', 1);
     $pdf->Cell(40, 10, utf8_decode('Nombre docente'), 1, 0, 'C', 1);
     $pdf->Cell(40, 10, utf8_decode('Seccion de grado'), 1, 0, 'C', 1);
     $pdf->Cell(42, 10, utf8_decode('Nivel académico'), 1, 0, 'C', 1);

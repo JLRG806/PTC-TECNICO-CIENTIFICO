@@ -47,6 +47,20 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Material inexistente';
 			}
 			break;
+		case 'cantidadMaterialTipo':
+			if ($result['dataset'] = $material->cantidadMaterialTipo()) {
+				$result['status'] = 1;
+			} else {
+				$result['exception'] = 'No hay datos disponibles';
+			}
+			break;
+		case 'cantidadEquiposEstado':
+			if ($result['dataset'] = $material->cantidadEquiposEstado()) {
+				$result['status'] = 1;
+			} else {
+				$result['exception'] = 'No hay datos disponibles';
+			}
+			break;
 		default:
 			exit('Acción no disponible log');
 	}

@@ -145,6 +145,13 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'Evaluador incorrecto';
             }
             break;
+        case 'cantidadEstadoEvaluador':
+            if ($result['dataset'] = $evaluador->cantidadEstadoEvaluador()) {
+                $result['status'] = 1;
+            } else {
+                $result['exception'] = 'No hay datos disponibles';
+            }
+            break;
         default:
             exit('Acción no disponible log');
     }

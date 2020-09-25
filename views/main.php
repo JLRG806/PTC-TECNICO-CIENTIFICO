@@ -84,6 +84,67 @@ Dashboard::headerTemplate('Especialidades');
                                     <!-- LINE CHART -->
                                     <div class="card card-danger">
                                         <div class="card-header">
+                                            <h3 class="card-title">Cantidad de proyectos por nivel academico</h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="cantidadProyectosNivel" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <!-- LINE CHART -->
+                                    <div class="card card-success">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Cantidad de materiales segun tipo</h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="cantidadMaterialTipo" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <!-- STACKED BAR CHART -->
+                                    <div class="card card-info">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Estado evaluador</h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="cantidadEstadoEvaluador" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <h3>Ejemplos</h3>
+                                    <!-- LINE CHART -->
+                                    <div class="card card-danger">
+                                        <div class="card-header">
                                             <h3 class="card-title">Line Chart</h3>
 
                                             <div class="card-tools">
@@ -141,7 +202,67 @@ Dashboard::headerTemplate('Especialidades');
                                 </div>
                                 <!-- /.col (LEFT) -->
                                 <div class="col-md-6">
+                                    <!-- STACKED BAR CHART -->
+                                    <div class="card card-danger">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Usuarios Activos/Inactivos</h3>
 
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="usuariosAI" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <!-- LINE CHART -->
+                                    <div class="card card-success">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Docentes por nivel academico</h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="cantidadDocentesNivel" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <!-- STACKED BAR CHART -->
+                                    <div class="card card-info">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Equipos por su estado</h3>
+
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart">
+                                                <canvas id="cantidadEquiposEstado" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+
+                                    <h3>Ejemplos</h3>
                                     <!-- AREA CHART -->
                                     <div class="card card-danger">
                                         <div class="card-header">
@@ -214,7 +335,7 @@ Dashboard::headerTemplate('Especialidades');
     </div>
 
 <?php
-Dashboard::footerTemplate('especialidad.js');
+Dashboard::footerTemplate('main.js');
 ?>
     <script>
         $(function() {

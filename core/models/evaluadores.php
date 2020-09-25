@@ -183,4 +183,15 @@ class Evaluadores extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    /*
+    *   Métodos para generar gráficas.
+    */
+    public function cantidadEstadoEvaluador()
+    {
+        $sql = 'SELECT estado_evaluador, COUNT(id_evaluador) cantidad from evaluadores 
+        GROUP BY id_evaluador , estado_evaluador';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
 }

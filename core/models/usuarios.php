@@ -261,4 +261,14 @@ class Usuarios extends Validator
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    /*
+    *   Métodos para generar gráficas.
+    */
+    public function usuariosAI()
+    {
+        $sql = 'SELECT estado_usuario, COUNT(id_usuario) cantidad from usuarios group by id_usuario,estado_usuario';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }

@@ -178,4 +178,19 @@ class Proyectos extends Validator
         return Database::getRows($sql, $params);
     }
 
+    /*
+    *   Métodos para generar gráficas.
+    */
+    public function cantidadProyectosNivel()
+    {
+        $sql = 'SELECT n.nivel_estudiante , COUNT(p.id_proyecto) cantidad
+        FROM proyectos p
+        INNER JOIN grados g ON p.id_grado=g.id_grado
+        INNER JOIN secciones s ON g.id_seccion=s.id_seccion
+        INNER JOIN niveles n ON s.id_nivel = n.id_nivel
+        GROUP BY n.id_nivel , n.nivel_estudiante';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
 }

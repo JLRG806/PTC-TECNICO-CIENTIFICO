@@ -121,6 +121,13 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Proyecto incorrecta';
 			}
 			break;
+		case 'cantidadProyectosNivel':
+			if ($result['dataset'] = $proyecto->cantidadProyectosNivel()) {
+				$result['status'] = 1;
+			} else {
+				$result['exception'] = 'No hay datos disponibles';
+			}
+			break;
 		default:
 			exit('Acción no disponible log');
 	}

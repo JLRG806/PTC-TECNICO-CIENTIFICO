@@ -163,4 +163,20 @@ class Docente extends Validator
         $params = array($this->nombre_docente);
         return Database::getRows($sql, $params);
     }
+
+    /*
+    *   Métodos para generar gráficas.
+    */
+    public function cantidadDocentesNivel()
+    {
+        $sql = 'SELECT n.nivel_estudiante , count(p.id_docente) cantidad
+        FROM docentes p
+        INNER JOIN grados g ON g.id_docente=p.id_docente
+        INNER JOIN secciones s ON g.id_seccion=s.id_seccion
+        INNER JOIN niveles n ON s.id_nivel = n.id_nivel
+        GROUP BY n.id_nivel , n.nivel_estudiante
+        ';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }
