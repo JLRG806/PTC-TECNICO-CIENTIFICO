@@ -44,11 +44,11 @@ if ($dataDocentes = $docentes->readAllDocente()) {
                 $pdf->Cell(0, 10, utf8_decode('No hay docentes para esta aula'), 1, 1);
             }
         } else {
-            $pdf->Cell(0, 10, utf8_decode('Ocurrió un error en una categoría'), 1, 1);
+            $pdf->Cell(0, 10, utf8_decode('Ocurrió un error en un docente'), 1, 1);
         }
     }
 } else {
-    $pdf->Cell(0, 10, utf8_decode('No hay categorías para mostrar'), 1, 1);
+    $pdf->Cell(0, 10, utf8_decode('No hay aulas asignadas para mostrar'), 1, 1);
 }
 
 // Se envía el documento al navegador y se llama al método Footer()

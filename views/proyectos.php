@@ -68,6 +68,7 @@ Dashboard::headerTemplate('Proyectos');
                             </div>
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-warning">BUSCAR</button>
+                                <a href="../core/reports/tablaproyecto.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de proyectos"><i class="material-icons">assignment</i></a>
                             </div>
                         </div>
                     </div>
