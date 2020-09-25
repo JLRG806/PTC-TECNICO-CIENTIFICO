@@ -175,4 +175,20 @@ class Proyectos extends Validator
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    /*Consultas para generar reportes*/
+
+    public function readProyectosEvaluados()
+    {
+        $sql = 'SELECT nombre_evaluador, lugar_procedencia, nombre_aula, nombre_proyecto, observaciones
+                FROM Evaluacion INNER JOIN Grados USING(id_grado)
+                INNER JOIN Aulas USING(id_aula)
+                INNER JOIN Evaluadores USING(id_evaluador) 
+                INNER JOIN Proyectos USING(id_proyecto)
+                WHERE id_evaluador = ?
+                ORDER BY nombre_evaluador';
+        $params = array($this->nombre_proyecto);
+        return Database::getRows($sql, $params);
+    }
+
 }

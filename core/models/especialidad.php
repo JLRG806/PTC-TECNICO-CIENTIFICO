@@ -89,12 +89,13 @@ class Especialidades extends Validator
 
     /*Consultas para generar reportes*/
     
-    public function readEstudiantesxMaterial()
+    public function readEstudinatesxProyectos()
     {
-        $sql = 'SELECT nombre_estudiante, codigo_estudiante, especialidad_estudiante, nombre_equipo, cantidad
-                FROM Equipo INNER JOIN Estudiantes USING(id_estudiante)
+        $sql = 'SELECT nombre_proyecto, id_proyecto, nombre_estudiante, apellidos_estudiante, especialidad_estudiante, puesto_estudiante
+                FROM Detalle_proyecto INNER JOIN Estudiantes USING(id_estudiante)
+                INNER JOIN Proyectos USING(id_proyecto)
                 INNER JOIN Especialidad USING(id_especialidad)
-                WHERE id_estudiante = ?
+                WHERE id_proyecto = ?
                 ORDER BY nombre_estudiante';
         $params = array($this->especialidad_estudiante);
         return Database::getRows($sql, $params);

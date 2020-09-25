@@ -155,7 +155,7 @@ class Docente extends Validator
 
     public function readDocentesxAulas()
     {
-        $sql = 'SELECT nombre_docente, nombre_aula
+        $sql = 'SELECT nombre_docente, id_aula, nombre_aula
                 FROM Grados INNER JOIN Docentes USING(id_docente)
                 INNER JOIN Aulas USING(id_aula)
                 WHERE id_docente = ?
