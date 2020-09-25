@@ -5,7 +5,7 @@ require('../models/grados.php');
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Reporte de clientes');
+$pdf->startReport('Reporte de grados');
 
 // Se instancia el módelo Categorías para obtener los datos.
 $grados = new Grados;
