@@ -80,31 +80,33 @@ function readRows2(api, identifier) {
 *
 *   Retorno: ninguno.
 */
-function    rchRows(api, form) {
+
+function searchReport( api, form )
+{
     $.ajax({
         type: 'post',
-        url: api + 'search',
-        data: $('#' + form.id).serialize(),
+        url: api + 'report',
+        data: $( '#' + form.id ).serialize(),
         dataType: 'json'
     })
-        .done(function (response) {
-            // Se comprueba si la API ha retornado una respuesta satisfactoria, de lo contrario se muestra un mensaje de error.
-            if (response.status) {
-                // Se envían los datos a la función del controlador para que llene la tabla en la vista.
-                fillTable(response.dataset);
-                sweetAlert(1, response.message, null);
-            } else {
-                sweetAlert(2, response.exception, null);
-            }
-        })
-        .fail(function (jqXHR) {
-            // Se verifica si la API ha respondido para mostrar la respuesta, de lo contrario se presenta el estado de la petición.
-            if (jqXHR.status == 200) {
-                console.log(jqXHR.responseText);
-            } else {
-                console.log(jqXHR.status + ' ' + jqXHR.statusText);
-            }
-        });
+    .done(function( response ) {
+        // Se comprueba si la API ha retornado una respuesta satisfactoria, de lo contrario se muestra un mensaje de error.
+        if ( response.status ) {
+            // Se envían los datos a la función del controlador para que llene la tabla en la vista.
+            fillTable( response.dataset );
+            sweetAlert( 1, response.message, null );
+        } else {
+            sweetAlert( 2, response.exception, null );
+        }
+    })
+    .fail(function( jqXHR ) {
+        // Se verifica si la API ha respondido para mostrar la respuesta, de lo contrario se presenta el estado de la petición.
+        if ( jqXHR.status == 200 ) {
+            console.log( jqXHR.responseText );
+        } else {
+            console.log( jqXHR.status + ' ' + jqXHR.statusText );
+        }
+    });
 }
 
 /*

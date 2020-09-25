@@ -127,6 +127,17 @@ class Estudiantes extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function searchReporte($value)
+    {
+        $sql = 'SELECT id_estudiante as "id", nombre_estudiante as "a", apellidos_estudiante as "b", email_estudiante as "c", s.seccion_estudiante as "d", n.nivel_estudiante as "e", especialidad_estudiante as "f"
+                FROM Estudiantes e INNER JOIN Especialidad USING (id_especialidad)
+				INNER JOIN Secciones s ON e.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
+                WHERE nombre_estudiante ILIKE ? or apellidos_estudiante ILIKE ? or email_estudiante ILIKE ? or n.nivel_estudiante ILIKE ?
+                ORDER BY apellidos_estudiante';
+        $params = array("%$value%","%$value%", "%$value%", "%$value%");
+        return Database::getRows($sql, $params);
+    }
+
     public function createEstudiante()
     {
         $sql = 'INSERT INTO Estudiantes (nombre_estudiante, apellidos_estudiante, email_estudiante, id_seccion, id_especialidad)

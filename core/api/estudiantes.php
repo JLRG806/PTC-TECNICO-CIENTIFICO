@@ -30,6 +30,24 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Ingrese un valor para buscar';
 			}
 			break;
+		case 'report':
+            $_POST = $estudiante->validateForm($_POST);
+			if ($_POST['buscador'] != '') {
+				if ($result['dataset'] = $estudiante->searchReporte($_POST['buscador'])) {
+					$result['status'] = 1;
+					$rows = count($result['dataset']);
+					if ($rows > 1) {
+						$result['message'] = 'Se encontraron '.$rows.' coincidencias';
+					} else {
+						$result['message'] = 'Solo existe una coincidencia';
+					}
+				} else {
+					$result['exception'] = 'No hay coincidencias';
+				}
+			} else {
+				$result['exception'] = 'Ingrese un valor para buscar';
+			}
+			break;
 			//accion para crear registros de estudiantes en la base de datos.
         case 'create':                    
             $_POST = $estudiante->validateForm($_POST);

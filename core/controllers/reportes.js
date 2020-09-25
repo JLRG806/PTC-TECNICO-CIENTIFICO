@@ -25,7 +25,7 @@ $( '#buscar' ).submit(function( event ) {
     } else if (r == 2) {
         searchReport( API_EVALUADORES, this );
     } else if (r == 3) {
-        
+        searchReport( API_ESTUDIANTE, this );
     }     
 });
 
@@ -95,6 +95,17 @@ function fillTable( dataset )
             `;
         } else if (r == 3) {
             //url = `ticket.php?id=${row.id_pedido}&c=${row.id_cliente}`;
+            url = `estudiante_p.php?id=${row.id}`;
+            content += `
+                <tr>
+                    <td>${row.a}</td>
+                    <td>${row.b}</td>
+                    <td>${row.c}</td>
+                    <td>                    
+                        <a class="btn btn-info btn-sm" href="../core/reports/${url}" target="_blank" class="green-text tooltipped" data-tooltip="Reporte"><i class="fas fa-eye">Ver Reporte</i></a>
+                    </td>
+                </tr>
+            `;
         }        
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
     });
