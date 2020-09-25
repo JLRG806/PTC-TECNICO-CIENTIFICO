@@ -197,6 +197,14 @@ class Dashboard
                                                 </p>
                                             </a>
                                         </li>
+                                        <li class="nav-item has-treeview">
+                                            <a href="reportes.php" class="nav-link">
+                                                <i class="nav-icon far fa-file-alt"></i>
+                                                <p>
+                                                    Reportes
+                                                </p>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>

@@ -29,6 +29,24 @@ if (isset($_GET['action'])) {
 				$result['exception'] = 'Ingrese un valor para buscar';
 			}
 			break;
+		case 'report':
+            $_POST = $proyecto->validateForm($_POST);
+			if ($_POST['buscador'] != '') {
+				if ($result['dataset'] = $proyecto->searchReporte($_POST['buscador'])) {
+					$result['status'] = 1;
+					$rows = count($result['dataset']);
+					if ($rows > 1) {
+						$result['message'] = 'Se encontraron '.$rows.' coincidencias';
+					} else {
+						$result['message'] = 'Solo existe una coincidencia';
+					}
+				} else {
+					$result['exception'] = 'No hay coincidencias';
+				}
+			} else {
+				$result['exception'] = 'Ingrese un valor para buscar';
+			}
+			break;
         case 'create':        
             $_POST = $proyecto->validateForm($_POST);
 			if ($proyecto->setNombre_proyecto($_POST['nombre_proyecto'])) {

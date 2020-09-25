@@ -80,7 +80,7 @@ function readRows2(api, identifier) {
 *
 *   Retorno: ninguno.
 */
-function searchRows(api, form) {
+function    rchRows(api, form) {
     $.ajax({
         type: 'post',
         url: api + 'search',

@@ -155,6 +155,15 @@ class Estudiantes extends Validator
         return Database::getRow($sql, $params);
     }
 
+    public function readEstudiantesProyecto()
+    {
+        $sql = 'SELECT id_estudiante, nombre_estudiante, apellidos_estudiante, email_estudiante, puesto_estudiante
+                FROM detalle_proyecto d INNER JOIN Estudiantes USING (id_estudiante)
+                where id_proyecto = ?';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
+
     public function updateEstudiante()
     {
         $sql = 'UPDATE Estudiantes 

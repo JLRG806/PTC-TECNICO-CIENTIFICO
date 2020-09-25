@@ -103,6 +103,19 @@ class Proyectos extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function searchReporte($value)
+    {
+        $sql = 'SELECT nombre_proyecto as "a", n.nivel_estudiante as "b", especialidad_estudiante as "c", id_proyecto as "id"
+                FROM Proyectos
+                INNER JOIN Grados g USING (id_grado)
+                INNER JOIN Especialidad e ON e.id_especialidad = g.id_especialidad 
+                INNER JOIN Secciones s ON g.id_seccion = s.id_seccion
+                INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
+                WHERE nombre_proyecto ILIKE ? or descripcion_proyecto ILIKE ?';
+        $params = array("%$value%", "%$value%");
+        return Database::getRows($sql, $params);
+    }
+    
     public function createProyecto()
     {
         $sql = 'INSERT INTO Proyectos (nombre_proyecto, descripcion_proyecto, id_grado)

@@ -140,6 +140,15 @@ class Evaluadores extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function searchReporte($value)
+    {
+        $sql = 'SELECT lugar_procedencia as "a", id_evaluador as "id"
+                FROM Evaluadores
+                WHERE lugar_procedencia ILIKE ?';
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
+    }
+
     public function createEvaluador()
     {
         $sql = 'INSERT INTO Evaluadores (nombre_evaluador, apellidos_evaluador, email_evaluador, telefono_evaluador, lugar_procedencia, ocupacion, estado_evaluador)
@@ -164,6 +173,15 @@ class Evaluadores extends Validator
                 WHERE id_evaluador = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
+    }
+
+    public function readEvaluadorProcedencia()
+    {
+        $sql = 'SELECT id_evaluador, nombre_evaluador, apellidos_evaluador, email_evaluador, telefono_evaluador, lugar_procedencia, ocupacion, estado_evaluador
+                FROM Evaluadores
+                WHERE lugar_procedencia = ?';
+        $params = array($this->lugar_procedencia);
+        return Database::getRows($sql, $params);
     }
 
     public function updateEvaluador()
