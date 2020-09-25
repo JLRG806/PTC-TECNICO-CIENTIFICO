@@ -267,7 +267,7 @@ if (isset($_GET['action'])) {
 				break;
 				//accion para registrarsi si en un dado caso no existiera un usuario.
 			case 'register':
-				$_POST = $usuario->validateForm($_POST);
+				$_POST = $usuario->validateForm($_POST);				
 				if ($usuario->setNombre($_POST['nombres'])) {
 					if ($usuario->setCorreo($_POST['correo'])) {
 						if ($_POST['clave1'] == $_POST['clave2']) {

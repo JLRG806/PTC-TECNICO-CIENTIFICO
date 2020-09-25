@@ -82,11 +82,11 @@ function readRows2( api, identifier )
 *
 *   Retorno: ninguno.
 */
-function searchRows( api, form )
+function searchReport( api, form )
 {
     $.ajax({
         type: 'post',
-        url: api + 'search',
+        url: api + 'report',
         data: $( '#' + form.id ).serialize(),
         dataType: 'json'
     })
