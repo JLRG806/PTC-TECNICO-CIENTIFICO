@@ -86,35 +86,39 @@ if (isset($_GET['action'])) {
 			case 'password':
 				if ($usuario->setId($_SESSION['id_usuario'])) {
 					$_POST = $usuario->validateForm($_POST);
-					if ($_POST['clave_actual_1'] == $_POST['clave_actual_2']) {
-						if ($usuario->setPassword($_POST['clave_actual_1'])) {
-							if ($usuario->checkPassword($_POST['clave_actual_1'])) {
-								if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-									if ($_POST['clave_actual_1'] != $_POST['clave_nueva_1']) {
-										if ($usuario->setPassword($_POST['clave_nueva_1'])) {
-											if ($usuario->changePassword()) {
-												$result['status'] = 1;
-												$result['message'] = 'Contraseña cambiada correctamente';
+					if ($_POST['clave_nueva_1'] != $_POST['nombre_usuario']) {
+						if ($_POST['clave_actual_1'] == $_POST['clave_actual_2']) {
+							if ($usuario->setPassword($_POST['clave_actual_1'])) {
+								if ($usuario->checkPassword($_POST['clave_actual_1'])) {
+									if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
+										if ($_POST['clave_actual_1'] != $_POST['clave_nueva_1']) {
+											if ($usuario->setPassword($_POST['clave_nueva_1'])) {
+												if ($usuario->changePassword()) {
+													$result['status'] = 1;
+													$result['message'] = 'Contraseña cambiada correctamente';
+												} else {
+													$result['exception'] = Database::getException();
+												}
 											} else {
-												$result['exception'] = Database::getException();
+												$result['exception'] = 'La clave debe contener al menos: Una Mayuscula , una minuscula, un numero, minimo 8 caracteres y 1 caracter epecial';
 											}
 										} else {
-											$result['exception'] = 'Clave nueva menor a 6 caracteres';
+											$result['exception'] = 'Clave actual y clave nueva no pueden ser iguales';
 										}
 									} else {
-										$result['exception'] = 'Clave actual y clave nueva no pueden ser iguales';
+										$result['exception'] = 'Claves nuevas diferentes';
 									}
 								} else {
-									$result['exception'] = 'Claves nuevas diferentes';
+									$result['exception'] = 'Clave actual incorrecta';
 								}
 							} else {
-								$result['exception'] = 'Clave actual incorrecta';
+								$result['exception'] = 'La clave debe contener al menos: Una Mayuscula , una minuscula, un numero, minimo 8 caracteres y 1 caracter epecial';
 							}
 						} else {
-							$result['exception'] = 'Clave actual menor a 6 caracteres';
+							$result['exception'] = 'Claves actuales diferentes';
 						}
 					} else {
-						$result['exception'] = 'Claves actuales diferentes';
+						$result['exception'] = 'Claves igual a usuario, nombre o apellido';
 					}
 				} else {
 					$result['exception'] = 'Usuario incorrecto';
@@ -145,27 +149,32 @@ if (isset($_GET['action'])) {
 				if ($usuario->setNombre($_POST['nombre'])) {
 					if ($usuario->setCorreo($_POST['email'])) {
 						if ($usuario->setEstado($_POST['estado'])) {
-							if ($_POST['password'] == $_POST['password_con']) {
-								if ($usuario->setPassword($_POST['password'])) {
-									if (is_uploaded_file($_FILES['foto_usuario']['tmp_name'])) {
-										if ($usuario->setImagen_usuario($_FILES['foto_usuario'])) {
-											if ($usuario->createUsuario()) {
-												$result['status'] = 1;
-												$result['message'] = 'Usuario creado correctamente';
+							if ($_POST['password'] != $_POST['nombre']) {
+								if ($_POST['password'] == $_POST['password_con']) {
+									if ($usuario->setPassword($_POST['password'])) {
+										if (is_uploaded_file($_FILES['foto_usuario']['tmp_name'])) {
+											if ($usuario->setImagen_usuario($_FILES['foto_usuario'])) {
+												if ($usuario->createUsuario()) {
+													$result['status'] = 1;
+													$result['message'] = 'Usuario creado correctamente';
+												} else {
+													$result['exception'] = Database::getException();
+												}
 											} else {
-												$result['exception'] = Database::getException();
+
+												$result['exception'] = $usuario->getImageError();
 											}
 										} else {
-											$result['exception'] = $usuario->getImageError();
+											$result['exception'] = 'Seleccione una foto';
 										}
 									} else {
-										$result['exception'] = 'Seleccione una foto';
+										$result['exception'] = 'La clave debe contener al menos: Una Mayuscula , una minuscula, un numero, minimo 8 caracteres y 1 caracter epecial';
 									}
 								} else {
-									$result['exception'] = 'Clave menor a 6 caracteres';
+									$result['exception'] = 'Claves diferentes';
 								}
 							} else {
-								$result['exception'] = 'Claves diferentes';
+								$result['exception'] = 'Clave igual a nombres';
 							}
 						} else {
 							$result['exception'] = 'Estado incorrecto';
@@ -278,25 +287,29 @@ if (isset($_GET['action'])) {
 				break;
 				//accion para registrarsi si en un dado caso no existiera un usuario.
 			case 'register':
-				$_POST = $usuario->validateForm($_POST);	
-				if ($result['dataset'] = $usuario->readAllUsuarios()) {               
-                    $result['exception'] = 'Ya hay un usuario registrado';
-                } else { 			
+				$_POST = $usuario->validateForm($_POST);
+				if ($result['dataset'] = $usuario->readAllUsuarios()) {
+					$result['exception'] = 'Ya hay un usuario registrado';
+				} else {
 					if ($usuario->setNombre($_POST['nombres'])) {
 						if ($usuario->setCorreo($_POST['correo'])) {
-							if ($_POST['clave1'] == $_POST['clave2']) {
-								if ($usuario->setPassword($_POST['clave1'])) {
-									if ($usuario->createRow()) {
-										$result['status'] = 1;
-										$result['message'] = 'Usuario registrado correctamente';
+							if ($_POST['clave1'] != $_POST['nombres']) {
+								if ($_POST['clave1'] == $_POST['clave2']) {
+									if ($usuario->setPassword($_POST['clave1'])) {
+										if ($usuario->createRow()) {
+											$result['status'] = 1;
+											$result['message'] = 'Usuario registrado correctamente';
+										} else {
+											$result['exception'] = Database::getException();
+										}
 									} else {
-										$result['exception'] = Database::getException();
+										$result['exception'] = 'La clave debe contener al menos: Una Mayuscula , una minuscula, un numero, minimo 8 caracteres y 1 caracter epecial';
 									}
 								} else {
-									$result['exception'] = 'Clave menor a 6 caracteres';
+									$result['exception'] = 'Claves diferentes';
 								}
 							} else {
-								$result['exception'] = 'Claves diferentes';
+								$result['exception'] = 'Claves igual a nombre o apellido';
 							}
 						} else {
 							$result['exception'] = 'Correo incorrecto';
