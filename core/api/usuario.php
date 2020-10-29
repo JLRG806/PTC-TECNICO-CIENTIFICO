@@ -274,28 +274,32 @@ if (isset($_GET['action'])) {
 				break;
 				//accion para registrarsi si en un dado caso no existiera un usuario.
 			case 'register':
-				$_POST = $usuario->validateForm($_POST);				
-				if ($usuario->setNombre($_POST['nombres'])) {
-					if ($usuario->setCorreo($_POST['correo'])) {
-						if ($_POST['clave1'] == $_POST['clave2']) {
-							if ($usuario->setPassword($_POST['clave1'])) {
-								if ($usuario->createRow()) {
-									$result['status'] = 1;
-									$result['message'] = 'Usuario registrado correctamente';
+				$_POST = $usuario->validateForm($_POST);	
+				if ($result['dataset'] = $usuario->readAllUsuarios()) {               
+                    $result['exception'] = 'Ya hay un usuario registrado';
+                } else { 			
+					if ($usuario->setNombre($_POST['nombres'])) {
+						if ($usuario->setCorreo($_POST['correo'])) {
+							if ($_POST['clave1'] == $_POST['clave2']) {
+								if ($usuario->setPassword($_POST['clave1'])) {
+									if ($usuario->createRow()) {
+										$result['status'] = 1;
+										$result['message'] = 'Usuario registrado correctamente';
+									} else {
+										$result['exception'] = Database::getException();
+									}
 								} else {
-									$result['exception'] = Database::getException();
+									$result['exception'] = 'Clave menor a 6 caracteres';
 								}
 							} else {
-								$result['exception'] = 'Clave menor a 6 caracteres';
+								$result['exception'] = 'Claves diferentes';
 							}
 						} else {
-							$result['exception'] = 'Claves diferentes';
+							$result['exception'] = 'Correo incorrecto';
 						}
 					} else {
-						$result['exception'] = 'Correo incorrecto';
+						$result['exception'] = 'Nombres incorrectos';
 					}
-				} else {
-					$result['exception'] = 'Nombres incorrectos';
 				}
 				break;
 			case 'login':
