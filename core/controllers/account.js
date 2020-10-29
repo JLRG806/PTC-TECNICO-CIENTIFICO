@@ -154,7 +154,7 @@ $( '#password-form' ).submit(function( event ) {
         if ( response.status ) {
             // Se cierra la caja de dialogo (modal) que contiene el formulario para cambiar contraseña, ubicado en el archivo de las plantillas.
             $( '#password-modal' ).modal( 'close' );
-            sweetAlert( 1, response.message, null );
+            sweetAlert( 1, response.message, 'account.php' );
         } else {
             sweetAlert( 2, response.exception, null );
         }

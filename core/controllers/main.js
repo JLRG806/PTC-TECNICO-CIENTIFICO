@@ -230,7 +230,7 @@ function graficaEstudiantesNivelAcademico()
 {
     $.ajax({
         dataType: 'json',
-        url: API_PRODUCTOS + 'cantidadProductosCategoria',
+        url: API_PRODUCTOS + 'cantidadEstudiantesNivelAcademico',
         data: null
     })
     .done(function( response ) {
@@ -246,9 +246,9 @@ function graficaEstudiantesNivelAcademico()
                 cantidad.push( row.cantidad );
             });
             // Se llama a la función que genera y muestra una gráfica de barras. Se encuentra en el archivo components.js
-            lineGraph( 'chart', categorias, cantidad, 'Cantidad de productos', 'Cantidad de productos por categoría' );
+            lineGraph( 'cantidadEstudiantesNivelAcademico', categorias, cantidad, 'Cantidad de estudiantes');
         } else {
-            $( '#chart' ).remove();
+            $( '#cantidadEstudiantesNivelAcademico' ).remove();
         }
     })
     .fail(function( jqXHR ) {

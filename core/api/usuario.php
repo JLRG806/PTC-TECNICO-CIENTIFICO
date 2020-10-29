@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
 	if (isset($_SESSION['id_usuario'])) {
 
 		switch ($_GET['action']) {
-			//accion para cerrar la secion actual.
+				//accion para cerrar la secion actual.
 			case 'logout':
 				if (session_destroy()) {
 					$result['status'] = 1;
@@ -43,10 +43,10 @@ if (isset($_GET['action'])) {
 						if ($usuario->setNombre($_POST['nombre_usuario'])) {
 							if ($usuario->setCorreo($_POST['email_usuario'])) {
 								if (is_uploaded_file($_FILES['foto_usuario']['tmp_name'])) {
-									if ($usuario->setImagen_usuario($_FILES['foto_usuario'])) {		
+									if ($usuario->setImagen_usuario($_FILES['foto_usuario'])) {
 										print '<pre>';
-                            			print_r($_FILES);
-                            			print '</pre>';								
+										print_r($_FILES);
+										print '</pre>';
 										if ($usuario->editProfileUser()) {
 											$_SESSION['email_usuario'] = $usuario->getCorreo();
 											$result['status'] = 1;
@@ -90,15 +90,19 @@ if (isset($_GET['action'])) {
 						if ($usuario->setPassword($_POST['clave_actual_1'])) {
 							if ($usuario->checkPassword($_POST['clave_actual_1'])) {
 								if ($_POST['clave_nueva_1'] == $_POST['clave_nueva_2']) {
-									if ($usuario->setPassword($_POST['clave_nueva_1'])) {
-										if ($usuario->changePassword()) {
-											$result['status'] = 1;
-											$result['message'] = 'Contraseña cambiada correctamente';
+									if ($_POST['clave_actual_1'] != $_POST['clave_nueva_1']) {
+										if ($usuario->setPassword($_POST['clave_nueva_1'])) {
+											if ($usuario->changePassword()) {
+												$result['status'] = 1;
+												$result['message'] = 'Contraseña cambiada correctamente';
+											} else {
+												$result['exception'] = Database::getException();
+											}
 										} else {
-											$result['exception'] = Database::getException();
+											$result['exception'] = 'Clave nueva menor a 6 caracteres';
 										}
 									} else {
-										$result['exception'] = 'Clave nueva menor a 6 caracteres';
+										$result['exception'] = 'Clave actual y clave nueva no pueden ser iguales';
 									}
 								} else {
 									$result['exception'] = 'Claves nuevas diferentes';
@@ -274,7 +278,7 @@ if (isset($_GET['action'])) {
 				break;
 				//accion para registrarsi si en un dado caso no existiera un usuario.
 			case 'register':
-				$_POST = $usuario->validateForm($_POST);				
+				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setNombre($_POST['nombres'])) {
 					if ($usuario->setCorreo($_POST['correo'])) {
 						if ($_POST['clave1'] == $_POST['clave2']) {

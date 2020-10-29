@@ -51,7 +51,7 @@ if ($estudiante->setId($params['id'])) {
                 foreach ($dataMateriales as $rowMaterial) {
                     $pdf->Cell(40, 10, utf8_decode($rowMaterial['nombre_equipo']), 1, 0);
                     $pdf->Cell(50, 10, utf8_decode($rowMaterial['descripcion_equipo']), 1, 0);
-                    $pdf->Cell(30, 10, utf8_decode($rowMaterial['cantidad']), 1, 0;
+                    $pdf->Cell(30, 10, utf8_decode($rowMaterial['cantidad']), 1, 0);
                     $pdf->Cell(40, 10, utf8_decode($rowMaterial['tipo_equipo']), 1, 0);
                     $pdf->Cell(40, 10, utf8_decode($rowMaterial['estado_equipo']), 1, 1);
                 }   

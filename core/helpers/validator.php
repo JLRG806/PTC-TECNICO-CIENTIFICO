@@ -226,12 +226,23 @@ class Validator
     */
     public function validatePassword($value)
     {
-        // Se verifica que la longitud de la contraseña sea de al menos 6 caracteres.
-        if (strlen($value) >= 6) {
-            return true;
-        } else {
+        $uppercase = preg_match('@[A-Z]@', $value);
+        $lowercase = preg_match('@[a-z]@', $value);
+        $number    = preg_match('@[0-9]@', $value);
+        
+        /*
+        8 characters
+        1 number
+        one uppercase character
+        one lowercase character
+        */
+        if (!$uppercase || !$lowercase || !$number ||  strlen($value) < 8) {
+
             return false;
+        } else {
+            return true;
         }
+       
     }
 
     /*

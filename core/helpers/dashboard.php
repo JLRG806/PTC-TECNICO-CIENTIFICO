@@ -249,6 +249,7 @@ class Dashboard
                 <script src="../resources/js/sweetalert.min.js"></script>
                 <script src="../core/helpers/components.js?v=1234"></script>
                 <script type="text/javascript" src="../core/controllers/account.js?v=1234"></script>
+                <script type="text/javascript" src="../core/controllers/inactivity.js?v=1234"></script>
                 <script type="text/javascript" src="../core/controllers/'.$controller.'"></script>
             </body>
             </html>                
