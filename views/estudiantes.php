@@ -23,7 +23,7 @@ Dashboard::headerTemplate('Estudiantes');
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <form method="post" id="ESTUDIANTES">
+                    <form method="post" id="ESTUDIANTES" autocomplete="off">
                         <div class="row">
                             <div class="col-md-6">
                                 <input id="id_estudiante" type="text" class="d-none" name="id_estudiante">
