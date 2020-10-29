@@ -13,7 +13,7 @@
 
 <body>
     <div class="login-dark container-fluid">
-        <form method="post" id="session-form">
+        <form method="post" id="session-form" autocomplete="off">
             <h2 class="sr-only">Iniciar Sesión</h2>
             <img src="../resources/img/logo-ricaldone.png" class="img-fluid">
             <hr class="bg-info">
