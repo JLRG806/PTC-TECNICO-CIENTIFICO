@@ -355,28 +355,16 @@ if (isset($_GET['action'])) {
 				$mail->SMTPAuth=true;
 				$mail->SMTPSecure='tls';
 				$mail->Username='ptc2020noreply@gmail.com';
-				$mail->Password='tucontraseña';
+				$mail->Password='moon1428';
 
 				$mail->setFrom($usuario->getCorreo(), $usuario->getNombre());
 				$mail->addAddress($usuario->getCorreo());
 				$mail->addReplyTo($usuario->getCorreo(), $usuario->getNombre());
+
 				if ($usuario->checkUser($_POST['codigo_usuario'])) {
-					if ($usuario->getDias() < 90) {
-						if ($usuario->checkPassword($_POST['clave_usuario'])) {
-							$result['status'] = 1;
-							$result['message'] = 'Autenticación correcta';
-							$_SESSION['id_usuario'] = $usuario->getId();
-							$_SESSION['email_usuario'] = $usuario->getCorreo();
-							$_SESSION['nombre_usuario'] = $usuario->getNombre();
-							$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();
-						} else {
-							$result['exception'] = 'Clave incorrecta';
-						}
-					} else {
-						$result['exception'] = 'Por motivos de seguridad debe actualizar su contraseña';                           
-					}
+					
 				} else {
-					$result['exception'] = 'Correo incorrecto';
+					$result['exception'] = 'Codigo incorrecto';
 				}
 				break;*/
 			default:
