@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../resources/css/">
 </head>
 
-<body>
+<body oncopy="return false" onpaste="return false">
     <div class="login-dark container-fluid">
         <form method="post" id="session-form" autocomplete="off">
             <h2 class="sr-only">Iniciar Sesión</h2>
@@ -33,6 +33,6 @@
     <script src="../core/helpers/components.js"></script>
     <script type="text/javascript" src="../core/controllers/account.js"></script>
     <script src="../core/controllers/index.js"></script>
-</body>
+</body oncopy="return false" onpaste="return false">
 
 </html>

@@ -27,7 +27,7 @@ class Dashboard
                 <link type="text/css" rel="stylesheet" href="../resources/css/all.min.css">
             </head>
             
-            <body class="hold-transition sidebar-mini layout-fixed">
+            <body class="hold-transition sidebar-mini layout-fixed" oncopy="return false" onpaste="return false">
             <div class="wrapper">
         ');        
         $filename = basename($_SERVER['PHP_SELF']);    
@@ -251,7 +251,7 @@ class Dashboard
                 <script type="text/javascript" src="../core/controllers/account.js?v=1234"></script>
                 <script type="text/javascript" src="../core/controllers/inactivity.js?v=1234"></script>
                 <script type="text/javascript" src="../core/controllers/'.$controller.'"></script>
-            </body>
+            </body oncopy="return false" onpaste="return false">
             </html>                
         ');
     }

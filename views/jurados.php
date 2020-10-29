@@ -23,7 +23,7 @@ Dashboard::headerTemplate('Evaludores');
                     <!-- Main content -->
                     <section class="content">
                         <div class="container-fluid">
-                            <form method="post" id="JURADOS">
+                            <form method="post" id="JURADOS" autocomplete="off">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <input id="id_evaluador" type="text" class="d-none" name="id_evaluador">
