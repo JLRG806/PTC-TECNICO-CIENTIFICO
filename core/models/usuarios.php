@@ -111,18 +111,23 @@ class Usuarios extends Validator
         return $this->ruta;
     }
 
+    public function getDias()
+    {
+        return $this->dias;
+    }
     //Creación de los metodos a utilizar en nuestra programación
 
     //Este metodo nos sirve para verificar que usuario esta logeado y que pueda visualizar sus datos en su pantalla
     public function checkUser($correo)
     {
-        $sql = 'SELECT id_usuario , nombre_usuario, foto_usuario FROM usuarios WHERE email_usuario = ?';
+        $sql = 'SELECT id_usuario , nombre_usuario, foto_usuario, (now()::date - ultima_act::date) as dias FROM usuarios WHERE email_usuario = ?';
         $params = array($correo);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_usuario'];
             $this->nombre = $data['nombre_usuario'];
             $this->correo = $correo;
             $this->imagen_usuario = $data['foto_usuario'];
+            $this->dias = $data['dias'];
             return true;
         } else {
             return false;
