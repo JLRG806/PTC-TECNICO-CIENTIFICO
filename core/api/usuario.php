@@ -311,15 +311,19 @@ if (isset($_GET['action'])) {
 				$_POST = $usuario->validateForm($_POST);
 				//-print_r($_POST);
 				if ($usuario->checkUser($_POST['email_usuario'])) {
-					if ($usuario->checkPassword($_POST['clave_usuario'])) {
-						$result['status'] = 1;
-						$result['message'] = 'Autenticación correcta';
-						$_SESSION['id_usuario'] = $usuario->getId();
-						$_SESSION['email_usuario'] = $usuario->getCorreo();
-						$_SESSION['nombre_usuario'] = $usuario->getNombre();
-						$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();
+					if ($usuario->getDias() < 90) {
+						if ($usuario->checkPassword($_POST['clave_usuario'])) {
+							$result['status'] = 1;
+							$result['message'] = 'Autenticación correcta';
+							$_SESSION['id_usuario'] = $usuario->getId();
+							$_SESSION['email_usuario'] = $usuario->getCorreo();
+							$_SESSION['nombre_usuario'] = $usuario->getNombre();
+							$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();
+						} else {
+							$result['exception'] = 'Clave incorrecta';
+						}
 					} else {
-						$result['exception'] = 'Clave incorrecta';
+						$result['exception'] = 'Por motivos de seguridad debe actualizar su contraseña';                           
 					}
 				} else {
 					$result['exception'] = 'Correo incorrecto';
