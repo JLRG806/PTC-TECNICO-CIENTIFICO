@@ -13,7 +13,7 @@
 
 <body>
     <div class="login-dark container-fluid">
-        <form method="post" id="session-form">
+        <form method="post" id="session-form" autocomplete="off">
             <h2 class="sr-only">Iniciar Sesión</h2>
             <img src="../resources/img/logo-ricaldone.png" class="img-fluid">
             <hr class="bg-info">
@@ -22,7 +22,7 @@
             <div class="form-group"><input class="form-control" type="email" id="email_usuario" name="email_usuario" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" id="clave_usuario" name="clave_usuario" placeholder="Contraseña"></div>
             <div class="form-group"><button class="form-control btn btn-primary btn-block " type="submit">Iniciar Sesión</button>
-            </div><a class="forgot" href="r-pas.php">Olvidaste tu contraseña?</a>
+            </div><a class="forgot" href="r-pas.php">¿Olvidaste tu contraseña?</a>
         </form>
     </div>
     <script src="../resources/js/jquery-3.4.1.min.js"></script>

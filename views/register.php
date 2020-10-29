@@ -16,7 +16,7 @@
 
 <body>
     <div class="login-dark container-fluid">
-        <form method="post" id="register-form">
+        <form method="post" id="register-form" autocomplete="off">
             <h2 class="sr-only">Registrarse</h2>
             <img src="../resources/img/logo-ricaldone.png" class="img-fluid">
             <hr class="bg-info">
