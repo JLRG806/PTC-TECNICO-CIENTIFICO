@@ -38,7 +38,7 @@ class Evaluacion extends Validator
 
     public function setObservaciones($value)
     {
-        if ($this->validateNaturalNumber($value)) {
+        if ($this->validateString($value, 1, 200)) {
             $this->observaciones = $value;
             return true;
         } else {
@@ -89,7 +89,7 @@ class Evaluacion extends Validator
 
     public function readAllEvaluacion()
     {
-        $sql = 'SELECT id_evaluacion, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante, apellidos_evaluador, nombre_evaluador, observaciones
+        $sql = 'SELECT id_evaluacion as "id", s.seccion_estudiante as "a", n.nivel_estudiante as "b", especialidad_estudiante as "c", apellidos_evaluador as "d", nombre_evaluador as "e", observaciones as "f"
                 FROM Evaluacion e INNER JOIN Evaluadores USING (id_evaluador)
                 INNER JOIN Grados g ON e.id_grado = g.id_grado  INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 INNER JOIN Especialidad p ON g.id_especialidad = p.id_especialidad                
@@ -100,10 +100,8 @@ class Evaluacion extends Validator
 
     public function readOneEvaluacion()
     {
-        $sql = 'SELECT id_evaluacion, s.seccion_estudiante, n.nivel_estudiante, especialidad_estudiante, apellidos_evaluador, nombre_evaluador, observaciones
-                FROM Evaluacion e INNER JOIN Evaluadores USING (id_evaluador)
-                INNER JOIN Grados g ON e.id_grado = g.id_grado  INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
-                INNER JOIN Especialidad p ON g.id_especialidad = p.id_especialidad                
+        $sql = 'SELECT id_evaluacion as "id", id_evaluador as "a", id_grado as "b", observaciones as "c"
+                FROM Evaluacion           
                 WHERE id_evaluacion = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
