@@ -116,8 +116,11 @@ $( '#profile-form' ).submit(function( event ) {
     $.ajax({
         type: 'post',
         url: API + 'editProfile',
-        data: $( '#profile-form' ).serialize(),
-        dataType: 'json'
+        data: new FormData ( $( '#profile-form' )[0]),
+        dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false            
     })
     .done(function( response ) {
         // Se comprueba si la API ha retornado una respuesta satisfactoria, de lo contrario se muestra un mensaje de error.

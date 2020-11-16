@@ -9,7 +9,8 @@ class Usuarios extends Validator
     private $estado = null;
     private $imagen_usuario = null;
     private $archivo = null;
-    private $ruta = '../resources/img/fotos_usuario/';
+    private $ruta = '../../resources/img/fotos_usuario/';
+    
 
     //Creando los SET de cada atributo establecidos
 
@@ -120,14 +121,14 @@ class Usuarios extends Validator
     //Este metodo nos sirve para verificar que usuario esta logeado y que pueda visualizar sus datos en su pantalla
     public function checkUser($correo)
     {
-        $sql = 'SELECT id_usuario , nombre_usuario, foto_usuario, (now()::date - ultima_act::date) as dias FROM usuarios WHERE email_usuario = ?';
+        $sql = 'SELECT id_usuario , nombre_usuario, foto_usuario FROM usuarios WHERE email_usuario = ?';
         $params = array($correo);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['id_usuario'];
             $this->nombre = $data['nombre_usuario'];
             $this->correo = $correo;
             $this->imagen_usuario = $data['foto_usuario'];
-            $this->dias = $data['dias'];
+            
             return true;
         } else {
             return false;
@@ -169,32 +170,7 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
-    //Metodo utilizado para editar perfil de un usuario
-    public function editProfileUser()
-    {
-        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_usuario)) {
-            $sql = 'UPDATE usuarios 
-                    SET nombre_usuario = ?, email_usuario = ?, foto_usuario = ?
-                    WHERE id_usuario = ?';
-            $params = array($this->nombre, $this->correo, $this->imagen_usuario, $this->id);
-        } else {
-            $sql = 'UPDATE usuarios 
-                    SET nombre_usuario = ?, email_usuario = ?
-                    WHERE id_usuario = ?';
-            $params = array($this->nombre, $this->correo, $this->id);
-        }
-        return Database::executeRow($sql, $params);
-    }
-
-
-    public function editProfile()
-    {
-        $sql = 'UPDATE usuarios
-                SET nombre_usuario = ?, correo_usuario = ?, foto_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->id);
-        return Database::executeRow($sql, $params);
-    }
+    
 
     //Metodo usado para buscar un registro en la tabla Usuario
     public function searchUsuario($value)
@@ -258,6 +234,23 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
+    //Metodo utilizado para editar perfil de un usuario
+    public function editProfileUser()
+    {
+        if ($this->saveFile($this->archivo, $this->ruta, $this->imagen_usuario)) {
+            $sql = 'UPDATE usuarios 
+                    SET nombre_usuario = ?, email_usuario = ?, foto_usuario = ?
+                    WHERE id_usuario = ?';
+            $params = array($this->nombre, $this->correo, $this->imagen_usuario, $this->id);
+        } else {
+            $sql = 'UPDATE usuarios 
+                    SET nombre_usuario = ?, email_usuario = ?
+                    WHERE id_usuario = ?';
+            $params = array($this->nombre, $this->correo, $this->id);
+        }
+        return Database::executeRow($sql, $params);
+    }
+    
     //Metodo para eliminar un usuario
     public function deleteUsuario()
     {
@@ -276,4 +269,66 @@ class Usuarios extends Validator
         $params = null;
         return Database::getRows($sql, $params);
     }
+
+    //Intentos fallidos 
+    public function readOneUsuarioTries()
+    {
+        $sql = 'SELECT id_usuario, email_usuario, intentos_usuario
+                FROM Usuarios  
+                where email_usuario =  ?';
+        $params = array($this->correo);
+        return Database::getRow($sql, $params);
+    }
+
+    public function succesLogin()
+    {
+        $i = 0;
+        $sql = 'UPDATE Usuarios 
+                SET intentos_usuario = ?
+                WHERE email_usuario = ?';
+        $params = array($i, $this->correo);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateTriesUsuario()
+    {
+        $sql = 'SELECT id_usuario, email_usuario, intentos_usuario FROM usuarios WHERE email_usuario = ?';
+        $params = array($this->correo);
+        $data = Database::getRow($sql, $params);
+        if ($data) {
+            if ($data['intentos_usuario'] == null || $data['intentos_usuario'] == '') {
+                $setIntentos = 0;
+                $sql = 'UPDATE Usuarios 
+                SET intentos_usuario = ?
+                WHERE email_usuario = ?';
+                $params = array($setIntentos, $this->correo);
+                return Database::executeRow($sql, $params);
+            } else {
+                if ($data['intentos_usuario'] == 0) {
+                    $data['intentos_usuario']++;
+                    $sql = 'UPDATE Usuarios 
+                            SET intentos_usuario = ?
+                            WHERE email_usuario = ?';
+                    $params = array($data['intentos_usuario'], $this->correo);
+                } else if ($data['intentos_usuario'] == 1) {
+                    $data['intentos_usuario']++;
+                    $sql = 'UPDATE Usuarios 
+                            SET intentos_usuario = ?
+                            WHERE email_usuario = ?';
+                    $params = array($data['intentos_usuario'], $this->correo);
+                } else if ($data['intentos_usuario'] == 2) {
+                    $data['intentos_usuario']++;
+                    $sql = 'UPDATE Usuarios 
+                            SET intentos_usuario = ?
+                            WHERE email_usuario = ?';
+                    $params = array($data['intentos_usuario'], $this->correo);
+                }
+
+                return Database::executeRow($sql, $params);
+            }
+        } else {
+            return false;
+        }
+    }
+    //
 }

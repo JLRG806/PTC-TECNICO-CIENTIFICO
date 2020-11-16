@@ -21,12 +21,7 @@ Dashboard::headerTemplate('Usuarios');
 
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
-                    <?php
-                    print '<pre>';
-                    print_r($_FILES);
-                    print '</pre>';
-                    ?>
+                <div class="container-fluid">                    
                     <div class="row">
                         <div class="col-md-6">                            
                             <form method="post"  enctype="multipart/form-data" id="profile-form">
@@ -88,5 +83,5 @@ Dashboard::headerTemplate('Usuarios');
         </div>
 
         <?php
-        Dashboard::footerTemplate('asd.js');
+        Dashboard::footerTemplate('aulas.js');
         ?>

@@ -37,18 +37,17 @@ if (isset($_GET['action'])) {
 				break;
 				//accion para editar el perfil de usuario.
 			case 'editProfile':
+				$_POST = $usuario->validateForm($_POST);
 				if ($usuario->setId($_SESSION['id_usuario'])) {
-					if ($usuario->readOneUsuario()) {
-						$_POST = $usuario->validateForm($_POST);
+					if ($data = $usuario->readOneUsuario()) {										
 						if ($usuario->setNombre($_POST['nombre_usuario'])) {
 							if ($usuario->setCorreo($_POST['email_usuario'])) {
 								if (is_uploaded_file($_FILES['foto_usuario']['tmp_name'])) {
-									if ($usuario->setImagen_usuario($_FILES['foto_usuario'])) {
-										print '<pre>';
-										print_r($_FILES);
-										print '</pre>';
+									if ($usuario->setImagen_usuario($_FILES['foto_usuario'])) {										
 										if ($usuario->editProfileUser()) {
 											$_SESSION['email_usuario'] = $usuario->getCorreo();
+											$_SESSION['nombre_usuario'] = $usuario->getNombre();
+											$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();
 											$result['status'] = 1;
 											if ($usuario->deleteFile($usuario->getRuta(), $data['foto_usuario'])) {
 												$result['message'] = 'Perfil modificado correctamente';
@@ -59,15 +58,10 @@ if (isset($_GET['action'])) {
 											$result['exception'] = Database::getException();
 										}
 									} else {
-										$result['exception'] = $aula->getImageError();
+										$result['exception'] = $usuario->getImageError();
 									}
 								} else {
-									if ($usuario->editProfileUser()) {
-										$result['status'] = 1;
-										$result['message'] = 'Datos modificados correctamente xD';
-									} else {
-										$result['exception'] = Database::getException();
-									}
+									$result['exception'] = 'Ingrese una imagen';
 								}
 							} else {
 								$result['exception'] = 'Correo incorrecto';
@@ -230,7 +224,7 @@ if (isset($_GET['action'])) {
 											$result['exception'] = $usuario->getImageError();
 										}
 									} else {
-										$result['exception'] = 'Estado incorrecto';
+										$result['exception'] = 'Foto incorrecto';
 									}
 								} else {
 									$result['exception'] = 'Estado incorrecto';
@@ -324,19 +318,27 @@ if (isset($_GET['action'])) {
 				$_POST = $usuario->validateForm($_POST);
 				//-print_r($_POST);
 				if ($usuario->checkUser($_POST['email_usuario'])) {
-					if ($usuario->getDias() < 90) {
-						if ($usuario->checkPassword($_POST['clave_usuario'])) {
-							$result['status'] = 1;
-							$result['message'] = 'Autenticación correcta';
-							$_SESSION['id_usuario'] = $usuario->getId();
-							$_SESSION['email_usuario'] = $usuario->getCorreo();
-							$_SESSION['nombre_usuario'] = $usuario->getNombre();
-							$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();
+					if ($usuario->setCorreo($_POST['email_usuario'])) {
+						if ($result['dataset'] = $usuario->readOneUsuarioTries()) {
+							if ($result['dataset']['intentos_usuario'] < 3) {
+								if ($usuario->checkPassword($_POST['clave_usuario'])) {
+									$result['status'] = 1;
+									$result['message'] = 'Autenticación correcta';
+									$_SESSION['id_usuario'] = $usuario->getId();
+									$_SESSION['email_usuario'] = $usuario->getCorreo();
+									$_SESSION['nombre_usuario'] = $usuario->getNombre();
+									$_SESSION['foto_usuario'] = $usuario->getImagen_usuario();
+								} else {
+									$result['exception'] = 'Clave incorrecta';
+								}
+							} else {
+								$result['exception'] = 'Usted tene un total de 3 intentos fallidos, intente de nuevo dento de 24 horas';
+							}
 						} else {
-							$result['exception'] = 'Clave incorrecta';
+							$result['exception'] = 'error 2';
 						}
 					} else {
-						$result['exception'] = 'Por motivos de seguridad debe actualizar su contraseña';                           
+						$result['exception'] = 'error 1';
 					}
 				} else {
 					$result['exception'] = 'Correo incorrecto';

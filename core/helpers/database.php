@@ -10,7 +10,7 @@ class Database
         $server = 'localhost';
         $database = 'TC_EXPO';
         $username = 'postgres';
-        $password = 'Administrador';
+        $password = 'postgres';
         try {
             self::$connection = new PDO('pgsql:host='.$server.';dbname='.$database.';port=5432', $username, $password);
         } catch(PDOException $error) {
