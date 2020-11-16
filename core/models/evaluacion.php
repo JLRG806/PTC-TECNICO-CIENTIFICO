@@ -72,7 +72,7 @@ class Evaluacion extends Validator
                 FROM Evaluacion e INNER JOIN Evaluadores USING (id_evaluador)
                 INNER JOIN Grados g ON e.id_grado = g.id_grado  INNER JOIN Secciones s ON g.id_seccion = s.id_seccion INNER JOIN Niveles n ON n.id_nivel = s.id_nivel
                 INNER JOIN Especialidad p ON g.id_especialidad = p.id_especialidad
-                WHERE e.seccion_estudiante ILIKE ? or e.nivel_estudiante ILIKE ? or g.especialidad_estudiante ILIKE ? or apellidos_evaluadorILIKE ? or nombre_evaluador ILIKE ?
+                WHERE apellidos_evaluadorILIKE ? or nombre_evaluador ILIKE ?
                 ORDER BY apellidos_evaluador';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
