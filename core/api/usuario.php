@@ -2,12 +2,14 @@
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
 require_once('../models/usuarios.php');
+require_once('../libraries/usuarios.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
 	session_start();
 	// Se instancia la clase correspondiente.
 	$usuario = new Usuarios;
+	$mail = new PHPMailer;
 	// Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
 	$result = array('status' => 0, 'message' => null, 'exception' => null);
 	// Se compara la acción a realizar cuando un administrador ha iniciado sesión.
@@ -344,6 +346,29 @@ if (isset($_GET['action'])) {
 					$result['exception'] = 'Correo incorrecto';
 				}
 				break;
+/*
+			case 'codev':
+				//accion para verificar el codigo
+				$_POST = $usuario->validateForm($_POST);
+				//-print_r($_POST);
+				$mail->isSMTP();
+				$mail->Host='smtp.gmail.com';
+				$mail->Port=587;
+				$mail->SMTPAuth=true;
+				$mail->SMTPSecure='tls';
+				$mail->Username='ptc2020noreply@gmail.com';
+				$mail->Password='moon1428';
+
+				$mail->setFrom($usuario->getCorreo(), $usuario->getNombre());
+				$mail->addAddress($usuario->getCorreo());
+				$mail->addReplyTo($usuario->getCorreo(), $usuario->getNombre());
+
+				if ($usuario->checkUser($_POST['codigo_usuario'])) {
+					
+				} else {
+					$result['exception'] = 'Codigo incorrecto';
+				}
+				break;*/
 			default:
 				exit('Acción no disponible fuera de la sesión');
 		}
