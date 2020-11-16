@@ -1,6 +1,6 @@
 <?php
 require_once('../core/helpers/dashboard.php');
-Dashboard::headerTemplate('Especialidades');
+Dashboard::headerTemplate('Dashboard');
 ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
