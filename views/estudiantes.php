@@ -90,7 +90,7 @@ Dashboard::headerTemplate('Estudiantes');
                     </div>
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-warning">BUSCAR</button>
-                        <a href="../core/reports/proyecto.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de proyectos con sus respectivos estudiantes"><i class="material-icons">assignment</i></a>
+                        <a href="../core/reports/proyecto.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de proyectos con sus respectivos estudiantes"><i class="material-icons">Reporte de proyectos con sus respectivos estudiantes</i></a>
                     </div>
                 </div>
             </div>

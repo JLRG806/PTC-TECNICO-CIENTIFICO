@@ -91,7 +91,7 @@ Dashboard::headerTemplate('Evaludores');
                             </div>
                             <div class="col-md-6">
                                 <button type="submit" class="btn btn-warning">BUSCAR</button>
-                                <a href="../core/reports/evaluadores.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de evaluación de los proyectos por jurado"><i class="material-icons">assignment</i></a>
+                                <a href="../core/reports/evaluadores.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de evaluación de los proyectos por jurado"><i class="material-icons">Reporte de evaluación de los proyectos por jurado</i></a>
                             </div>
                         </div>
                     </div>

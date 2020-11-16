@@ -26,7 +26,6 @@ function fillTable( dataset )
                 <td>${row.s}</td>
                 <td>${row.e}</td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="#" onclick="openDetailModal(${row.id_proyecto})" class="white-text tooltipped" data-tooltip="Detalle"><i class="fas fa-eye">Ver detalle</i></a>
                     <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_proyecto})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Editar</i></a>
                     <a class="btn btn-danger btn-sm" href="#" onclick="openDeleteDialog(${row.id_proyecto})" class="red-text tooltipped" data-tooltip="Eliminar"><i class="fas fa-trash">Eliminar</i></a>
                 </td>

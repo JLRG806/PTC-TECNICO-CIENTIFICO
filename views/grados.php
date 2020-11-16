@@ -69,7 +69,7 @@ Dashboard::headerTemplate('Grados');
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-warning">BUSCAR</button>
-                                    <a href="../core/reports/grados.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de grados"><i class="material-icons">assignment</i></a>
+                                    <a href="../core/reports/grados.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de grados"><i class="material-icons">Reporte de grados</i></a>
                                 </div>
                             </div>
                         </div>

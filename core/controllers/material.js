@@ -21,9 +21,6 @@ function fillTable( dataset )
                 <td>${row.cantidad}</td>
                 <td>${row.nombre_estudiante}</td>
                 <td>${row.tipo_equipo}</td>
-                <td>
-                    <a class="btn btn-info btn-sm" href="#" onclick="openUpdateModal(${row.id_equipo})" class="blue-text tooltipped" data-tooltip="Actualizar"><i class="fas fa-pencil-alt">Generar PDF</i></a>
-                </td>
             </tr>
         `;
     });
