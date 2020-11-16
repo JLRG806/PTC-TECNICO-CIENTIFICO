@@ -100,7 +100,7 @@ class Evaluacion extends Validator
 
     public function readOneEvaluacion()
     {
-        $sql = 'SELECT id_evaluacion as "id", id_evaluador as "a", id_grado as "b", observaciones as "c"
+        $sql = 'SELECT id_evaluacion, id_evaluador as "a", id_grado as "b", observaciones as "c"
                 FROM Evaluacion           
                 WHERE id_evaluacion = ?';
         $params = array($this->id);

@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'search':
             $_POST = $evaluacion->validateForm($_POST);
-            if ($_POST['evaluacion'] != '') {
+            if ($_POST['evaluacion_buscar'] != '') {
                 if ($result['dataset'] = $evaluacion->searchEvaluacion($_POST['evaluacion_buscar'])) {
                     $result['status'] = 1;
                     $rows = count($result['dataset']);

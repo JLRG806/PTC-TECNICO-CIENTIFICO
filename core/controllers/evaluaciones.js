@@ -86,7 +86,7 @@ $( '#EVALUACION' ).submit(function( event ) {
     event.preventDefault();
     // Se llama a la función que crea o actualiza un registro. Se encuentra en el archivo components.js
     // Se comprueba si el id del registro esta asignado en el formulario para actualizar, de lo contrario se crea un registro.
-    if ( $( '#id_evaluador' ).val() ) {
+    if ( $( '#id_evaluacion' ).val() ) {
         saveRow( API_EVALUACIONES, 'update', this, null );
     } else {
         saveRow( API_EVALUACIONES, 'create', this, null );
@@ -97,7 +97,7 @@ $( '#EVALUACION' ).submit(function( event ) {
 function openDeleteDialog( id )
 {
     // Se declara e inicializa un objeto con el id del registro que será borrado.
-    let identifier = { id_evaluador: id };
+    let identifier = { id_evaluacion: id };
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
     confirmDelete( API_EVALUACIONES, identifier );
 }
